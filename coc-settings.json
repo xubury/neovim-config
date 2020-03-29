@@ -1,0 +1,19 @@
+{
+  "languageserver": {
+	"ccls": {
+		"command": "ccls",
+		"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+		"rootPatterns": [".ccls-root", ".git", "build", "CMakeLists.txt"],
+		"initializationOptions": {
+			"cache": {
+			  "directory": ".ccls-cache"
+			},
+			"publishSkippedRanges": 1,
+			"publishSemanticHighlight": 1,
+			"highlight": {"lsRanges": true },
+			"clang": {"pathMappings": ["/C/>C:/","/D/>D:/","/E/>E:/","/F/>F:/","/G/>G:/"]},
+			"compilationDatabaseDirectory" : "build"
+			},
+		}
+	}
+}
