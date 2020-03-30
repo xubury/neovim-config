@@ -60,7 +60,7 @@ noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
 noremap <C-w> :q<cr>
-noremap <space>w :b #<cr>bd #<cr>
+noremap <space>w :bd<cr>:bn<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
 nnoremap vv viw
