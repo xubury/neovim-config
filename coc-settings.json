@@ -12,7 +12,8 @@
 			"publishSemanticHighlight": 1,
 			"highlight": {"lsRanges": true },
 			"clang": {"pathMappings": ["/C/>C:/","/D/>D:/","/E/>E:/","/F/>F:/","/G/>G:/"]},
-			"compilationDatabaseDirectory" : "build"
+			"compilationDatabaseDirectory" : "build",
+            "client": {"snippetSupport": true}, "completion": {"placeholder": true}
 			},
 		}
 	}
