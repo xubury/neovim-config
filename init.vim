@@ -59,7 +59,7 @@ noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
-noremap <C-w> :tabclose<cr>
+noremap <C-w> :q<cr>
 noremap <space>w :b #<cr>bd #<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
@@ -111,3 +111,8 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+
+
+" coc-git
+autocmd User CocGitStatusChange {command}
+nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
