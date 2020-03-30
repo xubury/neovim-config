@@ -24,10 +24,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 
 Plug 'preservim/nerdcommenter'
-
+Plug 'puremourning/vimspector'
 call plug#end()
 
-let g:gitgutter_git_executable = 'C:\Users\Bury\scoop\apps\git\current\bin\git.exe'
+let g:vimspector_enable_mappings = 'HUMAN'
 
 let g:airline_theme= 'deus'
 let g:airline_powerline_fonts = 1
@@ -71,38 +71,6 @@ no <C-k> <C-w>k| "switching to above window
 no <C-l> <C-w>l| "switching to right window 
 no <C-h> <C-w>h| "switching to left window
 
-"" nerdcommenter settings
-vmap <C-/> <plug>NERDCommenterSexy
-nmap <C-/> <plug>NERDCommenterSexy
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**', 'leftAlt': '*','right': '*/' },'cpp': { 'left': '/**', 'leftAlt': '*','right': '*/' } }
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-
-"" nerdtree settings
-let NERDTreeShowBookmarks=1
-
-
-
-"open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-map <C-n> :NERDTreeToggle<CR>
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']

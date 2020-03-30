@@ -22,17 +22,16 @@ set signcolumn=yes
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" bases
+
 " bases
 nn <silent> gb :call CocLocations('ccls','$ccls/inheritance')<cr>
 " bases of up to 3 levels
 nn <silent> gB :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
 " derived
-nn <silent> gd :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
+nn <silent> gi :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
 " derived of up to 3 levels
-nn <silent> gD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
+nn <silent> gI :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
 
 
 " Use K to show documentation in preview window
