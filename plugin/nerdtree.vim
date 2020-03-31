@@ -1,5 +1,5 @@
 "" nerdtree settings
-let NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=1
 
 "open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
@@ -7,3 +7,4 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 map <C-n> :NERDTreeToggle<CR>
 
+let g:NERDTreeShowHidden=1

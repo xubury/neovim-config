@@ -2,7 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'bling/vim-bufferline'
 Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
@@ -29,8 +29,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
 call plug#end()
 
+set encoding=UTF-8
 let g:vimspector_enable_mappings = 'HUMAN'
-
 let g:airline_theme= 'deus'
 let g:airline_powerline_fonts = 1
 set relativenumber
@@ -62,6 +62,15 @@ noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
 noremap <C-w> :q<cr>
+noremap <space>1 :b 1<cr>
+noremap <space>2 :b 2<cr>
+noremap <space>3 :b 3<cr>
+noremap <space>4 :b 4<cr>
+noremap <space>5 :b 5<cr>
+noremap <space>6 :b 6<cr>
+noremap <space>7 :b 7<cr>
+noremap <space>8 :b 8<cr>
+noremap <space>9 :b 9<cr>
 noremap <space>w :bd<cr>:bn<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
