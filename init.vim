@@ -2,7 +2,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'bling/vim-bufferline'
 Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
@@ -30,7 +29,11 @@ Plug 'puremourning/vimspector'
 call plug#end()
 
 set encoding=UTF-8
+set guifont=SauceCodePro_NF:h11
+
 let g:vimspector_enable_mappings = 'HUMAN'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme= 'deus'
 let g:airline_powerline_fonts = 1
 set relativenumber
@@ -61,7 +64,7 @@ noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
-noremap <C-w> :q<cr>
+noremap <C-w> :tabclose<cr>
 noremap <space>1 :b 1<cr>
 noremap <space>2 :b 2<cr>
 noremap <space>3 :b 3<cr>
@@ -71,10 +74,10 @@ noremap <space>6 :b 6<cr>
 noremap <space>7 :b 7<cr>
 noremap <space>8 :b 8<cr>
 noremap <space>9 :b 9<cr>
-noremap <space>w :bd<cr>:bn<cr>
+noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
-nnoremap vv viw
+vnoremap v iw
 
 "Switch between different windows by their direction`
 no <C-j> <C-w>j| "switching to below window 
