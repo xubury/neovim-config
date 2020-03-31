@@ -3,25 +3,28 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'joshdick/onedark.vim'
-Plug 'iCyMind/NeoSolarized'
+Plug 'KeitaNakamura/neodark.vim'
+
+Plug 'junegunn/vim-emoji'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 
-Plug 'mhinz/vim-startify'
-
-Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
 call plug#end()
@@ -78,4 +81,3 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-
