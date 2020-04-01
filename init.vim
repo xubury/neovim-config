@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
@@ -24,12 +25,15 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 
+Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
 call plug#end()
 
-set encoding=UTF-8
-set guifont=SauceCodePro_NF:h11
+set termencoding=utf-8
+set encoding=utf-8
+
+let g:python3_host_prog='C:/msys64/mingw64/bin/python3.exe'
 
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
@@ -64,7 +68,7 @@ noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
-noremap <C-w> :tabclose<cr>
+noremap <C-w> :q<cr>
 noremap <space>1 :b 1<cr>
 noremap <space>2 :b 2<cr>
 noremap <space>3 :b 3<cr>
@@ -93,3 +97,21 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+
+function! PreciseTrimWhiteSpace()
+  " We need to save the view because the substitute command might
+  " or might not move the cursor, depending on whether it finds
+  " any whitespace.
+  let saved_view = winsaveview()
+
+  " Remove white space. Ignore "not found" errors. Don't change jumplist.
+  keepjumps '[,']s/\s\+$//e
+
+  " Move cursor back if necessary.
+  call winrestview(saved_view)
+endfunction
+
+augroup PreciseTrimWhiteSpace
+  autocmd!
+  autocmd InsertLeave * call PreciseTrimWhiteSpace()
+augroup end
