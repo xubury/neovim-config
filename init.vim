@@ -30,17 +30,19 @@ Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
 call plug#end()
 
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
 set termencoding=utf-8
 set encoding=utf-8
-
-let g:python3_host_prog='C:/msys64/mingw64/bin/python3.exe'
+set showmatch
 
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme= 'deus'
 let g:airline_powerline_fonts = 1
-set relativenumber
+set nu
+set cursorline
 set smarttab
 
 colorscheme onedark
@@ -48,6 +50,7 @@ syntax on
 set termguicolors
 set tabstop=4
 set shiftwidth=4
+set autoindent
 set expandtab
 set cmdheight=2
 set wildignorecase
