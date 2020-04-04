@@ -1,8 +1,8 @@
 vmap <space>/ <plug>NERDCommenterSexy
 nmap <space>/ <plug>NERDCommenterSexy
-vmap <C-/> <plug>NERDCommenterToggle
 nmap <C-/> <plug>NERDCommenterToggle
-
+vmap <C-/> <plug>NERDCommenterToggle
+imap <C-/> <plug>NERDCommenterToggle
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 

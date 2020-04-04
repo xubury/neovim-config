@@ -51,6 +51,7 @@ set termguicolors
 set tabstop=4
 set shiftwidth=4
 set autoindent
+set autoread
 set expandtab
 set cmdheight=2
 set wildignorecase

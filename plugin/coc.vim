@@ -98,3 +98,10 @@ let s:coc_extensions = [
 for extension in s:coc_extensions
     call coc#add_extension(extension)
 endfor
+
+
+" navigate chunks of current buffer
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
+" show chunk diff at current position
+nmap ci <Plug>(coc-git-chunkinfo)
