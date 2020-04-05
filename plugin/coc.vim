@@ -93,6 +93,9 @@ let s:coc_extensions = [
             \ 'coc-json',
             \ 'coc-ultisnips',
             \ 'coc-tag',
+            \ 'coc-pairs',
+            \ 'coc-git',
+            \ 'coc-highlight'
             \]
 
 for extension in s:coc_extensions
@@ -100,8 +103,11 @@ for extension in s:coc_extensions
 endfor
 
 
-" navigate chunks of current buffer
-nmap [c <Plug>(coc-git-prevchunk)
-nmap ]c <Plug>(coc-git-nextchunk)
-" show chunk diff at current position
-nmap ci <Plug>(coc-git-chunkinfo)
+" " navigate chunks of current buffer
+" nmap [c <Plug>(coc-git-prevchunk)
+" nmap ]c <Plug>(coc-git-nextchunk)
+" " show chunk diff at current position
+" nmap ci <Plug>(coc-git-chunkinfo)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ci <Plug>(GitGutterPreviewHunk)

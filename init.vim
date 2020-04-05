@@ -11,6 +11,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'junegunn/vim-emoji'
 Plug 'vim-airline/vim-airline'
@@ -31,7 +32,6 @@ Plug 'puremourning/vimspector'
 call plug#end()
 
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
@@ -45,9 +45,11 @@ set nu
 set cursorline
 set smarttab
 
+syntax enable
+set background=dark
 colorscheme onedark
-syntax on
 set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set tabstop=4
 set shiftwidth=4
 set autoindent
