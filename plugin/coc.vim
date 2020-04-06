@@ -93,7 +93,6 @@ let s:coc_extensions = [
             \ 'coc-json',
             \ 'coc-ultisnips',
             \ 'coc-tag',
-            \ 'coc-pairs',
             \ 'coc-git',
             \ 'coc-highlight'
             \]

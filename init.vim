@@ -29,6 +29,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
