@@ -30,6 +30,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -63,6 +64,7 @@ set smartcase
 set ignorecase
 
 source $VIMRUNTIME/mswin.vim
+imap jj <esc>
 
 " Go to tab by number
 noremap <C-1> 1gt
@@ -106,6 +108,9 @@ let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 function! PreciseTrimWhiteSpace()
+  if &ft =~ 'md\|markdown'
+    return
+  endif
   " We need to save the view because the substitute command might
   " or might not move the cursor, depending on whether it finds
   " any whitespace.
