@@ -1,4 +1,5 @@
 "" coc.nvim settings
+let g:coc_disable_startup_warning = 1
 " TextEdit might fail if hidden is not set.
 set hidden
 
