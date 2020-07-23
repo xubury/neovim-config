@@ -33,6 +33,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 call plug#end()
 
+source $VIMRUNTIME/mswin.vim
+
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
@@ -63,9 +65,9 @@ set infercase
 set smartcase
 set ignorecase
 
-source $VIMRUNTIME/mswin.vim
 imap jj <esc>
 
+set sel=inclusive
 " Go to tab by number
 noremap <C-1> 1gt
 noremap <C-2> 2gt

@@ -95,7 +95,8 @@ let s:coc_extensions = [
             \ 'coc-ultisnips',
             \ 'coc-tag',
             \ 'coc-git',
-            \ 'coc-highlight'
+            \ 'coc-highlight',
+            \ 'coc-snippet'
             \]
 
 for extension in s:coc_extensions
