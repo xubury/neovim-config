@@ -41,6 +41,7 @@ set termencoding=utf-8
 set encoding=utf-8
 set showmatch
 
+let mapleader = "\<Space>"
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -143,7 +144,7 @@ function! ReuseVimGoTerm(cmd) abort
 endfunction
 
 let g:go_term_enabled = 1
-let g:go_term_mode = "silent keepalt rightbelow 15 split"
+let g:go_term_mode = "silent keepalt rightbelow 8 split"
 let g:go_def_reuse_buffer = 1
 
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
