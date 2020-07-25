@@ -31,6 +31,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'fatih/vim-go'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
