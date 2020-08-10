@@ -91,6 +91,7 @@ noremap <space>6 :b 6<cr>
 noremap <space>7 :b 7<cr>
 noremap <space>8 :b 8<cr>
 noremap <space>9 :b 9<cr>
+noremap <space><tab> :bp <cr>
 noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
