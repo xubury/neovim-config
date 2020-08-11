@@ -112,9 +112,9 @@ endfor
 " nmap ]c <Plug>(coc-git-nextchunk)
 " " show chunk diff at current position
 " nmap ci <Plug>(coc-git-chunkinfo)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap ci <Plug>(GitGutterPreviewHunk)
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap hi <Plug>(GitGutterPreviewHunk)
 
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)

@@ -33,6 +33,8 @@ Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
@@ -155,3 +157,5 @@ let g:go_def_reuse_buffer = 1
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
 
 autocmd FileType cpp nmap <leader>b :CMakeBuild<cr>
+
+let g:vim_markdown_math = 1
