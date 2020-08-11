@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
@@ -41,6 +42,8 @@ set termencoding=utf-8
 set encoding=utf-8
 set showmatch
 
+let g:UltiSnipsExpandTrigger="<tab>"
+
 let mapleader = "\<Space>"
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
@@ -66,6 +69,7 @@ set wildignorecase
 set infercase
 set smartcase
 set ignorecase
+let g:indentLine_setConceal = 0
 
 imap jj <esc>
 
@@ -149,3 +153,5 @@ let g:go_term_mode = "silent keepalt rightbelow 8 split"
 let g:go_def_reuse_buffer = 1
 
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
+
+autocmd FileType cpp nmap <leader>b :CMakeBuild<cr>

@@ -93,11 +93,13 @@ call coc#config('coc.preferences', {
 let s:coc_extensions = [
             \ 'coc-dictionary',
             \ 'coc-json',
-            \ 'coc-ultisnips',
             \ 'coc-tag',
             \ 'coc-git',
             \ 'coc-highlight',
-            \ 'coc-snippets'
+            \ 'coc-html',
+            \ 'coc-cmake',
+            \ 'coc-snippets',
+            \ 'coc-yank'
             \]
 
 for extension in s:coc_extensions
@@ -113,3 +115,20 @@ endfor
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 nmap ci <Plug>(GitGutterPreviewHunk)
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
