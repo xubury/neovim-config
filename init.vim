@@ -39,7 +39,9 @@ call plug#end()
 
 source $VIMRUNTIME/mswin.vim
 
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost .vimrc so $MYVIMRC
+autocmd BufWritePost *.vim so $MYVIMRC
+autocmd BufWritePost vimrc.symlink so $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
@@ -157,5 +159,6 @@ let g:go_def_reuse_buffer = 1
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
 
 autocmd FileType cpp nmap <leader>b :CMakeBuild<cr>
+autocmd FileType cpp nmap <leader>g :CMake <cr>
 
 let g:vim_markdown_math = 1

@@ -26,16 +26,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" bases
-nn <silent> gb :call CocLocations('ccls','$ccls/inheritance')<cr>
-" bases of up to 3 levels
-nn <silent> gB :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
-" derived
-nn <silent> gi :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
-" derived of up to 3 levels
-nn <silent> gI :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
-
-
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
