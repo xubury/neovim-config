@@ -73,6 +73,8 @@ set wildignorecase
 set infercase
 set smartcase
 set ignorecase
+set nu
+set rnu
 let g:indentLine_setConceal = 0
 
 imap jj <esc>
