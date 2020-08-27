@@ -70,8 +70,8 @@ else
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gp <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
 
 call coc#config('coc.preferences', {
             \ "autoTrigger": "always",
@@ -102,9 +102,9 @@ endfor
 " nmap ]c <Plug>(coc-git-nextchunk)
 " " show chunk diff at current position
 " nmap ci <Plug>(coc-git-chunkinfo)
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap hi <Plug>(GitGutterPreviewHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ci <Plug>(GitGutterPreviewHunk)
 
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
