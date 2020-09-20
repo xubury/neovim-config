@@ -89,7 +89,8 @@ let s:coc_extensions = [
             \ 'coc-html',
             \ 'coc-cmake',
             \ 'coc-snippets',
-            \ 'coc-yank'
+            \ 'coc-yank',
+            \ 'coc-clangd'
             \]
 
 for extension in s:coc_extensions
