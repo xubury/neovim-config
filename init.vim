@@ -1,8 +1,9 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'honza/vim-snippets'
+
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
@@ -45,8 +46,6 @@ autocmd BufWritePost vimrc.symlink so $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
-
-let g:UltiSnipsExpandTrigger="<tab>"
 
 let mapleader = "\<Space>"
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -108,9 +107,9 @@ noremap fs :Startify<cr>
 vnoremap v iw
 
 "Switch between different windows by their direction`
-no <C-j> <C-w>j| "switching to below window 
+no <C-j> <C-w>j| "switching to below window
 no <C-k> <C-w>k| "switching to above window
-no <C-l> <C-w>l| "switching to right window 
+no <C-l> <C-w>l| "switching to right window
 no <C-h> <C-w>h| "switching to left window
 
 
