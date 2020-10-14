@@ -30,12 +30,13 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
@@ -161,5 +162,13 @@ autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
 
 autocmd FileType cpp nmap <leader>b :CMakeBuild<cr>
 autocmd FileType cpp nmap <leader>g :CMake <cr>
+
+autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ %\ -o\ %<
+map <F5> :call CompileGcc()<CR>
+func! CompileGcc()
+    exec "w"
+    exec "Make"
+endfunc
+let g:clang_format#auto_format=1
 
 let g:vim_markdown_math = 1
