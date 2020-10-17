@@ -48,7 +48,7 @@ set termencoding=utf-8
 set encoding=utf-8
 set showmatch
 
-let mapleader = "\<Space>"
+let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -92,15 +92,7 @@ noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
 noremap <C-w> :q<cr>
-noremap <space>1 :b 1<cr>
-noremap <space>2 :b 2<cr>
-noremap <space>3 :b 3<cr>
-noremap <space>4 :b 4<cr>
-noremap <space>5 :b 5<cr>
-noremap <space>6 :b 6<cr>
-noremap <space>7 :b 7<cr>
-noremap <space>8 :b 8<cr>
-noremap <space>9 :b 9<cr>
+nnoremap <space>b :ls<CR>:b<Space>
 noremap <space><tab> :bp <cr>
 noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
@@ -140,7 +132,7 @@ endfunction
 
 augroup PreciseTrimWhiteSpace
   autocmd!
-  autocmd InsertLeave * call PreciseTrimWhiteSpace()
+  autocmd BufWritePost * call PreciseTrimWhiteSpace()
 augroup end
 
 " vim-go settings
