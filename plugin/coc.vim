@@ -22,9 +22,12 @@ set shortmess+=c
 set signcolumn=yes
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gc <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>f <Plug>(coc-fix-current)
+nmap <silent> <leader>r <Plug>(coc-refactor)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -43,9 +46,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
 
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
