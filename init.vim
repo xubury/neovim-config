@@ -36,7 +36,7 @@ Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'rhysd/vim-clang-format'
+Plug 'Chiel92/vim-autoformat'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
@@ -98,6 +98,7 @@ noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
 vnoremap v iw
+noremap <C-n> :noh<cr>
 
 "Switch between different windows by their direction`
 no <C-j> <C-w>j| "switching to below window
@@ -113,27 +114,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-
-function! PreciseTrimWhiteSpace()
-  if &ft =~ 'md\|markdown'
-    return
-  endif
-  " We need to save the view because the substitute command might
-  " or might not move the cursor, depending on whether it finds
-  " any whitespace.
-  let saved_view = winsaveview()
-
-  " Remove white space. Ignore "not found" errors. Don't change jumplist.
-  keepjumps '[,']s/\s\+$//e
-
-  " Move cursor back if necessary.
-  call winrestview(saved_view)
-endfunction
-
-augroup PreciseTrimWhiteSpace
-  autocmd!
-  autocmd BufWritePost * call PreciseTrimWhiteSpace()
-augroup end
 
 " vim-go settings
 function! ReuseVimGoTerm(cmd) abort
@@ -161,6 +141,13 @@ func! CompileGcc()
     exec "w"
     exec "Make"
 endfunc
-let g:clang_format#auto_format=1
 
 let g:vim_markdown_math = 1
+
+au BufWrite * :Autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+let g:formatdef_my_custom_clang = '"clang-format -style=google"' 
+let g:formatters_cpp = ['my_custom_clang']
+
