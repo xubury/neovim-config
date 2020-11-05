@@ -30,13 +30,14 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
-" Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'Chiel92/vim-autoformat'
+Plug 'lervag/vimtex'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
@@ -47,7 +48,8 @@ autocmd BufWritePost vimrc.symlink so $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
-
+let g:python3_host_prog = "C:/msys64/mingw64/bin/python3.exe"
+let g:python_host_prog = "C:/msys64/mingw64/bin/python2.exe"
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
@@ -98,7 +100,7 @@ noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
 vnoremap v iw
-noremap <C-n> :noh<cr>
+noremap <leader>n :noh<cr>
 
 "Switch between different windows by their direction`
 no <C-j> <C-w>j| "switching to below window
@@ -148,6 +150,24 @@ au BufWrite * :Autoformat
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-let g:formatdef_my_custom_clang = '"clang-format -style=google"' 
+let g:formatdef_my_custom_clang = '"clang-format -style=\"{BasedOnStyle: Google, IndentWidth: 4}\""'
 let g:formatters_cpp = ['my_custom_clang']
+
+" vim-tex
+let g:tex_flavor = 'latex'
+
+if has('win32')
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+endif
+
+let g:vimtex_compiler_latexmk_engines = {
+            \ '_'                : '-xelatex',
+            \ 'pdflatex'         : '-pdf',
+            \ 'dvipdfex'         : '-pdfdvi',
+            \ 'lualatex'         : '-lualatex',
+            \ 'xelatex'          : '-xelatex',
+            \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+            \ 'context (luatex)' : '-pdf -pdflatex=context',
+            \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+            \}
 

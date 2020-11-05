@@ -24,5 +24,5 @@ let g:NERDTrimTrailingWhitespace = 1
 " Add your own custom formats or override the defaults
 let g:NERDCustomDelimiters = { 'c': { 'left': '/**', 'leftAlt': '*','right': '*/' },'cpp': { 'left': '/**', 'leftAlt': '*','right': '*/' } }
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1

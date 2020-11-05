@@ -1,4 +1,5 @@
-Guifont! SauceCodePro NF:h11
+Guifont! FiraCode NF:h12
+
 
 " Disable gui popupmenu
   if exists(':GuiPopupmenu') == 2

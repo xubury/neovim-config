@@ -7,5 +7,6 @@
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "clangd.arguments": ["-cross-file-rename", "--header-insertion=never", "--clang-tidy", "--pretty"],
     "clangd.semanticHighlighting": true,
-    "clangd.compilationDatabasePath": "build"
+    "clangd.compilationDatabasePath": "build",
+    "python.jediEnabled": false
 }
