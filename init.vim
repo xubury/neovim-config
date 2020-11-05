@@ -48,8 +48,7 @@ autocmd BufWritePost vimrc.symlink so $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
-let g:python3_host_prog = "C:/msys64/mingw64/bin/python3.exe"
-let g:python_host_prog = "C:/msys64/mingw64/bin/python2.exe"
+
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:airline#extensions#tabline#enabled = 1
