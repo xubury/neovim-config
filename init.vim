@@ -83,6 +83,7 @@ set rnu
 let g:indentLine_setConceal = 0
 
 imap jj <esc>
+nmap gi `^
 
 set sel=inclusive
 " Go to tab by number
@@ -177,14 +178,14 @@ let g:vimtex_compiler_latexmk_engines = {
             \}
 
 
-set shell=bash
+" set shell=bash
 if has('nvim')
   fu! OpenTerminal()
    " open split windows on the topleft
    topleft split
    " resize the height of terminal windows to 15
    resize 15
-   :terminal
+   :terminal bash
   endf
 else
   fu! OpenTerminal()
@@ -196,4 +197,4 @@ else
   endf
 endif
 nnoremap <F4> :call OpenTerminal()<cr>
-
+tnoremap <Esc> <C-\><C-n>
