@@ -24,7 +24,6 @@ set signcolumn=yes
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gc <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>f <Plug>(coc-fix-current)
 nmap <silent> <leader>r <Plug>(coc-refactor)
