@@ -126,4 +126,8 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
-autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
+autocmd filetype python let b:coc_root_patterns = 
+            \['.git', '.env']
+
+let g:coc_uri_prefix_replace_patterns = {
+            \'C:\\c\\Users' : 'C:\\Users'}

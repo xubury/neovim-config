@@ -1,7 +1,7 @@
 vmap <space>/ <plug>NERDCommenterSexy
 nmap <space>/ <plug>NERDCommenterSexy
 
-if has('win32')
+if has ('win32') || has ('win32unix')
     nmap <C-/> <plug>NERDCommenterToggle
     vmap <C-/> <plug>NERDCommenterToggle
 else

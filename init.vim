@@ -40,6 +40,10 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'lervag/vimtex'
 call plug#end()
 
+if has('win32')
+    let g:python3_host_prog = 'C:/Users/Bury/miniconda3/python.exe'   
+endif
+
 source $VIMRUNTIME/mswin.vim
 
 autocmd BufWritePost .vimrc so $MYVIMRC
@@ -94,7 +98,7 @@ noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
 noremap <C-w> :q<cr>
 nnoremap <space>b :ls<CR>:b<Space>
-noremap <space><tab> :bp <cr>
+noremap <space><tab> :b# <cr>
 noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
 " Selcet the whole word
@@ -133,6 +137,8 @@ let g:go_def_reuse_buffer = 1
 
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
 
+autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
+
 autocmd FileType cpp nmap <leader>b :CMakeBuild<cr>
 autocmd FileType cpp nmap <leader>g :CMake <cr>
 
@@ -155,8 +161,8 @@ let g:formatters_cpp = ['my_custom_clang']
 " vim-tex
 let g:tex_flavor = 'latex'
 
-if has('win32')
-    let g:vimtex_view_general_viewer = 'SumatraPDF'
+if has('win32') || has('win32unix')
+    let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
 endif
 
 let g:vimtex_compiler_latexmk_engines = {
@@ -169,4 +175,25 @@ let g:vimtex_compiler_latexmk_engines = {
             \ 'context (luatex)' : '-pdf -pdflatex=context',
             \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
             \}
+
+
+set shell=bash
+if has('nvim')
+  fu! OpenTerminal()
+   " open split windows on the topleft
+   topleft split
+   " resize the height of terminal windows to 15
+   resize 15
+   :terminal
+  endf
+else
+  fu! OpenTerminal()
+   " open split windows on the topleft
+   topleft split
+   " resize the height of terminal windows to 15
+   resize 15
+   :call term_start('bash', {'curwin' : 1, 'term_finish' : 'close'})
+  endf
+endif
+nnoremap <F4> :call OpenTerminal()<cr>
 
