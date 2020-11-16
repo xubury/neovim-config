@@ -40,9 +40,9 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'lervag/vimtex'
 call plug#end()
 
-if has('win32')
-    let g:python3_host_prog = 'C:/Users/Bury/miniconda3/python.exe'   
-endif
+" if has('win32')
+"     let g:python3_host_prog = 'C:/Users/Bury/miniconda3/python.exe'
+" endif
 
 source $VIMRUNTIME/mswin.vim
 
@@ -140,14 +140,19 @@ autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
 
 autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
 
-autocmd FileType cpp nmap <leader>b :CMakeBuild<cr>
 autocmd FileType cpp nmap <leader>g :CMake <cr>
 
 autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ %\ -o\ %<
-map <F5> :call CompileGcc()<CR>
+
+autocmd FileType cpp nmap <leader>b :call CompileGcc()<CR>
+
 func! CompileGcc()
     exec "w"
-    exec "Make"
+    if ! empty(glob('CMakeLists.txt'))
+        exec "CMakeBuild"
+    else
+        exec "Make"
+    endif
 endfunc
 
 let g:vim_markdown_math = 1
@@ -178,23 +183,34 @@ let g:vimtex_compiler_latexmk_engines = {
             \}
 
 
-" set shell=bash
-if has('nvim')
-  fu! OpenTerminal()
-   " open split windows on the topleft
-   topleft split
-   " resize the height of terminal windows to 15
-   resize 15
-   :terminal bash
-  endf
-else
-  fu! OpenTerminal()
-   " open split windows on the topleft
-   topleft split
-   " resize the height of terminal windows to 15
-   resize 15
-   :call term_start('bash', {'curwin' : 1, 'term_finish' : 'close'})
-  endf
-endif
-nnoremap <F4> :call OpenTerminal()<cr>
+" Toggle 'default' terminal
+nnoremap <F4> :call ChooseTerm("term-slider", 1)<CR>
+" Start terminal in current pane
+nnoremap <F3> :call ChooseTerm("term-pane", 0)<CR>
+
+function! ChooseTerm(termname, slider)
+	let pane = bufwinnr(a:termname)
+	let buf = bufexists(a:termname)
+	if pane > 0
+		" pane is visible
+		if a:slider
+			:exe pane . "wincmd c"
+		else
+			:exe "e #" 
+		endif
+	elseif buf > 0
+		" buffer is not in pane
+		if a:slider
+			:exe "topleft split"
+		endif
+		:exe "buffer " . a:termname
+	else
+		" buffer is not loaded, create
+		if a:slider
+			:exe "topleft split"
+		endif
+		:terminal bash
+		:exe "f " a:termname
+	endif
+endfunction
 tnoremap <Esc> <C-\><C-n>

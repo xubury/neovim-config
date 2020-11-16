@@ -3,10 +3,10 @@ nmap <space>/ <plug>NERDCommenterSexy
 
 if has ('win32') || has ('win32unix')
     nmap <C-/> <plug>NERDCommenterToggle
-    vmap <C-/> <plug>NERDCommenterToggle
+    vmap <C-/> <plug>NERDCommenterComment
 else
     nmap <C-_> <plug>NERDCommenterToggle
-    vmap <C-_> <plug>NERDCommenterToggle
+    vmap <C-_> <plug>NERDCommenterComment
 endif
 
 " Add spaces after comment delimiters by default
@@ -20,9 +20,6 @@ let g:NERDDefaultAlign = 'left'
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**', 'leftAlt': '*','right': '*/' },'cpp': { 'left': '/**', 'leftAlt': '*','right': '*/' } }
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1

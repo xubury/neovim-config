@@ -8,5 +8,6 @@
     "clangd.arguments": ["-cross-file-rename", "--header-insertion=never", "--clang-tidy", "--pretty"],
     "clangd.semanticHighlighting": true,
     "clangd.compilationDatabasePath": "build",
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "snippets.snipmate.enable": false
 }
