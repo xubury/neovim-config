@@ -1,5 +1,3 @@
-"" coc.nvim settings
-let g:coc_disable_startup_warning = 1
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -12,7 +10,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -29,6 +27,7 @@ nmap <silent> <leader>f <Plug>(coc-fix-current)
 nmap <silent> <leader>r <Plug>(coc-refactor)
 
 " Use K to show documentation in preview window
+map K <Nop>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()

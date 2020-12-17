@@ -3,10 +3,10 @@ nmap <space>/ <plug>NERDCommenterSexy
 
 if has ('win32') || has ('win32unix')
     nmap <C-/> <plug>NERDCommenterToggle
-    vmap <C-/> <plug>NERDCommenterComment
+    vmap <C-/> <plug>NERDCommenterToggle
 else
     nmap <C-_> <plug>NERDCommenterToggle
-    vmap <C-_> <plug>NERDCommenterComment
+    vmap <C-_> <plug>NERDCommenterToggle
 endif
 
 " Add spaces after comment delimiters by default

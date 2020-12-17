@@ -12,8 +12,6 @@ Plug 'skywind3000/asyncrun.vim'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'joshdick/onedark.vim'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'morhetz/gruvbox'
 
 Plug 'junegunn/vim-emoji'
 Plug 'vim-airline/vim-airline'
@@ -33,11 +31,20 @@ Plug 'preservim/nerdcommenter'
 "Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+
+" go plugin
 Plug 'fatih/vim-go'
+
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'Chiel92/vim-autoformat'
 Plug 'lervag/vimtex'
+
+"lua plugin
+Plug 'andrejlevkovitch/vim-lua-format'
+
+" tagbar
+Plug 'preservim/tagbar'
 call plug#end()
 
 " if has('win32')
@@ -142,7 +149,7 @@ autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
 
 autocmd FileType cpp nmap <leader>g :CMake <cr>
 
-autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ %\ -o\ %<
+autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ %<
 
 autocmd FileType cpp nmap <leader>b :call CompileGcc()<CR>
 
@@ -157,13 +164,15 @@ endfunc
 
 let g:vim_markdown_math = 1
 
+" vim-autoformat
 au BufWrite * :Autoformat
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
+autocmd FileType vim,tex let b:autoformat_autoindent=0
 let g:formatdef_my_custom_clang = '"clang-format -style=\"{BasedOnStyle: Google, IndentWidth: 4}\""'
 let g:formatters_cpp = ['my_custom_clang']
 
+" vim-lua-format
+autocmd BufWrite *.lua call LuaFormat()
+  
 " vim-tex
 let g:tex_flavor = 'latex'
 
@@ -209,8 +218,11 @@ function! ChooseTerm(termname, slider)
 		if a:slider
 			:exe "topleft split"
 		endif
-		:terminal bash
+		:exe "terminal bash"
 		:exe "f " a:termname
 	endif
 endfunction
 tnoremap <Esc> <C-\><C-n>
+
+" tag bar mapping
+nmap <F8> :TagbarToggle<CR>

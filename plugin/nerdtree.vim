@@ -7,4 +7,13 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 map <C-n> :NERDTreeToggle<CR>
 
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+
+
 let g:NERDTreeShowHidden=1
+
+let NERDTreeMinimalUI = 1
+
+let NERDTreeDirArrows = 1
+
+let NERDTreeAutoDeleteBuffer = 1
