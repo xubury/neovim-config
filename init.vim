@@ -47,9 +47,6 @@ Plug 'andrejlevkovitch/vim-lua-format'
 Plug 'preservim/tagbar'
 call plug#end()
 
-" if has('win32')
-"     let g:python3_host_prog = 'C:/Users/Bury/miniconda3/python.exe'
-" endif
 
 source $VIMRUNTIME/mswin.vim
 
