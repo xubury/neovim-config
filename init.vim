@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
@@ -22,13 +23,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
-"Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
@@ -116,6 +116,8 @@ no <C-k> <C-w>k| "switching to above window
 no <C-l> <C-w>l| "switching to right window
 no <C-h> <C-w>h| "switching to left window
 
+" Utlisnip
+let g:UltiSnipsExpandTrigger = "<nop>"
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -124,6 +126,12 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+
+
+" git gutter
+" nmap ]c <Plug>(GitGutterNextHunk)
+" nmap [c <Plug>(GitGutterPrevHunk)
+" nmap ci <Plug>(GitGutterPreviewHunk)
 
 " vim-go settings
 function! ReuseVimGoTerm(cmd) abort
@@ -169,7 +177,7 @@ let g:formatters_cpp = ['my_custom_clang']
 
 " vim-lua-format
 autocmd BufWrite *.lua call LuaFormat()
-  
+
 " vim-tex
 let g:tex_flavor = 'latex'
 
@@ -195,29 +203,29 @@ nnoremap <F4> :call ChooseTerm("term-slider", 1)<CR>
 nnoremap <F3> :call ChooseTerm("term-pane", 0)<CR>
 
 function! ChooseTerm(termname, slider)
-	let pane = bufwinnr(a:termname)
-	let buf = bufexists(a:termname)
-	if pane > 0
-		" pane is visible
-		if a:slider
-			:exe pane . "wincmd c"
-		else
-			:exe "e #" 
-		endif
-	elseif buf > 0
-		" buffer is not in pane
-		if a:slider
-			:exe "topleft split"
-		endif
-		:exe "buffer " . a:termname
-	else
-		" buffer is not loaded, create
-		if a:slider
-			:exe "topleft split"
-		endif
-		:exe "terminal bash"
-		:exe "f " a:termname
-	endif
+    let pane = bufwinnr(a:termname)
+    let buf = bufexists(a:termname)
+    if pane > 0
+        " pane is visible
+        if a:slider
+            :exe pane . "wincmd c"
+        else
+            :exe "e #"
+        endif
+    elseif buf > 0
+        " buffer is not in pane
+        if a:slider
+            :exe "topleft split"
+        endif
+        :exe "buffer " . a:termname
+    else
+        " buffer is not loaded, create
+        if a:slider
+            :exe "topleft split"
+        endif
+        :exe "terminal bash"
+        :exe "f " a:termname
+    endif
 endfunction
 tnoremap <Esc> <C-\><C-n>
 

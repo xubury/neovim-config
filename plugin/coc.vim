@@ -67,7 +67,7 @@ else
     imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Use `[g` and `]g` to navigate diagnostics
+" Use `gp` and `gn` to navigate diagnostics
 nmap <silent> gp <Plug>(coc-diagnostic-prev)
 nmap <silent> gn <Plug>(coc-diagnostic-next)
 
@@ -81,12 +81,10 @@ call coc#config('coc.preferences', {
 let s:coc_extensions = [
             \ 'coc-dictionary',
             \ 'coc-json',
-            \ 'coc-tag',
-            \ 'coc-git',
             \ 'coc-highlight',
             \ 'coc-html',
             \ 'coc-cmake',
-            \ 'coc-snippets',
+            \ 'coc-ultisnips',
             \ 'coc-yank',
             \ 'coc-clangd',
             \ 'coc-python',
@@ -98,32 +96,19 @@ for extension in s:coc_extensions
 endfor
 
 
-" " navigate chunks of current buffer
-" nmap [c <Plug>(coc-git-prevchunk)
-" nmap ]c <Plug>(coc-git-nextchunk)
-" " show chunk diff at current position
-" nmap ci <Plug>(coc-git-chunkinfo)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap ci <Plug>(GitGutterPreviewHunk)
-
-let g:UltiSnipsExpandTrigger=""
-" Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-" vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-" imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 autocmd filetype python let b:coc_root_patterns = 
             \['.git', '.env']
+            
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+
