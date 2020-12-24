@@ -154,6 +154,16 @@ let g:go_term_mode = "silent keepalt rightbelow 8 split"
 let g:go_def_reuse_buffer = 1
 
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
+if has('win32')|| has('win32unix')
+    let g:python3_host_prog = 'C:/Users/Bury/miniconda3/python.exe'
+    let $MSYSTEM = 'MINGW64'
+    set shell=bash
+    set shellcmdflag=--login\ -c
+    set shellquote="
+    set shellslash
+    set shellquote=\"
+    set shellxquote=
+endif
 
 autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
 
@@ -175,8 +185,10 @@ endfunc
 let g:vim_markdown_math = 1
 
 " vim-autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 au BufWrite * :Autoformat
-autocmd FileType vim,tex let b:autoformat_autoindent=0
 let g:formatdef_my_custom_clang = '"clang-format -style=\"{BasedOnStyle: Google, IndentWidth: 4}\""'
 let g:formatters_cpp = ['my_custom_clang']
 
@@ -230,7 +242,7 @@ function! ChooseTerm(termname, slider)
         if a:slider
             :exe "topleft split"
         endif
-        :exe "terminal bash"
+        :exe "terminal"
         :exe "f " a:termname
     endif
 endfunction
