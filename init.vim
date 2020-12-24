@@ -12,11 +12,18 @@ Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'joshdick/onedark.vim'
 
+" color scheme
+Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/vim-emoji'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+
+" status line
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -56,22 +63,23 @@ autocmd BufWritePost vimrc.symlink so $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
-
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme= 'deus'
-let g:airline_powerline_fonts = 1
+let g:lightline = {
+  \ 'colorscheme': 'dracula'
+\}
+set laststatus=2
+
+set termguicolors
+syntax enable
+colorscheme dracula
+set noshowmode
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 set nu
 set cursorline
 set smarttab
 
-syntax enable
-set background=dark
-colorscheme onedark
-set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -88,6 +96,9 @@ let g:indentLine_setConceal = 0
 
 imap jj <esc>
 nmap gi `^
+
+:command Q q
+:command Qa qa
 
 set sel=inclusive
 " Go to tab by number
@@ -126,12 +137,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-
-
-" git gutter
-" nmap ]c <Plug>(GitGutterNextHunk)
-" nmap [c <Plug>(GitGutterPrevHunk)
-" nmap ci <Plug>(GitGutterPreviewHunk)
 
 " vim-go settings
 function! ReuseVimGoTerm(cmd) abort
@@ -183,6 +188,8 @@ let g:tex_flavor = 'latex'
 
 if has('win32') || has('win32unix')
     let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
+else
+    let g:vimtex_view_general_viewer = 'zathura'
 endif
 
 let g:vimtex_compiler_latexmk_engines = {

@@ -88,7 +88,8 @@ let s:coc_extensions = [
             \ 'coc-yank',
             \ 'coc-clangd',
             \ 'coc-python',
-            \ 'coc-vimtex'
+            \ 'coc-vimtex',
+            \ 'coc-git'
             \]
 
 for extension in s:coc_extensions
@@ -98,9 +99,9 @@ endfor
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
-autocmd filetype python let b:coc_root_patterns = 
+autocmd filetype python let b:coc_root_patterns =
             \['.git', '.env']
-            
+
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)

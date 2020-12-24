@@ -9,12 +9,5 @@
     "clangd.semanticHighlighting": true,
     "clangd.compilationDatabasePath": "build",
     "python.jediEnabled": false,
-    "languageserver": {
-        "lua" :{"cwd": "C:/Users/Bury/.vscode/extensions/sumneko.lua-1.2.1/server",
-            "command": "C:/Users/Bury/.vscode/extensions/sumneko.lua-1.2.1/server/bin/Windows/lua-language-server.exe",
-            "args": ["-E", "-e", "LANG=en", "C:/Users/Bury/.vscode/extensions/sumneko.lua-1.2.1/server/main.lua"],
-            "filetypes": ["lua"],
-            "rootPatterns": [".git/"]}
-    },
     "git.addGBlameToVirtualText": true
 }
