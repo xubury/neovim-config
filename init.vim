@@ -5,6 +5,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'lilydjwg/fcitx.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
@@ -22,8 +23,6 @@ Plug 'junegunn/vim-emoji'
 
 " status line
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -33,7 +32,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 
-"Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 " Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'

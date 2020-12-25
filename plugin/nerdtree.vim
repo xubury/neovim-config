@@ -17,8 +17,6 @@ endfunction
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
 
-let g:NERDTreeShowHidden = 1
-
 let g:NERDTreeMinimalMenu = 1
 
 let NERDTreeMinimalUI = 1
