@@ -211,11 +211,12 @@ let g:vimtex_compiler_latexmk_engines = {
 
 
 " Toggle 'default' terminal
-nnoremap <F4> :call ChooseTerm("term-slider", 1)<CR>
+nnoremap <F3> :call ChooseTerm("term-slider", 1, 'botright 10split')<CR>
+nnoremap <F4> :call ChooseTerm("term-slider", 1, 'botright vsplit')<CR>
 " Start terminal in current pane
-nnoremap <F3> :call ChooseTerm("term-pane", 0)<CR>
+" nnoremap <F3> :call ChooseTerm("term-slider", 0)<CR>
 
-function! ChooseTerm(termname, slider)
+function! ChooseTerm(termname, slider, slider_type)
     let pane = bufwinnr(a:termname)
     let buf = bufexists(a:termname)
     if pane > 0
@@ -228,16 +229,16 @@ function! ChooseTerm(termname, slider)
     elseif buf > 0
         " buffer is not in pane
         if a:slider
-            :exe "topleft split"
+            :exe a:slider_type
         endif
         :exe "buffer " . a:termname
     else
         " buffer is not loaded, create
         if a:slider
-            :exe "topleft split"
+            :exe a:slider_type
         endif
         :exe "terminal"
-        :exe "f " a:termname
+        :exe "f ". a:termname
     endif
 endfunction
 tnoremap <Esc> <C-\><C-n>
