@@ -66,56 +66,10 @@ set showmatch
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
 
-" statusline
-let g:lightline = {
-  \ 'colorscheme': 'dracula',
-  \ 'active': {
-    \	'left': [['mode', 'paste', 'modified'], ['filename'], ['functionName']],
-    \	'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
-    \ },
-   \ 'component_function': {
-    \   'filename': 'LightlineTabFilename',
-    \	'functionName': 'LightlineFunctionName',
-    \   'fileformat': 'LightLineFileFormat',
-    \   'fileencoding': 'LightLineFileEncoding',
-    \   'filetype': 'LightLineFileType',
-    \}
-\}
-
-function! LightlineTabFilename()
-  let fname = expand('%:t')
-  return fname =~ '__Tagbar__' ? 'Tagbar' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' : 
-        \ ('' != fname ? fname : '[No Name]')
-endfunction
-
-function! LightlineFunctionName()
-    return IsIgnoredWindow() ? '' : tagbar#currenttag("%s", "", 'f', 'nearest-stl')
-endfunction
-
-function! LightLineFileFormat()
-    return IsIgnoredWindow() ? '' : &fileformat
-endfunction()
-
-function! LightLineFileEncoding()
-    return IsIgnoredWindow() ? '' : &fileencoding
-endfunction()
-
-function! LightLineFileType()
-    return IsIgnoredWindow() ? '' : &filetype
-endfunction()
-
-function! IsIgnoredWindow()
-    return (&filetype == 'tagbar' || &filetype == 'nerdtree')
-endfunction
-
-set laststatus=2
 
 set termguicolors
 syntax enable
 colorscheme dracula
-set noshowmode
-
 
 set nu
 set cursorline
@@ -135,8 +89,9 @@ set nu
 set rnu
 let g:indentLine_setConceal = 0
 
-imap jj <esc>
+inoremap jj <esc>
 nmap gi `^
+nnoremap t `
 
 :command Q q
 :command Qa qa
@@ -290,4 +245,4 @@ endfunction
 tnoremap <Esc> <C-\><C-n>
 
 " tag bar mapping
-nmap <F8> :TagbarToggle<CR>
+nnoremap <silent> <leader>t :TagbarToggle<CR>
