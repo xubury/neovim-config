@@ -91,8 +91,8 @@ inoremap jj <esc>
 nmap gi `^
 nnoremap t `
 
-:command Q q
-:command Qa qa
+" :command Q q
+" :command Qa qa
 
 set sel=inclusive
 " Go to tab by number
@@ -163,7 +163,7 @@ autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
 
 autocmd FileType cpp nmap <leader>g :CMake <cr>
 
-autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ %<
+autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ build/%<
 
 autocmd FileType cpp nmap <leader>b :call CompileGcc()<CR>
 
@@ -211,7 +211,7 @@ let g:vimtex_compiler_latexmk_engines = {
 
 
 " Toggle 'default' terminal
-nnoremap <F3> :call ChooseTerm("term-slider", 1, 'botright 10split')<CR>
+nnoremap <F3> :call ChooseTerm("term-slider", 1, 'botright 16split')<CR>
 nnoremap <F4> :call ChooseTerm("term-slider", 1, 'botright vsplit')<CR>
 " Start terminal in current pane
 " nnoremap <F3> :call ChooseTerm("term-slider", 0)<CR>
