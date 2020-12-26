@@ -237,7 +237,7 @@ function! ChooseTerm(termname, slider, slider_type)
         if a:slider
             :exe a:slider_type
         endif
-        :exe "terminal"
+        :terminal
         :exe "f ". a:termname
     endif
 endfunction
