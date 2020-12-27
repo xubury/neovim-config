@@ -161,11 +161,11 @@ endif
 
 autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
 
-autocmd FileType cpp nmap <leader>g :CMake <cr>
+autocmd FileType cpp,cmake nmap <leader>g :CMake <cr>
 
 autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ build/%<
 
-autocmd FileType cpp nmap <leader>b :call CompileGcc()<CR>
+autocmd FileType cpp,cmake nmap <leader>b :call CompileGcc()<CR>
 
 func! CompileGcc()
     exec "w"
