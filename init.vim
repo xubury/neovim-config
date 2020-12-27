@@ -211,8 +211,8 @@ let g:vimtex_compiler_latexmk_engines = {
 
 
 " Toggle 'default' terminal
-nnoremap <F3> :call ChooseTerm("term-slider", 1, 'botright 16split')<CR>
-nnoremap <F4> :call ChooseTerm("term-slider", 1, 'botright vsplit')<CR>
+nnoremap <silent> <F3> :call ChooseTerm("term-slider", 1, 'botright 16split')<CR>
+nnoremap <silent> <F4> :call ChooseTerm("term-slider", 1, 'botright vsplit')<CR>
 " Start terminal in current pane
 " nnoremap <F3> :call ChooseTerm("term-slider", 0)<CR>
 
