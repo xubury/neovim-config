@@ -210,37 +210,28 @@ let g:vimtex_compiler_latexmk_engines = {
             \}
 
 
-" Toggle 'default' terminal
-nnoremap <silent> <F3> :call ChooseTerm("term-slider", 1, 'botright 16split')<CR>
-nnoremap <silent> <F4> :call ChooseTerm("term-slider", 1, 'botright vsplit')<CR>
-" Start terminal in current pane
-" nnoremap <F3> :call ChooseTerm("term-slider", 0)<CR>
+" Toggle  terminal
+nnoremap <silent> <F3> :call ChooseTerm("term-slider", "botright 16split")<CR>
+nnoremap <silent> <F4> :call ChooseTerm("term-slider", "botright vsplit")<CR>
 
-function! ChooseTerm(termname, slider, slider_type)
+function! ChooseTerm(termname, slider_type)
     let pane = bufwinnr(a:termname)
     let buf = bufexists(a:termname)
     if pane > 0
         " pane is visible
-        if a:slider
-            :exe pane . "wincmd c"
-        else
-            :exe "e #"
-        endif
+        :exe pane . "wincmd c"
     elseif buf > 0
         " buffer is not in pane
-        if a:slider
-            :exe a:slider_type
-        endif
+        :exe a:slider_type
         :exe "buffer " . a:termname
     else
         " buffer is not loaded, create
-        if a:slider
-            :exe a:slider_type
-        endif
-        :terminal
+        :exe a:slider_type
+        :exe "term"
         :exe "f ". a:termname
     endif
 endfunction
+
 tnoremap <Esc> <C-\><C-n>
 
 " tag bar mapping
