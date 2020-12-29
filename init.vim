@@ -171,6 +171,8 @@ func! CompileGcc()
     exec "w"
     if ! empty(glob('CMakeLists.txt'))
         exec "CMakeBuild"
+    elseif ! empty(glob('Makefile'))
+        exec "!make"
     else
         exec "Make"
     endif
