@@ -38,8 +38,6 @@ function! s:show_documentation()
     endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
@@ -89,7 +87,8 @@ let s:coc_extensions = [
             \ 'coc-clangd',
             \ 'coc-python',
             \ 'coc-vimtex',
-            \ 'coc-git'
+            \ 'coc-git',
+            \ 'coc-lua'
             \]
 
 for extension in s:coc_extensions
