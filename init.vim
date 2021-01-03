@@ -64,6 +64,7 @@ set showmatch
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
 
+set spelllang=en
 
 set termguicolors
 syntax enable
@@ -183,7 +184,6 @@ let g:vim_markdown_math = 1
 " vim-autoformat
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
 au BufWrite * :Autoformat
 let g:formatdef_my_custom_clang = '"clang-format -style=\"{BasedOnStyle: Google, IndentWidth: 4}\""'
 let g:formatters_cpp = ['my_custom_clang']
