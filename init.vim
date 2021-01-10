@@ -149,16 +149,6 @@ let g:go_term_mode = "silent keepalt rightbelow 8 split"
 let g:go_def_reuse_buffer = 1
 
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
-if has('win32')|| has('win32unix')
-    let g:python3_host_prog = 'C:/Users/Bury/miniconda3/python.exe'
-    let $MSYSTEM = 'MINGW64'
-    set shell=bash
-    set shellcmdflag=--login\ -c
-    set shellquote="
-    set shellslash
-    set shellquote=\"
-    set shellxquote=
-endif
 
 autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
 
