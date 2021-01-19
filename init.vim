@@ -219,7 +219,7 @@ function! ChooseTerm(termname, slider_type)
     else
         " buffer is not loaded, create
         :exe a:slider_type
-        :exe "term"
+        :exe "term bash"
         :exe "f ". a:termname
     endif
 endfunction
