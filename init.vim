@@ -50,6 +50,9 @@ Plug 'andrejlevkovitch/vim-lua-format'
 
 " tagbar
 Plug 'preservim/tagbar'
+
+" global search
+Plug 'dyng/ctrlsf.vim'
 call plug#end()
 
 
@@ -228,3 +231,6 @@ tnoremap <Esc> <C-\><C-n>
 
 " tag bar mapping
 nnoremap <silent> <leader>t :TagbarToggle<CR>
+
+" ctrlsf
+nnoremap <C-f> :CtrlSF<Space>
