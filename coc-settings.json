@@ -1,13 +1,21 @@
 {
-    "highlight.colorNames.enable" : false,
+    "highlight.colorNames.enable": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-    "clangd.arguments": ["--background-index", "-cross-file-rename", "--suggest-missing-includes", "--header-insertion=never", "--clang-tidy", "--pretty"],
+    "clangd.arguments": [
+        "--background-index",
+        "-cross-file-rename",
+        "--suggest-missing-includes",
+        "--header-insertion=never",
+        "--clang-tidy",
+        "--pretty"
+    ],
     "clangd.semanticHighlighting": true,
     "clangd.compilationDatabasePath": "build",
     "python.jediEnabled": false,
-    "git.addGBlameToVirtualText": true
+    "git.addGBlameToVirtualText": true,
+    "suggest.noselect": false
 }
