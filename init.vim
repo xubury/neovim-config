@@ -125,6 +125,20 @@ no <C-k> <C-w>k| "switching to above window
 no <C-l> <C-w>l| "switching to right window
 no <C-h> <C-w>h| "switching to left window
 
+" Copy without overriding the register
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+
+" NB: this supports "rp that replaces the selection by the contents of @r
+vnoremap <silent> <expr> p <sid>Repl()
+
 " Utlisnip
 let g:UltiSnipsExpandTrigger = "<nop>"
 
