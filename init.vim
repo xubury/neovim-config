@@ -247,4 +247,6 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " ctrlsf
-nnoremap <C-f> :CtrlSF<Space>
+if !exists('g:vscode')
+    nnoremap <C-f> :CtrlSF<Space>
+endif
