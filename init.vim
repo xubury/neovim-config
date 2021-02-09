@@ -24,7 +24,7 @@ Plug 'junegunn/vim-emoji'
 " status line
 Plug 'itchyny/lightline.vim'
 
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -53,6 +53,11 @@ Plug 'preservim/tagbar'
 
 " global search
 Plug 'dyng/ctrlsf.vim'
+
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 
