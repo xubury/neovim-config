@@ -18,7 +18,7 @@ let g:lightline = {
 function! LightlineTabFilename()
     let fname = expand('%:t')
     return fname =~ '__Tagbar__' ? 'Tagbar' :
-                \ fname =~ 'NERD_tree' ? 'NERDTree' : 
+                \ fname =~ 'NERD_tree' ? 'NERDTree' :
                 \ ('' != fname ? fname : '[No Name]')
 endfunction
 
@@ -30,11 +30,11 @@ function! LightLineGitBranch()
     if IsIgnoredWindow()
         return ''
     endif
-    if exists('*FugitiveHead') 
-        let branch = FugitiveHead() 
-        return branch !=# '' ? ' '.branch : '' 
-    endif 
-    return '' 
+    if exists('*FugitiveHead')
+        let branch = FugitiveHead()
+        return branch !=# '' ? ' '.branch : ''
+    endif
+    return ''
 endfunction
 
 function! LightLineFileFormat()
