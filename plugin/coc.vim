@@ -98,8 +98,7 @@ endfor
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
-autocmd filetype python let b:coc_root_patterns =
-            \['.git', '.env']
+autocmd FileType python let b:coc_root_patterns = ['.env']
 
 " navigate chunks of current buffer
 nmap g[ <Plug>(coc-git-prevchunk)

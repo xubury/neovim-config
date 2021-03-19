@@ -24,7 +24,6 @@ Plug 'junegunn/vim-emoji'
 " status line
 Plug 'itchyny/lightline.vim'
 
-" Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -116,7 +115,6 @@ noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<cr>
 noremap <C-w> :q<cr>
-nnoremap <space>b :ls<CR>:b<Space>
 noremap <space><tab> :b# <cr>
 noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
@@ -146,9 +144,6 @@ vnoremap <silent> <expr> p <sid>Repl()
 
 " Utlisnip
 let g:UltiSnipsExpandTrigger = "<nop>"
-
-" ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Async
 let g:asyncrun_open = 6
@@ -208,8 +203,10 @@ let g:tex_flavor = 'latex'
 
 if has('win32') || has('win32unix')
     let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
+    let ff=dos
 else
     let g:vimtex_view_general_viewer = 'zathura'
+    let ff=unix
 endif
 
 let g:vimtex_compiler_latexmk_engines = {

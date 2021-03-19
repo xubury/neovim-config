@@ -15,7 +15,6 @@
     ],
     "clangd.semanticHighlighting": true,
     "clangd.compilationDatabasePath": "build",
-    "python.jediEnabled": false,
     "git.addGBlameToVirtualText": true,
     "suggest.noselect": false
 }
