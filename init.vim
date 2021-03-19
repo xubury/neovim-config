@@ -203,10 +203,10 @@ let g:tex_flavor = 'latex'
 
 if has('win32') || has('win32unix')
     let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
-    let ff=dos
+    set ff=dos
 else
     let g:vimtex_view_general_viewer = 'zathura'
-    let ff=unix
+    set ff=unix
 endif
 
 let g:vimtex_compiler_latexmk_engines = {
