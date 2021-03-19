@@ -167,8 +167,6 @@ let g:go_def_reuse_buffer = 1
 
 autocmd FileType go nmap <leader>r :call ReuseVimGoTerm('GoRun')<Return>
 
-autocmd FileType python nmap <leader>r :CocCommand python.execInTerminal<cr>
-
 autocmd FileType cpp,cmake nmap <leader>g :CMake <cr>
 
 autocmd BufEnter *.cpp set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ build/%<
@@ -238,7 +236,7 @@ function! ChooseTerm(termname, slider_type)
     else
         " buffer is not loaded, create
         :exe a:slider_type
-        :exe "term bash"
+        :exe "term"
         :exe "f ". a:termname
     endif
 endfunction
