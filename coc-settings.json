@@ -16,6 +16,5 @@
     "clangd.semanticHighlighting": true,
     "clangd.compilationDatabasePath": "build",
     "git.addGBlameToVirtualText": true,
-    "suggest.noselect": false,
-    "python.venvPath": "~/miniconda3/envs"
+    "suggest.noselect": false
 }
