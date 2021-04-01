@@ -12,7 +12,7 @@ Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
 
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " color scheme
 Plug 'joshdick/onedark.vim'
@@ -40,7 +40,6 @@ Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
 
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'Chiel92/vim-autoformat'
 Plug 'lervag/vimtex'
 
@@ -54,6 +53,7 @@ Plug 'preservim/tagbar'
 Plug 'dyng/ctrlsf.vim'
 
 " telescope
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -61,6 +61,8 @@ Plug 'nvim-telescope/telescope.nvim'
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+" python
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 
@@ -134,8 +136,8 @@ no <C-h> <C-w>h| "switching to left window
 
 " Copy without overriding the register
 function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
+    let @" = s:restore_reg
+    return ''
 endfunction
 
 function! s:Repl()
@@ -187,41 +189,6 @@ func! CompileGcc()
         exec "Make"
     endif
 endfunc
-
-let g:vim_markdown_math = 1
-
-" vim-autoformat
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-au BufWrite * :Autoformat
-let g:formatdef_my_custom_clang = '"clang-format -style=\"{BasedOnStyle: Google, IndentWidth: 4}\""'
-let g:formatters_cpp = ['my_custom_clang']
-
-" vim-lua-format
-autocmd BufWrite *.lua call LuaFormat()
-
-" vim-tex
-let g:tex_flavor = 'latex'
-
-if has('win32') || has('win32unix')
-    let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
-    set ff=dos
-else
-    let g:vimtex_view_general_viewer = 'zathura'
-    set ff=unix
-endif
-
-let g:vimtex_compiler_latexmk_engines = {
-            \ '_'                : '-xelatex',
-            \ 'pdflatex'         : '-pdf',
-            \ 'dvipdfex'         : '-pdfdvi',
-            \ 'lualatex'         : '-lualatex',
-            \ 'xelatex'          : '-xelatex',
-            \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-            \ 'context (luatex)' : '-pdf -pdflatex=context',
-            \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
-            \}
-
 
 " Toggle  terminal
 nnoremap <silent> <F3> :call ChooseTerm("term-slider", "botright 16split")<CR>
