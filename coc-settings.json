@@ -16,5 +16,6 @@
     "clangd.semanticHighlighting": true,
     "clangd.compilationDatabasePath": "build",
     "git.addGBlameToVirtualText": true,
+    "jedi.executable.command": "jedi-language-server",
     "suggest.noselect": false
 }

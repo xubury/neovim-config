@@ -85,6 +85,7 @@ let s:coc_extensions = [
             \ 'coc-ultisnips',
             \ 'coc-yank',
             \ 'coc-clangd',
+            \ 'coc-jedi',
             \ 'coc-vimtex',
             \ 'coc-git',
             \ 'coc-lua'
