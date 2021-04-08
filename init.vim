@@ -71,6 +71,7 @@ autocmd BufWritePost vimrc.symlink so $MYVIMRC
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
+
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
 
