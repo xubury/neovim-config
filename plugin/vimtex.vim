@@ -20,5 +20,5 @@ let g:vimtex_compiler_latexmk_engines = {
             \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
             \}
 
-autocmd FileType tex nmap <leader>b <Plug>(vimtex-compile)
-autocmd FileType tex nmap <leader>v <Plug>(vimtex-view)
+autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>b <Plug>(vimtex-compile)
+autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>v <Plug>(vimtex-view)

@@ -1,4 +1,4 @@
-Guifont! FiraCode NF:h12
+Guifont! FiraCode NF:h9.5
 
 
 " Disable gui popupmenu

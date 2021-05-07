@@ -185,3 +185,4 @@ nnoremap <silent> <leader>t :TagbarToggle<CR>
 if !exists('g:vscode')
     nnoremap <C-f> :CtrlSF<Space>
 endif
+
