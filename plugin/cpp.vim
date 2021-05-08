@@ -9,7 +9,7 @@ func! CompileGcc()
     if ! empty(glob('CMakeLists.txt'))
         exec "CMakeBuild"
     elseif ! empty(glob('Makefile'))
-        exec "AsyncRun make"
+        exec "Dispatch make"
     else
         exec "Make"
     endif
