@@ -61,6 +61,9 @@ Plug 'nvim-telescope/telescope.nvim'
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+" tmux navigator
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
