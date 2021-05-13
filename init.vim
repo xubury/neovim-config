@@ -1,5 +1,5 @@
 " Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'SirVer/ultisnips'
@@ -189,3 +189,11 @@ if !exists('g:vscode')
     nnoremap <C-f> :CtrlSF<Space>
 endif
 
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . s:clip, @+) | endif
+    augroup END
+endif
