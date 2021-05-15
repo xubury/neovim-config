@@ -66,11 +66,22 @@ Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
-source $VIMRUNTIME/mswin.vim
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
 
-autocmd BufWritePost .vimrc so $MYVIMRC
-autocmd BufWritePost *.vim so $MYVIMRC
-autocmd BufWritePost vimrc.symlink so $MYVIMRC
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+
+" CTRL-V and SHIFT-Insert are Paste
+map <C-V>		"+gP
+map <S-Insert>		"+gP
+
+cmap <C-V>		<C-R>+
+cmap <S-Insert>		<C-R>+
+
+
 set termencoding=utf-8
 set encoding=utf-8
 set showmatch
@@ -197,3 +208,18 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . s:clip, @+) | endif
     augroup END
 endif
+
+" file format
+if has('win32') || has('win32unix')
+    set ff=dos
+else
+    set ff=unix
+endif
+
+function! IsWSL() abort
+  let proc_version = '/proc/version'
+  return filereadable(proc_version)
+        \  ? !empty(filter(
+        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
+        \  : v:false
+endfunction

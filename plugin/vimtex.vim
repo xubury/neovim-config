@@ -1,12 +1,10 @@
 " vim-tex
 let g:tex_flavor = 'latex'
 
-if has('win32') || has('win32unix')
+if executable('SumatraPDF.exe')
     let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
-    set ff=dos
 else
     let g:vimtex_view_general_viewer = 'zathura'
-    set ff=unix
 endif
 
 let g:vimtex_compiler_latexmk_engines = {
@@ -22,3 +20,4 @@ let g:vimtex_compiler_latexmk_engines = {
 
 autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>b <Plug>(vimtex-compile)
 autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>v <Plug>(vimtex-view)
+autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>c <Plug>(vimtex-clean)
