@@ -14,7 +14,6 @@
         "--pretty"
     ],
     "clangd.semanticHighlighting": true,
-    "clangd.compilationDatabasePath": ".clangd",
     "git.addGBlameToVirtualText": true,
     "jedi.executable.command": "jedi-language-server",
     "suggest.noselect": true
