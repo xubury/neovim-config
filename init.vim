@@ -1,5 +1,8 @@
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
+" my cmake toolchians
+Plug 'xubury/toolchains'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'SirVer/ultisnips'
