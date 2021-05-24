@@ -226,3 +226,8 @@ function! IsWSL() abort
         \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
         \  : v:false
 endfunction
+
+" silent fcitx.vim warning
+if IsWSL()
+    let g:silent_unsupported = 1 
+endif
