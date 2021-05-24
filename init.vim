@@ -227,7 +227,3 @@ function! IsWSL() abort
         \  : v:false
 endfunction
 
-" silent fcitx.vim warning
-if IsWSL()
-    let g:silent_unsupported = 1 
-endif
