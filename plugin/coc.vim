@@ -88,7 +88,8 @@ let s:coc_extensions = [
             \ 'coc-jedi',
             \ 'coc-vimtex',
             \ 'coc-git',
-            \ 'coc-lua'
+            \ 'coc-lua',
+            \ 'coc-glslx'
             \]
 
 for extension in s:coc_extensions

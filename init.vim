@@ -67,6 +67,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " tmux navigator
 Plug 'christoomey/vim-tmux-navigator'
 
+" glsl filetype
+Plug 'Eric-Song-Nop/vim-glslx'
 call plug#end()
 
 " CTRL-X and SHIFT-Del are Cut
@@ -204,7 +206,7 @@ if !exists('g:vscode')
 endif
 
 " WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+let s:clip = 'clip.exe'  " change this path according to your mount point
 if executable(s:clip)
     augroup WSLYank
         autocmd!
