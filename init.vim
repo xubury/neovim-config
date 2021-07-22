@@ -200,11 +200,6 @@ tnoremap <Esc> <C-\><C-n>
 " tag bar mapping
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 
-" ctrlsf
-if !exists('g:vscode')
-    nnoremap <C-f> :CtrlSF<Space>
-endif
-
 " WSL yank support
 let s:clip = 'clip.exe'  " change this path according to your mount point
 if executable(s:clip)
