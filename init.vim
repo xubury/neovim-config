@@ -121,7 +121,7 @@ let g:indentLine_setConceal = 0
 
 inoremap jj <esc>
 nnoremap gi `^
-nnoremap g `
+nnoremap t `
 
 " :command Q q
 " :command Qa qa
