@@ -35,7 +35,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 
 Plug 'preservim/nerdcommenter'
-" Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
@@ -121,7 +121,7 @@ let g:indentLine_setConceal = 0
 
 inoremap jj <esc>
 nnoremap gi `^
-nnoremap t `
+nnoremap g `
 
 " :command Q q
 " :command Qa qa
