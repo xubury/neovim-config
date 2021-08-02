@@ -69,6 +69,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " glsl filetype
 Plug 'Eric-Song-Nop/vim-glslx'
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 " CTRL-X and SHIFT-Del are Cut
@@ -142,8 +144,6 @@ noremap <C-w> :q<cr>
 noremap <space><tab> :b# <cr>
 noremap <space>w :bp<cr>:bd #<cr>
 noremap fs :Startify<cr>
-" Selcet the whole word
-vnoremap v iw
 noremap <leader>n :noh<cr>
 
 "Switch between different windows by their direction`
