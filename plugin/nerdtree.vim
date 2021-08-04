@@ -1,7 +1,7 @@
 "" nerdtree settings
 let g:NERDTreeShowBookmarks = 1
 
-noremap <silent> <C-n> :call OpenNERDTree()<CR>
+noremap <silent> <leader>n :call OpenNERDTree()<CR>
 
 function! OpenNERDTree()
     exe 'NERDTreeToggle'
