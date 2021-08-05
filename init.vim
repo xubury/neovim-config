@@ -93,6 +93,7 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set showmatch
+set nohlsearch
 
 let mapleader = "\\"
 let g:vimspector_enable_mappings = 'HUMAN'
