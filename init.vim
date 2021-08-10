@@ -22,6 +22,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/vim-emoji'
 
 " status line
@@ -89,6 +90,13 @@ cmap <C-V>		<C-R>+
 cmap <S-Insert>		<C-R>+
 
 
+" Use CTRL-S for saving, also in Insert mode (<C-O> doesn't work well when
+" using completions).
+noremap <C-S>		:update<CR>
+vnoremap <C-S>		<C-C>:update<CR>
+inoremap <C-S>		<Esc>:update<CR>gi
+
+
 set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -102,7 +110,8 @@ set spelllang=en
 
 set termguicolors
 syntax enable
-colorscheme dracula
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='soft'
 
 set nu
 set cursorline

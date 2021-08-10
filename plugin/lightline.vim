@@ -1,6 +1,6 @@
 " statusline
 let g:lightline = {
-            \ 'colorscheme': 'dracula',
+            \ 'colorscheme': 'gruvbox',
             \ 'active': {
             \	'left': [['mode', 'paste', 'modified'], ['gitbranch'], ['filename'], ['functionName']],
             \	'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
