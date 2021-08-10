@@ -16,7 +16,7 @@ let g:lightline = {
             \}
 
 function! LightlineTabFilename()
-    let fname = expand('%:t')
+    let fname = expand('%')
     return fname =~ '__Tagbar__' ? 'Tagbar' :
                 \ fname =~ 'NERD_tree' ? 'NERDTree' :
                 \ ('' != fname ? fname : '[No Name]')
