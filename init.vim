@@ -10,7 +10,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'lilydjwg/fcitx.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
@@ -18,7 +18,7 @@ Plug 'skywind3000/asyncrun.vim'
 " Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " color scheme
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -36,7 +36,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 
 Plug 'preservim/nerdcommenter'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
@@ -235,3 +235,4 @@ function! IsWSL() abort
         \  : v:false
 endfunction
 
+let g:silent_unsupported = 1
