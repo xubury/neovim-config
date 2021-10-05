@@ -8,8 +8,8 @@ let g:cmake_kits = {
             \  "mingw-gcc": {
             \  "toolchain_file": "~/.config/nvim/plugged/toolchains/mingw.cmake", 
             \    },
-            \  "mingw-gcc-win64": {
-            \  "toolchain_file": "~/.config/nvim/plugged/toolchains/mingw-win64.cmake", 
+            \  "linux-gcc": {
+            \  "toolchain_file": "~/.config/nvim/plugged/toolchains/linux.cmake", 
             \    }
             \}
 
