@@ -2,7 +2,7 @@
 let g:lightline = {
             \ 'colorscheme': 'gruvbox',
             \ 'active': {
-            \	'left': [['mode', 'paste', 'modified'], ['gitbranch'], ['filename'], ['functionName']],
+            \	'left': [['mode', 'paste', 'modified'], ['gitbranch'], ['filename']],
             \	'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
             \ },
             \ 'component_function': {
