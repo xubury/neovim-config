@@ -14,3 +14,6 @@ let g:cmake_kits = {
             \    }
             \}
 
+lua << EOF
+require'lspconfig'.cmake.setup{}
+EOF

@@ -1,47 +1,47 @@
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
+
+" lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'kitagry/vs-snippets'
+
 " my cmake toolchians
 Plug 'xubury/toolchains'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'lilydjwg/fcitx.vim'
 Plug 'Yggdroot/indentLine'
-" Plug 'mhinz/vim-startify'
-Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
 
-" Plug 'jackguo380/vim-lsp-cxx-highlight'
+" cmake
+Plug 'ilyachur/cmake4vim'
 
 " color scheme
-" Plug 'joshdick/onedark.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/vim-emoji'
 
 " status line
 Plug 'itchyny/lightline.vim'
 
-
 Plug 'preservim/nerdtree'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'preservim/nerdcommenter'
 " Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-
-" go plugin
-Plug 'fatih/vim-go'
 
 Plug 'godlygeek/tabular'
 Plug 'Chiel92/vim-autoformat'
@@ -235,8 +235,9 @@ function! IsWSL() abort
         \  : v:false
 endfunction
 
+" fcitx.vim
 let g:silent_unsupported = 1
 
 " indentline
-let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
-let g:indent_guides_start_level           = 2  " 从第二层开始可视化显示缩进
+let g:indent_guides_guide_size = 1 
+let g:indent_guides_start_level = 2 
