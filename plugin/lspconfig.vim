@@ -39,13 +39,19 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-local servers = { 'clangd', 'cmake' }
-for _, lsp in ipairs(servers) do
-  if lsp == 'clangd' then
-    cmd = {"clangd", "--background-index", "-cross-file-rename",
-       "--suggest-missing-includes", "--header-insertion=never", "--clang-tidy", "--pretty"}
-  end
-  nvim_lsp[lsp].setup {
+
+local servers = { 
+    clangd = {
+        cmd = {"clangd", "--background-index", "-cross-file-rename",
+               "--suggest-missing-includes", "--header-insertion=never", "--clang-tidy", "--pretty"}
+    }, 
+    cmake = {},
+    texlab = {}
+}
+
+for lsp, config in pairs(servers) do
+    nvim_lsp[lsp].setup {
+    cmd = config["cmd"] ~= nil and config["cmd"] or cmd,
     capabilities = capabilities,
     on_attach = on_attach,
     flags = {

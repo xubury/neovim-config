@@ -6,9 +6,9 @@ lua << EOF
     snippet = {
       expand = function(args)
         -- For `vsnip` user.
-        vim.fn["vsnip#anonymous"](args.body)
+        -- vim.fn["vsnip#anonymous"](args.body)
         -- For `ultisnips` user.
-        -- vim.fn["UltiSnips#Anon"](args.body)
+        vim.fn["UltiSnips#Anon"](args.body)
       end,
     },
     mapping = {
@@ -22,16 +22,13 @@ lua << EOF
     },
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'vsnip' },
+      { name = 'ultisnips' },
       { name = 'path' },
       { name = 'buffer' },
     }
   })
 EOF
 
-
-" Jump forward or backward
-imap <expr> <C-j> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j>'
-smap <expr> <C-j> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j>'
-imap <expr> <C-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-k>'
-smap <expr> <C-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-k>'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
