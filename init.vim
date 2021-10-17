@@ -17,15 +17,10 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'ray-x/lsp_signature.nvim'
 
-"Plug 'hrsh7th/cmp-vsnip'
-" Plug 'hrsh7th/vim-vsnip'
-" Plug 'hrsh7th/vim-vsnip-integ'
-" Plug 'kitagry/vs-snippets'
-
-" Track the engine.
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
 
 " my cmake toolchians
 Plug 'xubury/toolchains'
@@ -189,11 +184,6 @@ endfunction
 
 " NB: this supports "rp that replaces the selection by the contents of @r
 vnoremap <silent> <expr> p <sid>Repl()
-
-" Utlisnip
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " Async
 let g:asyncrun_open = 6
