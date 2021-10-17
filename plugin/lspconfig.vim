@@ -45,9 +45,10 @@ local servers = {
     clangd = {
         cmd = {"clangd", "--background-index", "-cross-file-rename",
                "--suggest-missing-includes", "--header-insertion=never", "--clang-tidy", "--pretty"}
-    }, 
-    cmake = {},
-    texlab = {}
+    },  -- CPP
+    cmake = {}, -- CMake
+    texlab = {}, -- Latex
+    vimls = {}, -- Vim
 }
 
 for lsp, config in pairs(servers) do
