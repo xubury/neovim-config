@@ -1,3 +1,11 @@
+function! IsWSL() abort
+  let proc_version = '/proc/version'
+  return filereadable(proc_version)
+        \  ? !empty(filter(
+        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
+        \  : v:false
+endfunction
+
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
 
@@ -23,7 +31,10 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'xubury/toolchains'
 
 
-Plug 'lilydjwg/fcitx.vim'
+if !IsWSL()
+    Plug 'lilydjwg/fcitx.vim'
+endif
+
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
@@ -59,9 +70,6 @@ Plug 'andrejlevkovitch/vim-lua-format'
 " tagbar
 Plug 'preservim/tagbar'
 
-" global search
-Plug 'dyng/ctrlsf.vim'
-
 " telescope
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
@@ -79,6 +87,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'Eric-Song-Nop/vim-glslx'
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+Plug 'AckslD/nvim-neoclip.lua'
 call plug#end()
 
 " CTRL-X and SHIFT-Del are Cut
@@ -118,7 +128,6 @@ set spelllang=en
 set termguicolors
 syntax enable
 colorscheme gruvbox
-let g:gruvbox_contrast_dark='soft'
 
 set nu
 set cursorline
@@ -141,8 +150,8 @@ inoremap jj <esc>
 nnoremap gi `^
 nnoremap t `
 
-" :command Q q
-" :command Qa qa
+:command Q q
+:command Qa qa
 
 set sel=inclusive
 " Go to tab by number
@@ -159,7 +168,6 @@ noremap <C-0> :tablast<cr>
 noremap <C-w> :q<cr>
 noremap <space><tab> :b# <cr>
 noremap <space>w :bp<cr>:bd #<cr>
-noremap fs :Startify<cr>
 noremap <leader>n :noh<cr>
 
 "Switch between different windows by their direction`
@@ -183,34 +191,14 @@ endfunction
 vnoremap <silent> <expr> p <sid>Repl()
 
 " Utlisnip
-let g:UltiSnipsExpandTrigger = "<nop>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " Async
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-
-" Toggle  terminal
-nnoremap <silent> <F3> :call ChooseTerm("term-slider", "botright 16split")<CR>
-nnoremap <silent> <F4> :call ChooseTerm("term-slider", "botright vsplit")<CR>
-
-function! ChooseTerm(termname, slider_type)
-    let pane = bufwinnr(a:termname)
-    let buf = bufexists(a:termname)
-    if pane > 0
-        " pane is visible
-        :exe pane . "wincmd c"
-    elseif buf > 0
-        " buffer is not in pane
-        :exe a:slider_type
-        :exe "buffer " . a:termname
-    else
-        " buffer is not loaded, create
-        :exe a:slider_type
-        :exe "term bash"
-        :exe "f ". a:termname
-    endif
-endfunction
 
 tnoremap <Esc> <C-\><C-n>
 
@@ -233,17 +221,5 @@ else
     set ff=unix
 endif
 
-function! IsWSL() abort
-  let proc_version = '/proc/version'
-  return filereadable(proc_version)
-        \  ? !empty(filter(
-        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
-        \  : v:false
-endfunction
-
-" fcitx.vim
-let g:silent_unsupported = 1
-
 " indentline
-let g:indent_guides_guide_size = 1 
-let g:indent_guides_start_level = 2 
+autocmd VimEnter * if bufname('%') == '' | IndentLinesDisable | endif
