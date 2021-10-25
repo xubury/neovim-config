@@ -1,11 +1,3 @@
-function! IsWSL() abort
-  let proc_version = '/proc/version'
-  return filereadable(proc_version)
-        \  ? !empty(filter(
-        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
-        \  : v:false
-endfunction
-
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
 
@@ -25,10 +17,7 @@ Plug 'rafamadriz/friendly-snippets'
 " my cmake toolchians
 Plug 'xubury/toolchains'
 
-
-if !IsWSL()
-    Plug 'lilydjwg/fcitx.vim'
-endif
+Plug 'lilydjwg/fcitx.vim'
 
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-dispatch'
