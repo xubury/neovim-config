@@ -1,9 +1,11 @@
-local cmd = vim.cmd     				-- execute Vim commands
-local g = vim.g         				-- global variables
-local opt = vim.opt         		    -- global/buffer/windows-scoped options
+local cmd = vim.cmd
+local execute = vim.api.nvim_exec
+local g = vim.g -- global variables
+local opt = vim.opt -- global/buffer/windows-scoped options
 
-g.mapleader = '\\'  -- change leader key
-opt.mouse = 'a'  -- enable mouse support
+g.mapleader = "\\" -- change leader key
+
+opt.mouse = "a" -- enable mouse support
 opt.swapfile = false
 
 -- UI
@@ -30,22 +32,33 @@ opt.synmaxcol = 240 -- max column for syntax highlight
 
 -- Colorscheme
 opt.termguicolors = true
-cmd('syntax enable')
-opt.background = 'dark'
-g.gruvbox_italics=0
-g.gruvbox_italicize_strings=0
-cmd('colorscheme gruvbox8')
+cmd("syntax enable")
+opt.background = "dark"
+g.gruvbox_italics = 0
+g.gruvbox_italicize_strings = 0
+cmd("colorscheme gruvbox8")
 
 -- Autocomplete
-opt.completeopt = 'menuone,noselect'
+opt.completeopt = "menuone,noselect"
 
 -- Encoding
-opt.encoding = 'utf-8'
-opt.fileencodings = 'ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1'
+opt.encoding = "utf-8"
+opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 
 -- Clipboard
-opt.clipboard:append('unnamedplus')
+opt.clipboard:append("unnamedplus")
 
+-- WSL clipboard
+execute(
+[[
+    let clip = 'clip.exe'
+    if executable(clip)
+        augroup WSLYank
+            autocmd!
+            autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . clip, @+) | endif
+        augroup END
+    endif
+]], false)
 
 -- Update time (for signify)
 opt.updatetime = 100
