@@ -1,11 +1,15 @@
-" vim-tex
-let g:tex_flavor = 'latex'
+local cmd = vim.cmd
+local g = vim.g
+local fn = vim.fn
+g.tex_flavor = 'latex'
 
-if executable('SumatraPDF.exe')
-    let g:vimtex_view_general_viewer = 'SumatraPDF.exe'
+if fn.executable('SumatraPDF.exe') then
+    g.vimtex_view_general_viewer = 'SumatraPDF.exe'
 else
-    let g:vimtex_view_general_viewer = 'zathura'
-endif
+    g.vimtex_view_general_viewer = 'zathura'
+end
+
+cmd[[
 
 let g:vimtex_compiler_latexmk_engines = {
             \ '_'                : '-xelatex',
@@ -21,3 +25,5 @@ let g:vimtex_compiler_latexmk_engines = {
 autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>b <Plug>(vimtex-compile)
 autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>v <Plug>(vimtex-view)
 autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>c <Plug>(vimtex-clean)
+
+]]

@@ -1,15 +1,8 @@
-hi default GHTextViewDark guifg=#ebdbb2 guibg=#282828
-hi default GHListDark guifg=#ebdbb2 guibg=#282828
-hi default GHListHl guifg=#282828 guibg=#83a598
-
-
-lua << EOF
 require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "guihua" },
 })
 
 require('lsp_signature').setup()
-
 
 require('navigator').setup({
     lsp = {
@@ -61,4 +54,3 @@ require('navigator').setup({
         }
     },
 })
-EOF
