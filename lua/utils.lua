@@ -9,6 +9,10 @@ local default_opts = {noremap = true, silent = true}
 
 function u.map(mode, key, result, opts)
     opts = opts or default_opts
+    local prefix = string.sub(result, 1, 6)
+    if string.lower(prefix) == "<plug>" then
+        opts.noremap = false
+    end
     if opts.buffer then
         local buffer_nr = opts.buffer
         opts.buffer = nil

@@ -5,7 +5,7 @@ local fn = vim.fn
 u.map('v', "<space>/", "<Plug>NERDCommenterSexy")
 u.map('n', "<space>/", "<Plug>NERDCommenterSexy")
 
-if fn.has ('win32') or fn.has ('win32unix') then
+if fn.has('win32') > 0 or fn.has('win32unix') > 0 then
     u.map('v', "<C-/>", "<Plug>NERDCommenterToggle")
     u.map('n', "<C-/>", "<Plug>NERDCommenterToggle")
 else
