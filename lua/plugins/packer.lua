@@ -121,7 +121,6 @@ return require("packer").startup(
 
         -- For async compile
         use "tpope/vim-dispatch"
-        use "skywind3000/asyncrun.vim"
 
         -- Commenter
         use "preservim/nerdcommenter"
