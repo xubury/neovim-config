@@ -17,7 +17,7 @@ end
 
 -- Add packages
 return require("packer").startup(
-    function()
+    function(use)
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
