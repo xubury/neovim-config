@@ -1,7 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    print("cloneing packer into" .. install_path)
+    print("cloning packer into" .. install_path)
     fn.system(
         {
             "git",
@@ -74,9 +74,6 @@ return require("packer").startup(
 
         -- Tmux navigator
         use "christoomey/vim-tmux-navigator"
-
-        -- GLSL filetype
-        use "Eric-Song-Nop/vim-glslx"
 
         -- Multi cursor
         use "mg979/vim-visual-multi"
