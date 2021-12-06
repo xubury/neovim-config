@@ -1,6 +1,6 @@
 " statusline
 let g:lightline = {
-            \ 'colorscheme': 'gruvbox',
+            \ 'colorscheme': 'gruvbox8',
             \ 'active': {
             \	'left': [['mode', 'paste', 'modified'], ['gitbranch'], ['filename']],
             \	'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
@@ -54,3 +54,4 @@ function! IsIgnoredWindow()
 endfunction
 
 set laststatus=2
+

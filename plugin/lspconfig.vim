@@ -1,96 +1,64 @@
+hi default GHTextViewDark guifg=#ebdbb2 guibg=#282828
+hi default GHListDark guifg=#ebdbb2 guibg=#282828
+hi default GHListHl guifg=#282828 guibg=#83a598
+
+
 lua << EOF
-local nvim_lsp = require('lspconfig')
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "guihua" },
+})
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  require "lsp_signature".on_attach()
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+require('lsp_signature').setup()
 
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', 'gp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', 'gn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
-local sumneko_binary = "lua-language-server"
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-local servers = { 
-    clangd = {
-        cmd = {"clangd", "--background-index", "-cross-file-rename",
-               "--suggest-missing-includes", "--header-insertion=never", "--clang-tidy", "--pretty"}
-    },  -- Cpp 
-    cmake = {}, -- CMake
-    texlab = {}, -- Latex
-    vimls = {}, -- Vim
-    sumneko_lua = {
-        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-        settings = {
-            Lua = {
-                runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                    -- Setup your lua path
-                    path = runtime_path,
-                },
-                diagnostics = {
-                    -- Get the language server to recognize the `vim` global
-                    globals = {'vim'},
-                },
-                workspace = {
-                    -- Make the server aware of Neovim runtime files
-                    library = vim.api.nvim_get_runtime_file("", true),
-                },
-                -- Do not send telemetry data containing a randomized but unique identifier
-                telemetry = {
-                    enable = false,
-                },
-            },
+require('navigator').setup({
+    lsp = {
+        servers = {'cmake'},
+        diagnostic_update_in_insert = true,
+        disply_diagnostic_qf = false,
+        format_on_save = false,
+        clangd = {
+             cmd = {"clangd", "-j=4", "--background-index", "-cross-file-rename",
+                    "--limit-results=20",
+                    "--suggest-missing-includes", "--header-insertion=never",
+                    "--clang-tidy", "--pretty"}
         },
-    }, -- Lua
-}
-
-for lsp, config in pairs(servers) do
-    nvim_lsp[lsp].setup {
-    cmd = config["cmd"] ~= nil and config["cmd"] or cmd,
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
+    },
+    default_mapping = false,
+    keymaps={
+        {
+            key = 'gd', func = "require('navigator.definition').definition()"
+        },
+        {
+            key = "K",
+            func = "hover({ popup_opts = { border = single, max_width = 80 }})"
+        },
+        {
+            key = 'ca', func = "require('navigator.codeAction').code_action()"
+        },
+        {
+            key = 'rn', func = "require('navigator.rename').rename()"
+        },
+        {
+            key = 'gn',
+            func = "diagnostic.goto_next({ border = 'rounded', max_width = 80})"
+        },
+        {
+            key = 'gp',
+            func = "diagnostic.goto_prev({ border = 'rounded', max_width = 80})"
+        },
+        {
+            key = 'gP', func = "require('navigator.definition').definition_preview()"
+        },
+        {
+            key = "<leader>t", func = "require('navigator.symbols').document_symbols()"
+        },
+        {
+            key = '<A-F>', func = "formatting()", mode = 'n'
+        },
+        {
+            key = '<A-F>', func= "range_formatting()", mode = 'v'
+        }
+    },
+})
 EOF
