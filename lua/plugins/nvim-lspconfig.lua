@@ -26,9 +26,7 @@ require("navigator").setup(
                     "clangd",
                     "-j=4",
                     "--background-index",
-                    "-cross-file-rename",
                     "--limit-results=20",
-                    "--suggest-missing-includes",
                     "--header-insertion=never",
                     "--clang-tidy",
                     "--pretty"
