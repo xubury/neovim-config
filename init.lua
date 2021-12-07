@@ -1,5 +1,7 @@
 require("plugins/packer")
 
+require("settings")
+require("keymaps")
 
 require("plugins/nvim-telescope")
 require("plugins/telescope-fn")
@@ -21,5 +23,4 @@ require("plugins/vim-signify")
 require('plugins/nerdcommenter')
 require('plugins/vimtex')
 
-require("settings")
-require("keymaps")
+require("plugins/indentline")

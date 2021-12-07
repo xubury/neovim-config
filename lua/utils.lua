@@ -22,4 +22,8 @@ function u.map(mode, key, result, opts)
     end
 end
 
+function u.execute(script, ret)
+    return vim.api.nvim_exec(script, ret)
+end
+
 return u

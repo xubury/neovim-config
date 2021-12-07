@@ -1,5 +1,5 @@
+local u = require("utils")
 local cmd = vim.cmd
-local execute = vim.api.nvim_exec
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 
@@ -49,8 +49,8 @@ opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 opt.clipboard:append("unnamedplus")
 
 -- WSL clipboard
-execute(
-[[
+u.execute(
+    [[
     let clip = 'clip.exe'
     if executable(clip)
         augroup WSLYank
@@ -58,7 +58,9 @@ execute(
             autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . clip, @+) | endif
         augroup END
     endif
-]], false)
+]],
+    false
+)
 
 -- Update time (for signify)
 opt.updatetime = 100

@@ -1,5 +1,5 @@
+local u = require("utils")
 local g = vim.g
-local execute = vim.api.nvim_exec
 
 g.cmake_compile_commands = 1
 g.cmake_build_type = "Debug"
@@ -13,8 +13,8 @@ g.cmake_kits = {
     }
 }
 
-execute(
-    [[ 
+u.execute(
+    [[
     func! CompileGCC()
         if ! empty(glob('CMakeLists.txt'))
             exec "CMakeBuild"
@@ -25,7 +25,7 @@ execute(
             exec "Make"
         endif
     endfunc
-    autocmd FileType cpp,cmake nnoremap <leader>g :CMake <cr> 
+    autocmd FileType cpp,cmake nnoremap <leader>g :CMake <cr>
     autocmd FileType cpp autocmd BufEnter <buffer> set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ build/%<
     autocmd FileType cpp,cmake autocmd BufEnter <buffer> nnoremap <leader>b :call CompileGCC()<cr>
 ]],
