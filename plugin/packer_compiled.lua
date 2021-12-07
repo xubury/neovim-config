@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  cmake4vim = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/cmake4vim",
+    url = "https://github.com/ilyachur/cmake4vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -104,15 +109,15 @@ _G.packer_plugins = {
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/indentLine",
     url = "https://github.com/Yggdroot/indentLine"
   },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/home/bury/.local/share/nvim/site/pack/packer/start/lightline.vim",
-    url = "https://github.com/itchyny/lightline.vim"
-  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
@@ -123,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/navigator.lua",
     url = "https://github.com/ray-x/navigator.lua"
+  },
+  nerdcommenter = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/nerdcommenter",
+    url = "https://github.com/preservim/nerdcommenter"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -170,15 +180,25 @@ _G.packer_plugins = {
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  toolchains = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/toolchains",
+    url = "https://github.com/xubury/toolchains"
+  },
+  ["vim-autoformat"] = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-autoformat",
+    url = "https://github.com/Chiel92/vim-autoformat"
+  },
+  ["vim-dispatch"] = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
+  },
   ["vim-emoji"] = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-emoji",
     url = "https://github.com/junegunn/vim-emoji"
-  },
-  ["vim-glslx"] = {
-    loaded = true,
-    path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-glslx",
-    url = "https://github.com/Eric-Song-Nop/vim-glslx"
   },
   ["vim-gruvbox8"] = {
     loaded = true,
