@@ -16,11 +16,13 @@ require("plugins/lualine")
 require("plugins/cmake4vim")
 require("plugins/markdown-preview")
 
+require("plugins/nerdcommenter")
 require("plugins/vim-autoformat")
 
 require("plugins/vim-signify")
 
-require('plugins/nerdcommenter')
-require('plugins/vimtex')
+require("plugins/vimtex")
 
 require("plugins/indentline")
+
+require("plugins/neoclip")
