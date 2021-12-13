@@ -53,3 +53,6 @@ u.map('', '<space>w', ':bp<cr>:bd #<cr>')
 
 -- no hightlight
 u.map('n', '<leader>n', ':noh<cr>')
+
+-- remap manual
+u.map('n', '<S-k>', '<Nop>')
