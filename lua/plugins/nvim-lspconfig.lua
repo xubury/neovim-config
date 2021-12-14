@@ -21,6 +21,7 @@ require("navigator").setup(
             diagnostic_update_in_insert = true,
             disply_diagnostic_qf = false,
             format_on_save = false,
+            code_action = {enable = false, sign = true, sign_priority = 40, virtual_text = true},
             clangd = {
                 cmd = {
                     "clangd",
