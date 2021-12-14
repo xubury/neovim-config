@@ -96,9 +96,6 @@ return require("packer").startup(
             requires = {"kyazdani42/nvim-web-devicons", opt = true}
         }
 
-        -- Emoji
-        use "junegunn/vim-emoji"
-
         -- Signify (Show a diff using Vim its sign column)
         use "mhinz/vim-signify"
 
