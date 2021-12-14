@@ -99,6 +99,16 @@ _G.packer_plugins = {
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
   ["guihua.lua"] = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/guihua.lua",
@@ -150,7 +160,6 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-neoclip.lua"] = {
-    config = { "\27LJ\1\2f\0\0\2\0\5\0\f4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\0014\0\0\0%\1\3\0>\0\2\0027\0\4\0>\0\1\1G\0\1\0\nsetup\fneoclip\19load_extension\14telescope\frequire\0" },
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
     url = "https://github.com/AckslD/nvim-neoclip.lua"
@@ -195,20 +204,10 @@ _G.packer_plugins = {
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-dispatch",
     url = "https://github.com/tpope/vim-dispatch"
   },
-  ["vim-gruvbox8"] = {
-    loaded = true,
-    path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-gruvbox8",
-    url = "https://github.com/lifepillar/vim-gruvbox8"
-  },
   ["vim-lua-format"] = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-lua-format",
     url = "https://github.com/andrejlevkovitch/vim-lua-format"
-  },
-  ["vim-signify"] = {
-    loaded = true,
-    path = "/home/bury/.local/share/nvim/site/pack/packer/start/vim-signify",
-    url = "https://github.com/mhinz/vim-signify"
   },
   ["vim-surround"] = {
     loaded = true,
@@ -243,10 +242,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-neoclip.lua
-time([[Config for nvim-neoclip.lua]], true)
-try_loadstring("\27LJ\1\2f\0\0\2\0\5\0\f4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\0014\0\0\0%\1\3\0>\0\2\0027\0\4\0>\0\1\1G\0\1\0\nsetup\fneoclip\19load_extension\14telescope\frequire\0", "config", "nvim-neoclip.lua")
-time([[Config for nvim-neoclip.lua]], false)
 if should_profile then save_profiles() end
 
 end)

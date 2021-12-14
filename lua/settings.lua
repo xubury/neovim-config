@@ -29,14 +29,13 @@ opt.hidden = true -- background buffer
 opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 240 -- max column for syntax highlight
+opt.updatetime = 100
 
 -- Colorscheme
 opt.termguicolors = true
 cmd("syntax enable")
 opt.background = "dark"
-g.gruvbox_italics = 0
-g.gruvbox_italicize_strings = 0
-cmd("colorscheme gruvbox8")
+cmd("colorscheme gruvbox")
 
 -- Autocomplete
 opt.completeopt = "menuone,noselect"
@@ -61,6 +60,3 @@ u.execute(
 ]],
     false
 )
-
--- Update time (for signify)
-opt.updatetime = 100

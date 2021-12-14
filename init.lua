@@ -19,7 +19,7 @@ require("plugins/markdown-preview")
 require("plugins/nerdcommenter")
 require("plugins/vim-autoformat")
 
-require("plugins/vim-signify")
+require("plugins/gitsigns")
 
 require("plugins/vimtex")
 

@@ -79,16 +79,10 @@ return require("packer").startup(
         use "mg979/vim-visual-multi"
 
         -- Clipboard manager
-        use {
-            "AckslD/nvim-neoclip.lua",
-            config = function()
-                require("telescope").load_extension("neoclip")
-                require("neoclip").setup()
-            end
-        }
+        use "AckslD/nvim-neoclip.lua"
 
         -- Color scheme
-        use "lifepillar/vim-gruvbox8"
+        use "morhetz/gruvbox"
 
         -- Status line
         use {
@@ -96,8 +90,12 @@ return require("packer").startup(
             requires = {"kyazdani42/nvim-web-devicons", opt = true}
         }
 
-        -- Signify (Show a diff using Vim its sign column)
-        use "mhinz/vim-signify"
+        use {
+            "lewis6991/gitsigns.nvim",
+            requires = {
+                "nvim-lua/plenary.nvim"
+            }
+        }
 
         -- Display the indention levels with thin vertical lines
         use "Yggdroot/indentLine"
@@ -112,12 +110,10 @@ return require("packer").startup(
         use {
             "ilyachur/cmake4vim",
             requires = {
+                "tpope/vim-dispatch",
                 "xubury/toolchains"
             }
         }
-
-        -- For async compile
-        use "tpope/vim-dispatch"
 
         -- Commenter
         use "preservim/nerdcommenter"
