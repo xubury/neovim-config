@@ -78,8 +78,7 @@ return require("packer").startup(
         -- Colorscheme
         -- use "morhetz/gruvbox"
         use {
-            "ellisonleao/gruvbox.nvim",
-            requires = {"rktjmp/lush.nvim"}
+            "eddyekofo94/gruvbox-flat.nvim"
         }
 
         -- Status line
@@ -115,6 +114,12 @@ return require("packer").startup(
 
         -- Commenter
         use "preservim/nerdcommenter"
+
+        -- Tabline plugin
+        use {
+            "romgrk/barbar.nvim",
+            requires = {"kyazdani42/nvim-web-devicons"}
+        }
 
         if packer_bootstrap then
             require("packer").sync()

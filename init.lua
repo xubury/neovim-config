@@ -2,14 +2,17 @@ require("plugins/packer")
 
 require("settings")
 require("keymaps")
+require("colorscheme")
 
 require("plugins/nvim-telescope")
 require("plugins/telescope-fn")
 
 require("plugins/nvim-treesitter")
 
-require("plugins/nvim-lspconfig")
+require("plugins/navigator")
+require("plugins/lsp_signature")
 require("plugins/nvim-cmp")
+require("plugins/nvim-autopairs")
 
 require("plugins/lualine")
 
@@ -26,3 +29,5 @@ require("plugins/vimtex")
 require("plugins/indentline")
 
 require("plugins/neoclip")
+
+require("plugins/barbar")

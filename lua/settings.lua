@@ -1,5 +1,4 @@
 local u = require("utils")
-local cmd = vim.cmd
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 
@@ -16,6 +15,8 @@ opt.wildignorecase = true
 opt.infercase = true
 opt.smartcase = true
 opt.ignorecase = true
+opt.signcolumn = "yes:1"
+opt.cursorline = true
 
 -- Tabs, indent
 opt.tabstop = 4
@@ -30,12 +31,6 @@ opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 240 -- max column for syntax highlight
 opt.updatetime = 100
-
--- Colorscheme
-opt.termguicolors = true
-cmd("syntax enable")
-opt.background = "dark"
-cmd("colorscheme gruvbox")
 
 -- Autocomplete
 opt.completeopt = "menuone,noselect"

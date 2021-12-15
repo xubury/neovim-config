@@ -1,19 +1,3 @@
-local cmd = vim.cmd
-
-cmd [[
-hi default GHTextViewDark guifg=#ebdbb2 guibg=#282828
-hi default GHListDark guifg=#ebdbb2 guibg=#282828
-hi default GHListHl guifg=#282828 guibg=#83a598
-]]
-
-require("nvim-autopairs").setup(
-    {
-        disable_filetype = {"TelescopePrompt", "guihua"}
-    }
-)
-
-require("lsp_signature").setup()
-
 require("navigator").setup(
     {
         lsp = {
@@ -22,6 +6,7 @@ require("navigator").setup(
             disply_diagnostic_qf = false,
             format_on_save = false,
             code_action = {enable = false, sign = true, sign_priority = 40, virtual_text = true},
+            diagnostic_scrollbar_sign = false,
             clangd = {
                 cmd = {
                     "clangd",
