@@ -36,7 +36,7 @@ require("telescope").setup(
                 -- the default case_mode is "smart_case"
             }
         },
-        defaults = require("telescope.themes").get_dropdown {
+        defaults = {
             preview = {
                 timeout = 500
             },

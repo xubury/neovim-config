@@ -1,23 +1,17 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
     print("cloning packer into" .. install_path)
-    fn.system(
-        {
-            "git",
-            "clone",
-            "--depth",
-            "1",
-            "https://github.com/wbthomason/packer.nvim",
-            install_path
-        }
-    )
-    vim.cmd("packadd packer.nvim")
+    packer_bootstrap =
+        fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
 -- Add packages
 return require("packer").startup(
     function(use)
+        use "wbthomason/packer.nvim"
+
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -81,8 +75,12 @@ return require("packer").startup(
         -- Clipboard manager
         use "AckslD/nvim-neoclip.lua"
 
-        -- Color scheme
-        use "morhetz/gruvbox"
+        -- Colorscheme
+        -- use "morhetz/gruvbox"
+        use {
+            "ellisonleao/gruvbox.nvim",
+            requires = {"rktjmp/lush.nvim"}
+        }
 
         -- Status line
         use {
@@ -117,5 +115,9 @@ return require("packer").startup(
 
         -- Commenter
         use "preservim/nerdcommenter"
+
+        if packer_bootstrap then
+            require("packer").sync()
+        end
     end
 )
