@@ -5,6 +5,6 @@ opt.termguicolors = true
 opt.background = "dark"
 g.gruvbox_italic_comments = false
 g.gruvbox_italic_keywords = false
-g.gruvbox_flat_style = "dark"
+g.gruvbox_flat_style = "hard"
 cmd("syntax enable")
 cmd("colorscheme gruvbox-flat")

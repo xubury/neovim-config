@@ -5,7 +5,6 @@ require("keymaps")
 require("colorscheme")
 
 require("plugins/nvim-telescope")
-require("plugins/telescope-fn")
 
 require("plugins/nvim-treesitter")
 
