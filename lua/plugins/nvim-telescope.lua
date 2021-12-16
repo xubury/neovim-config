@@ -61,7 +61,6 @@ require("telescope").load_extension("fzf")
 -- Telescope keymaps
 u.map("n", "<C-p>", "<cmd>lua require'plugins/telescope-fn'.project_files()<cr>")
 u.map("n", "<A-b>", "<cmd>Telescope buffers<cr>")
-u.map("n", "<C-b>", "<cmd>Telescope file_browser<cr>")
 u.map("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 u.map("n", "<leader>f", "<cmd>Telescope live_grep<cr>")
 u.map("n", "<leader>h", "<cmd>Telescope help_tags<cr>")

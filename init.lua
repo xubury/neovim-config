@@ -31,3 +31,5 @@ require("plugins/indentline")
 require("plugins/neoclip")
 
 require("plugins/barbar")
+
+require("plugins/nvim-tree")
