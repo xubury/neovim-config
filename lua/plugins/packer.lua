@@ -121,12 +121,16 @@ return require("packer").startup(
             requires = {"kyazdani42/nvim-web-devicons"}
         }
 
+        -- File explorer
         use {
             "kyazdani42/nvim-tree.lua",
             requires = {
                 "kyazdani42/nvim-web-devicons" -- optional, for file icon
             }
         }
+
+        -- Color preview
+        use "norcalli/nvim-colorizer.lua"
 
         if packer_bootstrap then
             require("packer").sync()

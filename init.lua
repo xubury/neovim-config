@@ -32,3 +32,5 @@ require("plugins/neoclip")
 require("plugins/barbar")
 
 require("plugins/nvim-tree")
+
+require("plugins/nvim-colorizer")
