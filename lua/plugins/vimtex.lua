@@ -3,7 +3,7 @@ local g = vim.g
 local fn = vim.fn
 g.tex_flavor = "latex"
 
-if fn.executable("SumatraPDF.exe") then
+if fn.executable("SumatraPDF.exe") > 0 then
     g.vimtex_view_general_viewer = "SumatraPDF.exe"
 else
     g.vimtex_view_general_viewer = "zathura"
