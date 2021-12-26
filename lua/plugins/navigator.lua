@@ -39,7 +39,7 @@ require("navigator").setup(
             },
             {
                 key = "ca",
-                func = "require('navigator.codeAction').code_action()"
+                func = "vim.lsp.buf.code_action()"
             },
             {
                 key = "rn",
