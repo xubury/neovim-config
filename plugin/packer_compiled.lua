@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/gruvbox-flat.nvim",
     url = "https://github.com/eddyekofo94/gruvbox-flat.nvim"
   },
-  ["guihua.lua"] = {
-    loaded = true,
-    path = "/home/bury/.local/share/nvim/site/pack/packer/start/guihua.lua",
-    url = "https://github.com/ray-x/guihua.lua"
-  },
   indentLine = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/indentLine",
@@ -129,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/bury/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -138,11 +138,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bury/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
-  ["navigator.lua"] = {
-    loaded = true,
-    path = "/home/bury/.local/share/nvim/site/pack/packer/start/navigator.lua",
-    url = "https://github.com/ray-x/navigator.lua"
   },
   nerdcommenter = {
     loaded = true,

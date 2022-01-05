@@ -32,13 +32,14 @@ return require("packer").startup(
         -- LSP support
         use "ray-x/lsp_signature.nvim"
         use {
-            "ray-x/navigator.lua",
+            "tami5/lspsaga.nvim",
             requires = {
-                "neovim/nvim-lspconfig",
-                "windwp/nvim-autopairs",
-                {"ray-x/guihua.lua", run = "cd lua/fzy && make"}
+                "neovim/nvim-lspconfig"
             }
         }
+
+        use "windwp/nvim-autopairs"
+	
 
         -- LSP complete menu
         use {
