@@ -71,9 +71,12 @@ nvim_lsp.clangd.setup {
     on_attach = on_attach,
     cmd = {
         "clangd",
+        "-j=4",
         "--background-index",
-        "--suggest-missing-includes",
-        '--query-driver="/usr/local/opt/gcc-arm-none-eabi-8-2019-q3-update/bin/arm-none-eabi-gcc"'
+        "--limit-results=20",
+        "--header-insertion=never",
+        "--clang-tidy",
+        "--pretty"
     },
     filetypes = {"c", "cpp", "objc", "objcpp"}
 }
