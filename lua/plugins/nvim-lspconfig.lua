@@ -34,14 +34,22 @@ local on_attach = function(client, bufnr)
     u.map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 -- Vim
-require "lspconfig".vimls.setup {}
+require "lspconfig".vimls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 -- Lua
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-nvim_lsp.sumneko_lua.setup = {
+nvim_lsp.sumneko_lua.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -69,6 +77,7 @@ nvim_lsp.sumneko_lua.setup = {
 -- CPP
 nvim_lsp.clangd.setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     cmd = {
         "clangd",
         "-j=4",
@@ -82,7 +91,13 @@ nvim_lsp.clangd.setup {
 }
 
 -- cmake
-nvim_lsp.cmake.setup {}
+nvim_lsp.cmake.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 -- latex
-nvim_lsp.texlab.setup {}
+nvim_lsp.texlab.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
