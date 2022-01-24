@@ -1,17 +1,26 @@
 local u = require("utils")
 local g = vim.g
+local fn = vim.fn
 
 g.cmake_compile_commands = 1
 g.cmake_build_type = "Debug"
 g.make_arguments = "-j$(nproc)"
 g.cmake_compile_commands_link = "./"
 
-g.cmake_kits = {
-    mingw_gcc = {
-        toolchain_file = "~/.local/share/nvim/site/pack/packer/start/toolchains/mingw.cmake",
-        generator = "Unix Makefiles"
+if fn.has("wsl") > 0 then
+    local prefix = "//wsl$/archlinux/home/bury/.local/share/nvim/site/pack/packer/start/toolchains/"
+    g.cmake_executable = "cmake.exe"
+    g.cmake_kits = {
+        mingw_gcc = {
+            toolchain_file = prefix .. "windows-mingw-gcc.cmake",
+            generator = "MinGW Makefiles"
+        },
+        mingw_clang = {
+            toolchain_file = prefix .. "windows-mingw-clang.cmake",
+            generator = "MinGW Makefiles"
+        }
     }
-}
+end
 
 u.execute(
     [[
