@@ -58,3 +58,8 @@ u.execute(
     false
 )
 end
+
+-- Shell
+if fn.has("win32") > 0 then
+    opt.shell = "cmd.exe"
+end
