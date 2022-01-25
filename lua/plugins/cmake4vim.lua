@@ -7,9 +7,8 @@ g.cmake_build_type = "Debug"
 g.make_arguments = "-j$(nproc)"
 g.cmake_compile_commands_link = "./"
 
-if fn.has("wsl") > 0 then
-    local prefix = "//wsl$/archlinux/home/bury/.local/share/nvim/site/pack/packer/start/toolchains/"
-    g.cmake_executable = "cmake.exe"
+if fn.has("wsl") > 0 or fn.has("win32") > 0 then
+    local prefix = fn.stdpath("data") .. "/site/pack/packer/start/toolchains/"
     g.cmake_kits = {
         mingw_gcc = {
             toolchain_file = prefix .. "windows-mingw-gcc.cmake",
