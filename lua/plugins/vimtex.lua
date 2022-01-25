@@ -3,11 +3,12 @@ local g = vim.g
 local fn = vim.fn
 g.tex_flavor = "latex"
 
-if fn.executable("SumatraPDF.exe") > 0 then
+if fn.has("win32") > 0 then
     g.vimtex_view_general_viewer = "SumatraPDF.exe"
 else
     g.vimtex_view_general_viewer = "zathura"
 end
+
 g.vimtex_compiler_latexmk_engines = {
     ["_"] = "-xelatex",
     ["pdflatex"] = "-pdf",
