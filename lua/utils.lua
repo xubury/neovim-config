@@ -2,8 +2,15 @@ local cmd = vim.cmd -- execute Vim commands
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 local api = vim.api
+local fn = vim.fn
 
 local u = {}
+
+if fn.has("win32") > 0 then
+    u.num_of_processers = vim.env.NUMBER_OF_PROCESSORS
+elseif fn.has("unix") > 0 then
+    u.num_of_processers = 4 -- TODO: os.execute doesn't work
+end
 
 local default_opts = {noremap = true, silent = true}
 

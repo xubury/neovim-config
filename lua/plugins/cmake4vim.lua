@@ -4,11 +4,10 @@ local fn = vim.fn
 
 g.cmake_compile_commands = 1
 g.cmake_build_type = "Debug"
-g.make_arguments = "-j$(nproc)"
+g.make_arguments = "-j" .. u.num_of_processers
 g.cmake_compile_commands_link = "./"
 
 if fn.has("win32") > 0 then
-    g.make_arguments = "-j" .. vim.env.NUMBER_OF_PROCESSORS
     local prefix = fn.stdpath("data") .. "/site/pack/packer/start/toolchains/"
     g.cmake_kits = {
         mingw_gcc = {

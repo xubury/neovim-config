@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
     u.map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     u.map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
     u.map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    u.map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    -- u.map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     u.map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     u.map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     u.map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
@@ -35,12 +35,12 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- Vim
 require "lspconfig".vimls.setup {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = capabilities
 }
 
 -- Lua
@@ -80,7 +80,7 @@ nvim_lsp.clangd.setup {
     capabilities = capabilities,
     cmd = {
         "clangd",
-        "-j=4",
+        "-j=" .. u.num_of_processers,
         "--background-index",
         "--limit-results=20",
         "--header-insertion=never",
@@ -93,11 +93,11 @@ nvim_lsp.clangd.setup {
 -- cmake
 nvim_lsp.cmake.setup {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = capabilities
 }
 
 -- latex
 nvim_lsp.texlab.setup {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = capabilities
 }
