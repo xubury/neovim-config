@@ -7,7 +7,7 @@ g.cmake_build_type = "Debug"
 g.make_arguments = "-j$(nproc)"
 g.cmake_compile_commands_link = "./"
 
-if fn.has("wsl") > 0 or fn.has("win32") > 0 then
+if fn.has("win32") > 0 then
     g.make_arguments = "-j" .. vim.env.NUMBER_OF_PROCESSORS
     local prefix = fn.stdpath("data") .. "/site/pack/packer/start/toolchains/"
     g.cmake_kits = {
