@@ -2,7 +2,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
-    print("cloning packer into" .. install_path)
+    print("cloning packer into " .. install_path)
     packer_bootstrap =
         fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
@@ -39,7 +39,6 @@ return require("packer").startup(
         }
 
         use "windwp/nvim-autopairs"
-	
 
         -- LSP complete menu
         use {
@@ -85,7 +84,11 @@ return require("packer").startup(
         -- Status line
         use {
             "nvim-lualine/lualine.nvim",
-            requires = {"kyazdani42/nvim-web-devicons", opt = true}
+            requires = {
+                "kyazdani42/nvim-web-devicons",
+                "arkav/lualine-lsp-progress",
+                opt = true
+            },
         }
 
         use {
