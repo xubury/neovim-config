@@ -1,6 +1,7 @@
 local u = require("utils")
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
+local fn = vim.fn
 
 g.mapleader = "\\" -- change leader key
 
@@ -43,6 +44,7 @@ opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 opt.clipboard:append("unnamedplus")
 
 -- WSL clipboard
+if fn.has("wsl") > 0 then
 u.execute(
     [[
     let clip = 'clip.exe'
@@ -55,3 +57,4 @@ u.execute(
 ]],
     false
 )
+end

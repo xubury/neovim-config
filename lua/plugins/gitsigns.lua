@@ -7,7 +7,7 @@ require("gitsigns").setup(
             ["n g["] = "<cmd>Gitsigns prev_hunk<CR>",
             ["n gs"] = "<cmd>Gitsigns preview_hunk<CR>",
             ["n gu"] = "<cmd>Gitsigns reset_hunk<CR>",
-            ["v gu"] = ":Gitsigns reset_hunk<CR>",
+            ["v gu"] = "<cmd>Gitsigns reset_hunk<CR>",
             ["n gb"] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>'
         }
     }
