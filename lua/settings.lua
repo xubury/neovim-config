@@ -61,5 +61,5 @@ end
 
 -- Shell
 if fn.has("win32") > 0 then
-    opt.shell = "cmd.exe"
+    opt.shell = "powershell.exe"
 end
