@@ -5,14 +5,8 @@ local fn = vim.fn
 u.map("v", "<space>/", "<Plug>NERDCommenterSexy")
 u.map("n", "<space>/", "<Plug>NERDCommenterSexy")
 
-if fn.has("win32") > 0 or fn.has("win32unix") > 0 then
-    u.map("v", "<C-/>", "<Plug>NERDCommenterToggle")
-    u.map("n", "<C-/>", "<Plug>NERDCommenterToggle")
-else
-    u.map("v", "<C-_>", "<Plug>NERDCommenterToggle")
-    u.map("n", "<C-_>", "<Plug>NERDCommenterToggle")
-end
-
+u.map("v", "<C-_>", "<Plug>NERDCommenterToggle")
+u.map("n", "<C-_>", "<Plug>NERDCommenterToggle")
 -- Add spaces after comment delimiters by default
 g.NERDSpaceDelims = 1
 
