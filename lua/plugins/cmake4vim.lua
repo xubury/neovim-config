@@ -5,10 +5,11 @@ local fn = vim.fn
 g.cmake_compile_commands = 1
 g.cmake_build_type = "Debug"
 g.make_arguments = "-j" .. u.num_of_processers
-g.cmake_compile_commands_link = "./"
+g.cmake_compile_commands_link = fn.getcwd()
 
 if fn.has("win32") > 0 then
     local prefix = fn.stdpath("data") .. "/site/pack/packer/start/toolchains/"
+    prefix = prefix:gsub("\\", "/")
     g.cmake_kits = {
         mingw_gcc = {
             toolchain_file = prefix .. "windows-mingw-gcc.cmake",
@@ -19,6 +20,7 @@ if fn.has("win32") > 0 then
             generator = "MinGW Makefiles"
         }
     }
+    g.cmake_selected_kit = "mingw_gcc"
 end
 
 u.execute(

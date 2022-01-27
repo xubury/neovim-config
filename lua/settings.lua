@@ -62,11 +62,5 @@ end
 -- Shell
 if fn.has("win32") > 0 then
     -- To use powershell, see :help shell-powershell
-    opt.shell = "zsh"
-    opt.shellcmdflag = "-c"
-    opt.shellredir = ">%s 2>&1"
-    opt.shellxescape = ""
-    opt.shellpipe = "2>&1| tee"
-    opt.shellquote = ""
-    opt.shellxquote = ""
+    opt.shell = "cmd"
 end

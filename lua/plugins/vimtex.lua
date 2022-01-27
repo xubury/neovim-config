@@ -4,7 +4,7 @@ local fn = vim.fn
 g.tex_flavor = "latex"
 
 if fn.has("win32") > 0 then
-    g.vimtex_view_general_viewer = "SumatraPDF.exe"
+    g.vimtex_view_general_viewer = "SumatraPDF"
 else
     g.vimtex_view_general_viewer = "zathura"
 end

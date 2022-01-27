@@ -88,7 +88,7 @@ return require("packer").startup(
                 "kyazdani42/nvim-web-devicons",
                 "arkav/lualine-lsp-progress",
                 opt = true
-            },
+            }
         }
 
         use {
@@ -135,6 +135,9 @@ return require("packer").startup(
 
         -- Color preview
         use "norcalli/nvim-colorizer.lua"
+
+        -- Quickfix
+        use "kevinhwang91/nvim-bqf"
 
         if packer_bootstrap then
             require("packer").sync()
