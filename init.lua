@@ -8,7 +8,6 @@ require("plugins/nvim-telescope")
 
 require("plugins/nvim-treesitter")
 
--- require("plugins/navigator")
 require("plugins/nvim-lspconfig")
 require("plugins/lspsaga")
 require("plugins/lsp_signature")
@@ -36,3 +35,5 @@ require("plugins/barbar")
 require("plugins/nvim-tree")
 
 require("plugins/nvim-colorizer")
+
+require("plugins/vimspector")

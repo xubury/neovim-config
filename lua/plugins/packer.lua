@@ -139,6 +139,8 @@ return require("packer").startup(
         -- Quickfix
         use "kevinhwang91/nvim-bqf"
 
+        use "puremourning/vimspector"
+
         if packer_bootstrap then
             require("packer").sync()
         end

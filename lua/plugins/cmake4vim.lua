@@ -7,6 +7,8 @@ g.cmake_build_type = "Debug"
 g.make_arguments = "-j" .. u.num_of_processers
 g.cmake_compile_commands_link = fn.getcwd()
 
+g.cmake_vimspector_support = 1
+
 if fn.has("win32") > 0 then
     local prefix = fn.stdpath("data") .. "/site/pack/packer/start/toolchains/"
     prefix = prefix:gsub("\\", "/")
