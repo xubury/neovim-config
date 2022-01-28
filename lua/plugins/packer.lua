@@ -76,10 +76,7 @@ return require("packer").startup(
         use "AckslD/nvim-neoclip.lua"
 
         -- Colorscheme
-        -- use "morhetz/gruvbox"
-        use {
-            "eddyekofo94/gruvbox-flat.nvim"
-        }
+        use "eddyekofo94/gruvbox-flat.nvim"
 
         -- Status line
         use {

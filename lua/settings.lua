@@ -62,5 +62,5 @@ end
 -- Shell
 if fn.has("win32") > 0 then
     -- To use powershell, see :help shell-powershell
-    opt.shell = "cmd"
+    opt.shell = "cmd"
 end
