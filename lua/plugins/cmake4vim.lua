@@ -14,7 +14,6 @@ if fn.has("win32") > 0 then
     prefix = prefix:gsub("\\", "/")
     g.cmake_kits = {
         mingw_gcc = {
-            toolchain_file = prefix .. "windows-mingw-gcc.cmake",
             generator = "MinGW Makefiles"
         },
         mingw_clang = {
