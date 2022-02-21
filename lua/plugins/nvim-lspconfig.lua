@@ -38,7 +38,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- Vim
-require "lspconfig".vimls.setup {
+nvim_lsp.vimls.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
@@ -98,6 +98,12 @@ nvim_lsp.cmake.setup {
 
 -- latex
 nvim_lsp.texlab.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+-- python
+nvim_lsp.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
