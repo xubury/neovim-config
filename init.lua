@@ -37,3 +37,5 @@ require("plugins/nvim-tree")
 require("plugins/nvim-colorizer")
 
 require("plugins/vimspector")
+
+require("plugins/alpha-nvim")

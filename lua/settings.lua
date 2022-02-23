@@ -58,9 +58,3 @@ if fn.has("wsl") > 0 then
         false
     )
 end
-
--- Shell
-if fn.has("win32") > 0 then
-    -- To use powershell, see :help shell-powershell
-    opt.shell = "cmd"
-end

@@ -136,7 +136,11 @@ return require("packer").startup(
         -- Quickfix
         use "kevinhwang91/nvim-bqf"
 
+        -- Visual Debugger
         use "puremourning/vimspector"
+
+        -- Intro screen
+        use "goolord/alpha-nvim"
 
         if packer_bootstrap then
             require("packer").sync()
