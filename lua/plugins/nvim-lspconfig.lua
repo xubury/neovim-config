@@ -84,7 +84,6 @@ nvim_lsp.clangd.setup {
         "--background-index",
         "--limit-results=20",
         "--header-insertion=never",
-        "--clang-tidy",
         "--pretty"
     },
     filetypes = {"c", "cpp", "objc", "objcpp"}

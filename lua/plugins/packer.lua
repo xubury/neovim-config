@@ -24,6 +24,8 @@ return require("packer").startup(
             run = "make"
         }
 
+        use "simrat39/symbols-outline.nvim"
+
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate"
