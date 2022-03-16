@@ -80,11 +80,8 @@ nvim_lsp.clangd.setup {
     capabilities = capabilities,
     cmd = {
         "clangd",
-        "-j=" .. u.num_of_processers,
         "--background-index",
-        "--limit-results=20",
         "--header-insertion=never",
-        "--pretty"
     },
     filetypes = {"c", "cpp", "objc", "objcpp"}
 }
