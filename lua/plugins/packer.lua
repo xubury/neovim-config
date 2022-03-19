@@ -90,6 +90,7 @@ return require("packer").startup(
             }
         }
 
+        -- Git plugin
         use {
             "lewis6991/gitsigns.nvim",
             requires = {
