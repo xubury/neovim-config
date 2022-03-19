@@ -8,7 +8,7 @@ g.autoformat_retab = 0
 g.autoformat_remove_trailing_spaces = 1
 
 if fn.empty(fn.glob(".clang-format")) > 0 then
-    local cpp_style = "{BasedOnStyle: Google, IndentWidth: 4, SortIncludes: false}"
+    local cpp_style = "{BasedOnStyle: Google, IndentWidth: 4, SortIncludes: false, BreakBeforeBraces: Stroustrup}"
     g.formatdef_my_custom_clang = string.format('"clang-format -style=\\"%s\\""', cpp_style)
 else
     g.formatdef_my_custom_clang = '"clang-format -style=file"'
