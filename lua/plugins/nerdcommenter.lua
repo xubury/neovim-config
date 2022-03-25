@@ -1,6 +1,5 @@
 local u = require("utils")
 local g = vim.g
-local fn = vim.fn
 
 u.map("v", "<space>/", "<Plug>NERDCommenterSexy")
 u.map("n", "<space>/", "<Plug>NERDCommenterSexy")
