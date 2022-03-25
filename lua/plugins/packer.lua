@@ -136,9 +136,6 @@ return require("packer").startup(
         -- Color preview
         use "norcalli/nvim-colorizer.lua"
 
-        -- Quickfix
-        use "kevinhwang91/nvim-bqf"
-
         -- Visual Debugger
         use "puremourning/vimspector"
 
