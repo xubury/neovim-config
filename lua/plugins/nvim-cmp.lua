@@ -20,7 +20,7 @@ cmp.setup(
             ["<Tab>"] = cmp.mapping(
                 function(fallback)
                     if cmp.visible() then
-                        cmp.select_next_item()
+                        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
                     elseif vim.fn["vsnip#available"](1) == 1 then
                         feedkey("<Plug>(vsnip-expand-or-jump)", "")
                     elseif has_words_before() then
@@ -34,7 +34,7 @@ cmp.setup(
             ["<S-Tab>"] = cmp.mapping(
                 function()
                     if cmp.visible() then
-                        cmp.select_prev_item()
+                        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
                     elseif vim.fn["vsnip#jumpable"](-1) == 1 then
                         feedkey("<Plug>(vsnip-jump-prev)", "")
                     end
@@ -47,8 +47,7 @@ cmp.setup(
             ["<C-e>"] = cmp.mapping.close(),
             ["<CR>"] = cmp.mapping.confirm(
                 {
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = false
+                    select = true
                 }
             ),
             ["<C-j>"] = cmp.mapping(
@@ -74,5 +73,29 @@ cmp.setup(
             {name = "path"},
             {name = "buffer"}
         }
+    }
+)
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(
+    "/",
+    {
+        sources = {
+            {name = "buffer"}
+        }
+    }
+)
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(
+    ":",
+    {
+        sources = cmp.config.sources(
+            {
+                {name = "path"}
+            },
+            {
+                {name = "cmdline"}
+            }
+        )
     }
 )
