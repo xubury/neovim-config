@@ -138,7 +138,7 @@ return require("packer").startup(
         use "norcalli/nvim-colorizer.lua"
 
         -- Visual Debugger
-        use "puremourning/vimspector"
+        use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
         -- Intro screen
         use "goolord/alpha-nvim"

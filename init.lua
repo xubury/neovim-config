@@ -36,8 +36,9 @@ require("plugins/nvim-tree")
 
 require("plugins/nvim-colorizer")
 
-require("plugins/vimspector")
+require("plugins/nvim-dap")
 
 require("plugins/alpha-nvim")
 
 require("plugins/symbol-outline")
+
