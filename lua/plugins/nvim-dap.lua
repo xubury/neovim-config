@@ -4,7 +4,7 @@ local u = require("utils")
 
 u.map("n", "<F5>", ":lua require'dap'.continue()<cr>")
 u.map("n", "<F9>", ":lua require'dap'.toggle_breakpoint()<cr>")
-u.map("n", "leader<F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))")
+u.map("n", "<leader><F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))")
 u.map("n", "<F10>", ":lua require'dap'.step_over()<cr>")
 u.map("n", "<F11>", ":lua require'dap'.step_into()<cr>")
 u.map("n", "<F12>", ":lua require'dap'.step_out()<cr>")
