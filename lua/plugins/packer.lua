@@ -7,8 +7,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
+local packer = require("packer")
 -- Add packages
-return require("packer").startup(
+return packer.startup(
     function(use)
         use "wbthomason/packer.nvim"
 
@@ -138,7 +139,7 @@ return require("packer").startup(
         use "norcalli/nvim-colorizer.lua"
 
         -- Visual Debugger
-        use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+        use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
 
         -- Intro screen
         use "goolord/alpha-nvim"
