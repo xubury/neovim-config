@@ -34,7 +34,7 @@ opt.synmaxcol = 240 -- max column for syntax highlight
 opt.updatetime = 100
 
 -- Autocomplete
-opt.completeopt = "menuone,noselect"
+opt.completeopt = "menu,menuone,noinsert"
 
 -- Syntax
 opt.conceallevel = 0

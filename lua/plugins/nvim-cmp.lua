@@ -6,6 +6,7 @@ end
 local feedkey = function(key, mode)
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+
 cmp.setup(
     {
         snippet = {
@@ -16,57 +17,72 @@ cmp.setup(
                 -- vim.fn["UltiSnips#Anon"](args.body)
             end
         },
-        mapping = {
-            ["<Tab>"] = cmp.mapping(
-                function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
-                    elseif vim.fn["vsnip#available"](1) == 1 then
-                        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-                    elseif has_words_before() then
-                        cmp.complete()
-                    else
-                        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-                    end
-                end,
-                {"i", "s"}
-            ),
-            ["<S-Tab>"] = cmp.mapping(
-                function()
-                    if cmp.visible() then
-                        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
-                    elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                        feedkey("<Plug>(vsnip-jump-prev)", "")
-                    end
-                end,
-                {"i", "s"}
-            ),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-Space>"] = cmp.mapping.complete(),
-            ["<C-e>"] = cmp.mapping.close(),
-            ["<CR>"] = cmp.mapping.confirm(
-                {
-                    select = true
-                }
-            ),
-            ["<C-j>"] = cmp.mapping(
-                function()
-                    if vim.fn["vsnip#available"]() == 1 then
-                        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-                    end
-                end,
-                {"i", "s"}
-            ),
-            ["<C-k>"] = cmp.mapping(
-                function()
-                    if vim.fn["vsnip#jumpable"](-1) == 1 then
-                        feedkey("<Plug>(vsnip-jump-prev)", "")
-                    end
-                end,
-                {"i", "s"}
-            )
+        -- preselect = cmp.PreselectMode.None,
+        experimental = {
+            ghost_text = true
         },
+        completion = {
+            autocomplete = false,
+            completeopt = "menu,menuone,noinsert"
+        },
+        mapping = cmp.mapping.preset.insert(
+            {
+                ["<Tab>"] = cmp.mapping(
+                    function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+                        elseif has_words_before() then
+                            cmp.complete({select = false})
+                        else
+                            fallback()
+                        end
+                    end,
+                    {"i", "s"}
+                ),
+                ["<S-Tab>"] = cmp.mapping(
+                    function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+                        elseif has_words_before() then
+                            cmp.complete({select = false})
+                        else
+                            fallback()
+                        end
+                    end,
+                    {"i", "s"}
+                ),
+                ["<Backspace>"] = cmp.mapping(
+                    function(fallback)
+                        if cmp.visible() and not has_words_before() then
+                            cmp.close()
+                        end
+                        fallback()
+                    end,
+                    {"i", "s"}
+                ),
+                ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-e>"] = cmp.mapping.close(),
+                ["<CR>"] = cmp.mapping(cmp.mapping.confirm({select = true}), {"i", "s", "c"}),
+                ["<C-j>"] = cmp.mapping(
+                    function()
+                        if vim.fn["vsnip#available"]() == 1 then
+                            feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                        end
+                    end,
+                    {"i", "s"}
+                ),
+                ["<C-k>"] = cmp.mapping(
+                    function()
+                        if vim.fn["vsnip#jumpable"](-1) == 1 then
+                            feedkey("<Plug>(vsnip-jump-prev)", "")
+                        end
+                    end,
+                    {"i", "s"}
+                )
+            }
+        ),
         sources = {
             {name = "nvim_lsp"},
             {name = "vsnip"},
@@ -79,6 +95,26 @@ cmp.setup(
 cmp.setup.cmdline(
     "/",
     {
+        mapping = {
+            ["<Tab>"] = {
+                c = function()
+                    if cmp.visible() then
+                        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+                    else
+                        cmp.complete({select = false})
+                    end
+                end
+            },
+            ["<S-Tab>"] = {
+                c = function()
+                    if cmp.visible() then
+                        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+                    else
+                        cmp.complete({select = false})
+                    end
+                end
+            }
+        },
         sources = {
             {name = "buffer"}
         }
@@ -89,6 +125,26 @@ cmp.setup.cmdline(
 cmp.setup.cmdline(
     ":",
     {
+        mapping = {
+            ["<Tab>"] = {
+                c = function()
+                    if cmp.visible() then
+                        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+                    else
+                        cmp.complete({select = false})
+                    end
+                end
+            },
+            ["<S-Tab>"] = {
+                c = function()
+                    if cmp.visible() then
+                        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+                    else
+                        cmp.complete({select = false})
+                    end
+                end
+            }
+        },
         sources = cmp.config.sources(
             {
                 {name = "path"}
