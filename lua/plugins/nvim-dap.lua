@@ -2,6 +2,7 @@ local dap = require("dap")
 local u = require("utils")
 
 
+u.map("n", "<F4>", ":lua require'dap'.terminate()<cr>")
 u.map("n", "<F5>", ":lua require'dap'.continue()<cr>")
 u.map("n", "<F9>", ":lua require'dap'.toggle_breakpoint()<cr>")
 u.map("n", "<leader><F9>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))")
@@ -18,6 +19,9 @@ dap.adapters.lldb = {
 local dapui  = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
+end
+dap.listeners.before.event_stopped["dapui_config"] = function()
+  dapui.close()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
