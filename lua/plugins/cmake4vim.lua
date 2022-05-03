@@ -36,9 +36,10 @@ u.execute(
             exec "Make"
         endif
     endfunc
-    autocmd FileType cpp,cmake nnoremap <leader>g :CMake <cr>
+    autocmd FileType c,cpp,cmake nnoremap <leader>g :CMake <cr>
     autocmd FileType cpp autocmd BufEnter <buffer> set makeprg=g++\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ -std=c++17\ %\ -o\ build/%<
-    autocmd FileType cpp,cmake autocmd BufEnter <buffer> nnoremap <leader>b :call CompileGCC()<cr>
+    autocmd FileType c autocmd BufEnter <buffer> set makeprg=gcc\ -g\ -Wall\ -Wextra\ -Wundef\ -pedantic\ %\ -o\ build/%<
+    autocmd FileType c,cpp,cmake autocmd BufEnter <buffer> nnoremap <leader>b :call CompileGCC()<cr>
 ]],
     false
 )
