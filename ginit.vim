@@ -30,3 +30,5 @@ snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 
 vmap <C-/>  <Plug>NERDCommenterToggle
 nmap <C-/>  <Plug>NERDCommenterToggle
+
+set conceallevel=0

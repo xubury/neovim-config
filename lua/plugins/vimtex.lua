@@ -20,6 +20,22 @@ g.vimtex_compiler_latexmk_engines = {
     ["context (xetex)"] = "pdf -pdflatex=''texexec --xtx''"
 }
 
+g.vimtex_syntax_concal = {
+    ["accents"] = 1,
+    ["cites"] = 0,
+    ["fancy"] = 1,
+    ["greek"] = 1,
+    ["math_bounds"] = 0,
+    ["math_delimiters"] = 0,
+    ["math_fracs"] = 0,
+    ["math_super_sub"] = 0,
+    ["math_symbols"] = 0,
+    ["sections"] = 0,
+    ["styles"] = 1
+}
+
+g.vimtex_syntax_conceal_disable = 1
+
 cmd [[
 
 autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>b <Plug>(vimtex-compile)
