@@ -10,9 +10,10 @@ u.map("v", "<C-C>", '"+y')
 u.map("v", "<C-insert>", '"+y')
 
 -- CTRL-V and SHIFT-Insert are Paste
-u.map("", "<C-V>", '"+gP')
-u.map("", "<C-insert>", '"+gP')
-
+u.map("", "<C-V>", '"+p')
+u.map("", "<C-insert>", '"+p')
+u.map("i", "<C-V>", '"+p')
+u.map("i", "<C-insert>", '"+p')
 u.map("c", "<C-V>", "<C-R>+")
 u.map("c", "<S-Insert>", "<C-R>+")
 

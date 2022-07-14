@@ -45,11 +45,13 @@ require("telescope").setup(
             mappings = {
                 i = {
                     ["<Tab>"] = actions.move_selection_worse,
-                    ["<S-Tab>"] = actions.move_selection_better
+                    ["<S-Tab>"] = actions.move_selection_better,
+                    ["<C-v>"] = {"<C-r>+\"", type = "command"},
                 },
                 n = {
                     ["<Tab>"] = actions.move_selection_worse,
-                    ["<S-Tab>"] = actions.move_selection_better
+                    ["<S-Tab>"] = actions.move_selection_better,
+                    ["<C-v>"] = {"<C-r>+\"", type = "command"},
                 }
             }
         }
