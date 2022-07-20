@@ -1,3 +1,14 @@
+require("nvim-lsp-installer").setup({
+    ensure_installed = {"sumneko_lua", "pyright", "vimls"},
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
+
 local nvim_lsp = require("lspconfig")
 local u = require("utils")
 

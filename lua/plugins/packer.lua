@@ -37,6 +37,7 @@ return packer.startup(
         use {
             "tami5/lspsaga.nvim",
             requires = {
+                "williamboman/nvim-lsp-installer",
                 "neovim/nvim-lspconfig"
             }
         }
