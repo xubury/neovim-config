@@ -16,10 +16,10 @@ require("plugins/nvim-autopairs")
 
 require("plugins/lualine")
 
-require("plugins/cmake4vim")
 require("plugins/markdown-preview")
 
 require("plugins/nerdcommenter")
+
 require("plugins/vim-autoformat")
 
 require("plugins/gitsigns")
@@ -41,4 +41,6 @@ require("plugins/nvim-dap")
 require("plugins/alpha-nvim")
 
 require("plugins/symbol-outline")
+
+require("plugins/neovim-cmake")
 

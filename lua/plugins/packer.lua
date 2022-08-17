@@ -107,16 +107,12 @@ return packer.startup(
         -- Latex
         use "lervag/vimtex"
 
-        -- Lua plugins
-        use "andrejlevkovitch/vim-lua-format"
-
-        -- CMake
         use {
-            "ilyachur/cmake4vim",
-            requires = {
-                "tpope/vim-dispatch",
-                "xubury/toolchains"
-            }
+                "xubury/neovim-cmake",
+                requires = {
+                    "nvim-lua/plenary.nvim",
+                    "mfussenegger/nvim-dap"
+                }
         }
 
         -- Commenter

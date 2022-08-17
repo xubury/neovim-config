@@ -2,7 +2,7 @@ local u = require("utils")
 local g = vim.g
 local fn = vim.fn
 
-g.autoformat_verbosemode = 1
+-- g.autoformat_verbosemode = 1
 g.autoformat_autoindent = 0
 g.autoformat_retab = 0
 g.autoformat_remove_trailing_spaces = 1
