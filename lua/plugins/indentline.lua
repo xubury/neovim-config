@@ -1,8 +1,9 @@
-local cmd = vim.cmd
 local g = vim.g
 
-cmd [[
-autocmd VimEnter * if bufname('%') == '' | IndentLinesDisable | endif
-]]
+g.indent_blankline_filetype_exclude = {"NvimTree"}
 
-g.indentLine_fileTypeExclude = {"NvimTree"}
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}

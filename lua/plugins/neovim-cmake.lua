@@ -12,7 +12,7 @@ CMake.setup({
   samples_path = fn.stdpath("data") .. "/site/pack/packer/start/neovim-cmake/samples",
   default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'projects')),
   configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1', '-G', "MinGW Makefiles" }, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
-  build_args = {}, -- Default arguments that will be always passed at cmake build step.
+  build_args = {'-j4'..u.num_of_processers}, -- Default arguments that will be always passed at cmake build step.
   on_build_output = nil, -- Callback that will be called each time data is received by the current process. Accepts the received data as an argument.
   quickfix = {
     pos = 'botright', -- Where to open quickfix

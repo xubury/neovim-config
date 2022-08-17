@@ -9,7 +9,6 @@ require("plugins/nvim-telescope")
 require("plugins/nvim-treesitter")
 
 require("plugins/nvim-lspconfig")
-require("plugins/lspsaga")
 require("plugins/lsp_signature")
 require("plugins/nvim-cmp")
 require("plugins/nvim-autopairs")

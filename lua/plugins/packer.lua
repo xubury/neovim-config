@@ -13,6 +13,8 @@ return packer.startup(
     function(use)
         use "wbthomason/packer.nvim"
 
+        use "stevearc/dressing.nvim"
+
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -33,16 +35,14 @@ return packer.startup(
         }
 
         -- LSP support
-        use "ray-x/lsp_signature.nvim"
         use {
-            "tami5/lspsaga.nvim",
+            "neovim/nvim-lspconfig",
             requires = {
                 "williamboman/nvim-lsp-installer",
-                "neovim/nvim-lspconfig"
+                "ray-x/lsp_signature.nvim"
             }
         }
 
-        use "windwp/nvim-autopairs"
 
         -- LSP complete menu
         use {
@@ -59,7 +59,9 @@ return packer.startup(
             }
         }
 
-        -- Symbol auto surround
+        use "windwp/nvim-autopairs"
+
+        -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
         use "tpope/vim-surround"
 
         -- Autoformat
@@ -102,7 +104,7 @@ return packer.startup(
         }
 
         -- Display the indention levels with thin vertical lines
-        use "Yggdroot/indentLine"
+        use "lukas-reineke/indent-blankline.nvim"
 
         -- Latex
         use "lervag/vimtex"
