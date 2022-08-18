@@ -32,32 +32,44 @@ CMake.setup({
 
 local ProjectConfig = require('cmake.project_config')
 
-local function cmake_try_select()
+local function cmake_try_build()
+    -- Check cmake project exists
+    local project_path = Path:new(fn.getcwd())
+    local cmake_project_file = project_path:joinpath('CMakeLists.txt').filename
+    if fn.empty(fn.glob(cmake_project_file)) > 0 then
+        return false
+    end
+    -- Check target selected
     local project_config = ProjectConfig.new()
     if not project_config.json.current_target then
+        -- Select target if no target is selected
         CMake.select_target()
-        return true
-    else
         return false
+    else
+        return true
     end
 end
 
 local function cmake_build(...)
-    cmake_try_select()
-    CMake.build(...)
+    if cmake_try_build() then
+        CMake.build(...)
+    end
 end
 
 local function cmake_build_and_run(...)
-    cmake_try_select()
-    CMake.build_and_run(...)
+    if cmake_try_build() then
+        CMake.build_and_run(...)
+    end
 end
 
-local project_path = Path:new(fn.getcwd())
-local cmake_project_file = project_path:joinpath('CMakeLists.txt').filename
-if fn.empty(fn.glob(cmake_project_file)) == 0 then
-    vim.keymap.set("n", "<leader>d", "<cmd>CMake build_and_debug<cr>")
-    vim.keymap.set("n", "<leader>g", "<cmd>CMake configure<cr>")
-    vim.keymap.set("n", "<leader>b", cmake_build)
-    vim.keymap.set("n", "<leader>r", cmake_build_and_run)
+local function cmake_build_and_debug(...)
+    if cmake_try_build() then
+        CMake.build_and_debug(...)
+    end
 end
+
+vim.keymap.set("n", "<leader>g", "<cmd>CMake configure<cr>")
+vim.keymap.set("n", "<leader>b", cmake_build)
+vim.keymap.set("n", "<leader>r", cmake_build_and_run)
+vim.keymap.set("n", "<leader>d", cmake_build_and_debug)
 
