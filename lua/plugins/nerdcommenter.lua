@@ -1,11 +1,10 @@
-local u = require("utils")
 local g = vim.g
 
-u.map("v", "<space>/", "<Plug>NERDCommenterSexy")
-u.map("n", "<space>/", "<Plug>NERDCommenterSexy")
+vim.keymap.set("v", "<space>/", "<Plug>NERDCommenterSexy")
+vim.keymap.set("n", "<space>/", "<Plug>NERDCommenterSexy")
 
-u.map("v", "<C-_>", "<Plug>NERDCommenterToggle")
-u.map("n", "<C-_>", "<Plug>NERDCommenterToggle")
+vim.keymap.set("v", "<C-_>", "<Plug>NERDCommenterToggle")
+vim.keymap.set("n", "<C-_>", "<Plug>NERDCommenterToggle")
 -- Add spaces after comment delimiters by default
 g.NERDSpaceDelims = 1
 

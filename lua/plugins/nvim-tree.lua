@@ -1,8 +1,5 @@
-local u = require("utils")
-local tree_cb = require("nvim-tree.config").nvim_tree_callback
-local g = vim.g
-
-require "nvim-tree".setup {
+local NTree = require("nvim-tree")
+NTree.setup {
     respect_buf_cwd = true,
     auto_reload_on_write = true,
     disable_netrw = false,
@@ -109,4 +106,4 @@ require "nvim-tree".setup {
     }
 }
 
-u.map("n", "<C-b>", "<cmd>lua require('nvim-tree').toggle(true)<cr>")
+vim.keymap.set("n", "<C-b>", function() NTree.toggle(true) end)

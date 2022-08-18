@@ -1,4 +1,3 @@
-local u = require("utils")
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 local fn = vim.fn
@@ -58,7 +57,7 @@ opt.clipboard:append("unnamedplus")
 
 -- WSL clipboard
 if fn.has("wsl") > 0 then
-    u.execute(
+    vim.api.nvim_exec(
         [[
     let clip = 'clip.exe'
     if executable(clip)

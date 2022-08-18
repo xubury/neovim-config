@@ -13,8 +13,6 @@ return packer.startup(
     function(use)
         use "wbthomason/packer.nvim"
 
-        use "stevearc/dressing.nvim"
-
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -27,22 +25,29 @@ return packer.startup(
             run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
         }
 
-        use "simrat39/symbols-outline.nvim"
-
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate"
         }
 
+        -- Neovim plugin to improve the default vim.ui interfaces
+        use "stevearc/dressing.nvim"
+
+        use "rcarriga/nvim-notify"
+
+        -- Portable package manager for Neovim that runs everywhere Neovim runs.
+        use 'williamboman/mason.nvim'
+        use "williamboman/mason-lspconfig.nvim"
+
+        use "simrat39/symbols-outline.nvim"
+
         -- LSP support
         use {
             "neovim/nvim-lspconfig",
             requires = {
-                "williamboman/nvim-lsp-installer",
                 "ray-x/lsp_signature.nvim"
             }
         }
-
 
         -- LSP complete menu
         use {
@@ -90,7 +95,6 @@ return packer.startup(
             "nvim-lualine/lualine.nvim",
             requires = {
                 "kyazdani42/nvim-web-devicons",
-                "arkav/lualine-lsp-progress",
                 opt = true
             }
         }
@@ -110,10 +114,9 @@ return packer.startup(
         use "lervag/vimtex"
 
         use {
-                "xubury/neovim-cmake",
+                "Shatur/neovim-cmake",
                 requires = {
                     "nvim-lua/plenary.nvim",
-                    "mfussenegger/nvim-dap"
                 }
         }
 

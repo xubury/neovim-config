@@ -60,9 +60,17 @@ require("telescope").setup(
 
 require("telescope").load_extension("fzf")
 
+local telescope_project_files = function()
+    local opts = { show_untracked = true } -- define here if you want to define something
+    local ok = pcall(require "telescope.builtin".git_files, opts)
+    if not ok then
+        require "telescope.builtin".find_files(opts)
+    end
+end
+
 -- Telescope keymaps
-u.map("n", "<C-p>", "<cmd>lua require'plugins/telescope-fn'.project_files()<cr>")
-u.map("n", "<A-b>", "<cmd>Telescope buffers<cr>")
-u.map("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-u.map("n", "<leader>f", "<cmd>Telescope live_grep<cr>")
-u.map("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<C-p>", telescope_project_files)
+vim.keymap.set("n", "<A-b>", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+vim.keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")

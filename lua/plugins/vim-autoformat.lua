@@ -1,4 +1,3 @@
-local u = require("utils")
 local g = vim.g
 local fn = vim.fn
 
@@ -19,4 +18,4 @@ g.formatters_cpp = {"my_custom_clang"}
 
 -- let auto_format_type_list = ['c', 'cpp', 'python', 'tex']
 -- autocmd BufWrite * if index(auto_format_type_list, &ft) >= 0 | Autoformat | endif
-u.map("n", "<A-F>", ":Autoformat<CR>")
+vim.keymap.set("n", "<A-F>", "<cmd>Autoformat<CR>")
