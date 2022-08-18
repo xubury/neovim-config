@@ -52,7 +52,12 @@ local function cmake_build_and_run(...)
     CMake.build_and_run(...)
 end
 
-vim.keymap.set("n", "<leader>d", "<cmd>CMake build_and_debug<cr>")
-vim.keymap.set("n", "<leader>g", "<cmd>CMake configure<cr>")
-vim.keymap.set("n", "<leader>b", cmake_build)
-vim.keymap.set("n", "<leader>r", cmake_build_and_run)
+local project_path = Path:new(fn.getcwd())
+local cmake_project_file = project_path:joinpath('CMakeLists.txt').filename
+if fn.empty(fn.glob(cmake_project_file)) == 0 then
+    vim.keymap.set("n", "<leader>d", "<cmd>CMake build_and_debug<cr>")
+    vim.keymap.set("n", "<leader>g", "<cmd>CMake configure<cr>")
+    vim.keymap.set("n", "<leader>b", cmake_build)
+    vim.keymap.set("n", "<leader>r", cmake_build_and_run)
+end
+
