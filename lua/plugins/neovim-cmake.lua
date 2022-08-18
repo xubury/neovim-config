@@ -4,13 +4,13 @@ local CMake = require("cmake")
 local Path = require('plenary.path')
 local notify = require('plugins/notify')
 
-local notif_data = notify.get_notif_data("neovim-cmake", 0)
+local spinner = notify.new()
 
-local function cmake_update_progress(message)
-    notif_data.notification = vim.notify(message, "info", {
-      replace = notif_data.notification,
-      hide_from_history = false,
-    })
+local function cmake_update_progress(lines)
+    local match = string.match(lines[#lines], "(%[.*%])")
+    if match then
+        spinner:send_message(lines[#lines]);
+    end
 end
 
 local function cmake_progress_wrapper(func, title, message, succ, err)
@@ -18,31 +18,14 @@ local function cmake_progress_wrapper(func, title, message, succ, err)
     return function()
         local job = native()
         if job then
-            notif_data.notification = vim.notify(message, "info", {
-                title = notify.format_title(title, "neovim-cmake"),
-                icon =  notify.spinner_frames[1],
-                timeout = false,
-                hide_from_history = false,
-            })
-            notif_data.spinner = 1
-            notify.update_spinner("neovim-cmake", 0)
-
+            spinner:start({title = title, message = message})
             job:after(vim.schedule_wrap(
                 function(_, exit_code)
                     if exit_code == 0 then
-                        notif_data.notification = vim.notify(succ, "info", {
-                           icon = "",
-                           replace = notif_data.notification,
-                           timeout = 3000
-                        })
+                        spinner:complete({message = succ, type = "info", icon =  "", timeout = 3000})
                     else
-                        notif_data.notification = vim.notify(err, "error", {
-                           icon = "",
-                           replace = notif_data.notification,
-                           timeout = 3000
-                        })
+                        spinner:complete({message = err, type = "error", icon =  "", timeout = 3000})
                     end
-                    notif_data.spinner = nil
                 end
             ))
         end
@@ -76,8 +59,8 @@ CMake.setup({
 })
 
 CMake.configure = cmake_progress_wrapper(CMake.configure, "CMake configure", "Start configuring...", "Configure Complete!", "Configure failed!")
-CMake.clean = cmake_progress_wrapper(CMake.clean, "CMake build", "Start buliding...", "Build Complete!", "Build failed!")
-CMake.build = cmake_progress_wrapper(CMake.build, "CMake clean", "Start cleaning...", "Clean Complete!", "Clean failed!")
+CMake.build = cmake_progress_wrapper(CMake.build, "CMake build", "Start buliding...", "Build Complete!", "Build failed!")
+CMake.clean = cmake_progress_wrapper(CMake.clean, "CMake clean", "Start cleaning...", "Clean Complete!", "Clean failed!")
 
 local ProjectConfig = require('cmake.project_config')
 

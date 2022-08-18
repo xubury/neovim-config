@@ -8,7 +8,7 @@ require("plugins/nvim-telescope")
 require("plugins/nvim-treesitter")
 
 require("plugins/dressing")
-require("plugins/notify").init()
+vim.notify = require("notify")
 
 require("plugins/mason")
 require("plugins/nvim-lspconfig")

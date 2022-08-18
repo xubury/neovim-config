@@ -122,37 +122,19 @@ end
 dap.listeners.after.disconnect['keymap'] = dap.listeners.after.event_terminated['keymap']
 
 -- DAP notify integration
--- Make sure to also have the snippet with the common helper functions in your config!
 local notify = require("plugins/notify")
+local progress = {}
 dap.listeners.before['event_progressStart']['progress-notifications'] = function(session, body)
-    local notif_data = notify.get_notif_data("dap", body.progressId)
-
-    local message = notify.format_message(body.message, body.percentage)
-    notif_data.notification = vim.notify(message, "info", {
-        title = notify.format_title(body.title, session.config.type),
-        icon =  notify.spinner_frames[1],
-        timeout = false,
-        hide_from_history = false,
-    })
-
-    notif_data.spinner = 1
-    notify.update_spinner("dap", body.progressId)
+    if progress[body.progressId] == nil then
+        progress[body.progressId] = notify.new()
+    end
+    progress[body.progressId].start({ title = body.title, message = body.message, percentage = body.percentage })
 end
 
 dap.listeners.before['event_progressUpdate']['progress-notifications'] = function(session, body)
-    local notif_data = notify.get_notif_data("dap", body.progressId)
-    notif_data.notification = vim.notify(notify.format_message(body.message, body.percentage), "info", {
-        replace = notif_data.notification,
-        hide_from_history = false,
-    })
+    progress[body.progressId].send_message(body.message, body.percentage)
 end
 
 dap.listeners.before['event_progressEnd']['progress-notifications'] = function(session, body)
-    local notif_data = notify.client_notifs["dap"][body.progressId]
-    notif_data.notification = vim.notify(body.message and notify.format_message(body.message) or "Complete", "info", {
-       icon = "",
-       replace = notif_data.notification,
-       timeout = 3000
-    })
-    notif_data.spinner = nil
+    progress[body.progressId].complete({ message = body.message, type = "info", timeout = 3000 })
 end
