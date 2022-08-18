@@ -6,67 +6,78 @@ local notify = require('plugins/notify')
 
 local notif_data = notify.get_notif_data("neovim-cmake", 0)
 
-local function cmake_progress(job, title, message, succ, err)
-    notif_data.notification = vim.notify(message, "info", {
-        title = notify.format_title(title, "neovim-cmake"),
-        icon =  notify.spinner_frames[1],
-        timeout = false,
-        hide_from_history = false,
-    })
-    notif_data.spinner = 1
-
-    job:after(vim.schedule_wrap(
-        function(_, exit_code)
-            if exit_code == 0 then
-                notif_data.notification = vim.notify(succ, "info", {
-                   icon = "",
-                   replace = notif_data.notification,
-                   timeout = 3000
-                })
-            else
-                notif_data.notification = vim.notify(err, "error", {
-                   icon = "",
-                   replace = notif_data.notification,
-                   timeout = 3000
-                })
-            end
-            notif_data.spinner = nil
-        end
-    ))
-end
-
 local function cmake_update_progress(message)
     notif_data.notification = vim.notify(message, "info", {
       replace = notif_data.notification,
       hide_from_history = false,
     })
-    notify.update_spinner("neovim-cmake", 0)
+end
+
+local function cmake_progress_wrapper(func, title, message, succ, err)
+    local native = func
+    return function()
+        local job = native()
+        if job then
+            notif_data.notification = vim.notify(message, "info", {
+                title = notify.format_title(title, "neovim-cmake"),
+                icon =  notify.spinner_frames[1],
+                timeout = false,
+                hide_from_history = false,
+            })
+            notif_data.spinner = 1
+            notify.update_spinner("neovim-cmake", 0)
+
+            job:after(vim.schedule_wrap(
+                function(_, exit_code)
+                    if exit_code == 0 then
+                        notif_data.notification = vim.notify(succ, "info", {
+                           icon = "",
+                           replace = notif_data.notification,
+                           timeout = 3000
+                        })
+                    else
+                        notif_data.notification = vim.notify(err, "error", {
+                           icon = "",
+                           replace = notif_data.notification,
+                           timeout = 3000
+                        })
+                    end
+                    notif_data.spinner = nil
+                end
+            ))
+        end
+        return job
+    end
 end
 
 CMake.setup({
-  cmake_executable = 'cmake', -- CMake executable to run.
-  save_before_build = true, -- Save all buffers before building.
-  parameters_file = 'neovim.json', -- JSON file to store information about selected target, run arguments and build type.
-  default_parameters = {run_dir = '{cwd}', args = {}, build_type = 'Debug'},
-  build_dir = tostring(Path:new('{cwd}', 'build', '{os}-{build_type}')), -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values. Could be a function that return the path to the build directory.
-  samples_path = fn.stdpath("data") .. "/site/pack/packer/start/neovim-cmake/samples",
-  default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'projects')),
-  configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1', '-G', "MinGW Makefiles" }, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
-  build_args = {'-j'..u.num_of_processers}, -- Default arguments that will be always passed at cmake build step.
-  on_build_output = cmake_update_progress, -- Callback that will be called each time data is received by the current process. Accepts the received data as an argument.
-  quickfix = {
-    pos = 'botright', -- Where to open quickfix
-    height = 10, -- Height of the opened quickfix.
-    only_on_error = true, -- Open quickfix window only if target build failed.
-  },
-  copy_compile_commands = true, -- Copy compile_commands.json to current working directory.
-  dap_configuration = {
-    type = 'cppdbg',
-    request = 'launch',
-    cwd = '${workspaceFolder}'
-  }, -- DAP configuration. By default configured to work with `lldb-vscode`.
-  dap_open_command = require('dapui').open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
+    cmake_executable = 'cmake', -- CMake executable to run.
+    save_before_build = true, -- Save all buffers before building.
+    parameters_file = 'neovim.json', -- JSON file to store information about selected target, run arguments and build type.
+    default_parameters = {run_dir = '{cwd}', args = {}, build_type = 'Debug'},
+    build_dir = tostring(Path:new('{cwd}', 'build', '{os}-{build_type}')), -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values. Could be a function that return the path to the build directory.
+    samples_path = fn.stdpath("data") .. "/site/pack/packer/start/neovim-cmake/samples",
+    default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'projects')),
+    configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1', '-G', "MinGW Makefiles" }, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
+    build_args = {'-j'..u.num_of_processers}, -- Default arguments that will be always passed at cmake build step.
+    on_build_output = cmake_update_progress, -- Callback that will be called each time data is received by the current process. Accepts the received data as an argument.
+    quickfix = {
+        pos = 'botright', -- Where to open quickfix
+        height = 10, -- Height of the opened quickfix.
+        only_on_error = true, -- Open quickfix window only if target build failed.
+    },
+    copy_compile_commands = true, -- Copy compile_commands.json to current working directory.
+    dap_configuration = {
+        type = 'cppdbg',
+        request = 'launch',
+        cwd = '${workspaceFolder}'
+    }, -- DAP configuration. By default configured to work with `lldb-vscode`.
+    dap_open_command = require('dapui').open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
+
+CMake.configure = cmake_progress_wrapper(CMake.configure, "CMake configure", "Start configuring...", "Configure Complete!", "Configure failed!")
+CMake.clean = cmake_progress_wrapper(CMake.clean, "CMake build", "Start buliding...", "Build Complete!", "Build failed!")
+CMake.build = cmake_progress_wrapper(CMake.build, "CMake clean", "Start cleaning...", "Clean Complete!", "Clean failed!")
 
 local ProjectConfig = require('cmake.project_config')
 
@@ -91,33 +102,6 @@ local function cmake_try(job, ...)
         end
     end
     return false
-end
-
-local native_build = CMake.build
-CMake.build = function()
-    local job = native_build()
-    if job then
-        cmake_progress(job, "CMake build", "Start buliding...", "Build Complete!", "Build failed!")
-    end
-    return job
-end
-
-local native_clean = CMake.clean
-CMake.clean = function()
-    local job = native_clean()
-    if job then
-        cmake_progress(job, "CMake build", "Start cleaning...", "Clean Complete!", "Clean failed!")
-    end
-    return job
-end
-
-local native_configure = CMake.configure
-CMake.configure = function()
-    local job = native_configure()
-    if job then
-        cmake_progress(job, "CMake configure", "Start configuring...", "Configure Complete!", "Configure failed!")
-    end
-    return job
 end
 
 local function cmake_try_build(...)
