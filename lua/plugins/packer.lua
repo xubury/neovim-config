@@ -114,7 +114,7 @@ return packer.startup(
         use "lervag/vimtex"
 
         use {
-                "Shatur/neovim-cmake",
+                "xubury/neovim-cmake",
                 requires = {
                     "nvim-lua/plenary.nvim",
                 }

@@ -1,14 +1,67 @@
 local dap = require("dap")
 local dapui  = require("dapui")
-local u = require("utils")
 
-dapui.setup()
+dapui.setup({
+    icons = { expanded = "▾", collapsed = "▸" },
+    mappings = {
+        -- Use a table to apply multiple mappings
+        expand = { "<CR>", "<2-LeftMouse>" },
+        open = "o",
+        remove = "d",
+        edit = "e",
+        repl = "r",
+        toggle = "t",
+    },
+    -- Expand lines larger than the window
+    -- Requires >= 0.7
+    expand_lines = vim.fn.has("nvim-0.7"),
+    -- Layouts define sections of the screen to place windows.
+    -- The position can be "left", "right", "top" or "bottom".
+    -- The size specifies the height/width depending on position. It can be an Int
+    -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
+    -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
+    -- Elements are the elements shown in the layout (in order).
+    -- Layouts are opened in order so that earlier layouts take priority in window sizing.
+    layouts = {
+        {
+            elements = {
+                -- Elements can be strings or table with id and size keys.
+                "stacks",
+                "breakpoints",
+                "watches",
+                "scopes",
+            },
+            size = 0.2,
+            position = "left"
+        },
+        {
+          elements = {
+            -- "repl",
+            "console",
+          },
+          size = 0.25, -- 25% of total lines
+          position = "bottom"
+        },
+    },
+    floating = {
+    max_height = nil, -- These can be integers or a float between 0 and 1.
+    max_width = nil, -- Floats will be treated as percentage of your screen.
+    border = "single", -- Border style. Can be "single", "double" or "rounded"
+    mappings = {
+        close = { "q", "<Esc>" },
+    },
+    },
+    windows = { indent = 1 },
+    render = {
+        max_type_length = nil, -- Can be integer or nil.
+    }
+})
 
 dap.adapters.cppdbg = {
-  type = 'executable',
-  command = 'C:\\cpptools-win32\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe',
-  name = "cppdbg",
-  options = { detached = false },
+    type = 'executable',
+    command = 'C:\\cpptools-win32\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe',
+    name = "cppdbg",
+    options = { detached = false },
 }
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -54,7 +107,7 @@ dap.listeners.after.event_initialized['keymap'] = function()
    vim.keymap.set("n", "K", dapui.eval, { silent = true })
 end
 
-dap.listeners.after.disconnect['keymap'] = function()
+dap.listeners.after.event_terminated['keymap'] = function()
   for _, keymap in pairs(keymap_restore) do
         vim.keymap.set(
           keymap.mode,
@@ -66,4 +119,40 @@ dap.listeners.after.disconnect['keymap'] = function()
   keymap_restore = {}
 end
 
--- dap.listeners.after.disconnect['keymap'] = dap.listeners.after.event_terminated['keymap']
+dap.listeners.after.disconnect['keymap'] = dap.listeners.after.event_terminated['keymap']
+
+-- DAP notify integration
+-- Make sure to also have the snippet with the common helper functions in your config!
+local notify = require("plugins/notify")
+dap.listeners.before['event_progressStart']['progress-notifications'] = function(session, body)
+    local notif_data = notify.get_notif_data("dap", body.progressId)
+
+    local message = notify.format_message(body.message, body.percentage)
+    notif_data.notification = vim.notify(message, "info", {
+        title = notify.format_title(body.title, session.config.type),
+        icon =  notify.spinner_frames[1],
+        timeout = false,
+        hide_from_history = false,
+    })
+
+    notif_data.spinner = 1
+    notify.update_spinner("dap", body.progressId)
+end
+
+dap.listeners.before['event_progressUpdate']['progress-notifications'] = function(session, body)
+    local notif_data = notify.get_notif_data("dap", body.progressId)
+    notif_data.notification = vim.notify(notify.format_message(body.message, body.percentage), "info", {
+        replace = notif_data.notification,
+        hide_from_history = false,
+    })
+end
+
+dap.listeners.before['event_progressEnd']['progress-notifications'] = function(session, body)
+    local notif_data = notify.client_notifs["dap"][body.progressId]
+    notif_data.notification = vim.notify(body.message and notify.format_message(body.message) or "Complete", "info", {
+       icon = "",
+       replace = notif_data.notification,
+       timeout = 3000
+    })
+    notif_data.spinner = nil
+end
