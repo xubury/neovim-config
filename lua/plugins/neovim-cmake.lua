@@ -4,20 +4,20 @@ local CMake = require("cmake")
 local Path = require('plenary.path')
 local notify = require('plugins/notify')
 
-local spinner = notify.new()
+local spinner = nil
 
 local function cmake_update_progress(lines)
     local match = string.match(lines[#lines], "(%[.*%])")
-    if match then
+    if match and spinner then
         spinner:send_message(lines[#lines]);
     end
 end
 
 local function cmake_progress_wrapper(func, title, message, succ, err)
-    local native = func
     return function()
-        local job = native()
+        local job = func()
         if job then
+            spinner = notify:new()
             spinner:start({ title = title, message = message })
             job:after(vim.schedule_wrap(
                 function(_, exit_code)
@@ -26,6 +26,7 @@ local function cmake_progress_wrapper(func, title, message, succ, err)
                     else
                         spinner:complete({ message = err, type = "error", icon = "", timeout = 3000 })
                     end
+                    spinner = nil
                 end
             ))
         end
@@ -65,7 +66,7 @@ CMake.clean = cmake_progress_wrapper(CMake.clean, "CMake clean", "Start cleaning
 
 local ProjectConfig = require('cmake.project_config')
 
-local function cmake_try(job, ...)
+local function cmake_try(cb, ...)
     -- Check if current cwd contains CMakeLists.txt
     local project_path = Path:new(fn.getcwd())
     local cmake_project_file = project_path:joinpath('CMakeLists.txt').filename
@@ -73,19 +74,31 @@ local function cmake_try(job, ...)
         -- If not, do nothing.
         return false
     end
+    local args = ...
     -- Otherwise, Check if target is selected
     local project_config = ProjectConfig.new()
+    if not project_config:get_build_dir():is_dir() then
+        local job = CMake.configure()
+        if cb ~= CMake.configure and job then
+            job:after(vim.schedule_wrap(
+                function(_, exit_code)
+                    if exit_code == 0 then
+                        cmake_try(cb, args)
+                    end
+                end
+            ))
+        end
+        return
+    end
+
     if not project_config.json.current_target then
         -- If not, select a target
-        CMake.select_target(job)
-        return false
+        CMake.select_target(cb)
     else
-        if job ~= nil and type(job) == "function" then
-            job(...)
-            return true
+        if cb ~= nil and type(cb) == "function" then
+            cb(...)
         end
     end
-    return false
 end
 
 local function cmake_try_build(...)
