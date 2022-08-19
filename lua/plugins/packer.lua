@@ -126,7 +126,7 @@ return packer.startup(
 
         -- CMake
         use {
-            "xubury/neovim-cmake",
+            "Shatur/neovim-cmake",
             requires = {
                 "nvim-lua/plenary.nvim",
             }

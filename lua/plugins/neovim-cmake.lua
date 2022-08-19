@@ -4,7 +4,7 @@ local CMake = require("cmake")
 local Path = require('plenary.path')
 local notify = require('plugins/notify')
 
-local spinner = nil
+local spinner = notify:new()
 
 local function cmake_update_progress(lines)
     local match = string.match(lines[#lines], "(%[.*%])")
@@ -17,16 +17,14 @@ local function cmake_progress_wrapper(func, title, message, succ, err)
     return function()
         local job = func()
         if job then
-            spinner = notify:new()
             spinner:start({ title = title, message = message })
             job:after(vim.schedule_wrap(
                 function(_, exit_code)
                     if exit_code == 0 then
-                        spinner:complete({ message = succ, type = "info", icon = "", timeout = 3000 })
+                        spinner:complete({ message = succ, type = "info", icon = "", timeout = 1000 })
                     else
-                        spinner:complete({ message = err, type = "error", icon = "", timeout = 3000 })
+                        spinner:complete({ message = err, type = "error", icon = "", timeout = 2000 })
                     end
-                    spinner = nil
                 end
             ))
         end
@@ -93,7 +91,7 @@ local function cmake_try(cb, ...)
 
     if not project_config.json.current_target then
         -- If not, select a target
-        CMake.select_target(cb)
+        CMake.select_target()
     else
         if cb ~= nil and type(cb) == "function" then
             cb(...)

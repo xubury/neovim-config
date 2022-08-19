@@ -4,6 +4,8 @@ require("settings")
 require("keymaps")
 require("colorscheme")
 
+vim.notify = require("notify")
+
 require("plugins/dressing")
 require("plugins/alpha-nvim")
 require("plugins/barbar")
@@ -35,4 +37,3 @@ require("plugins/vimtex")
 require("plugins/neovim-cmake")
 
 require("plugins/nvim-dap")
-

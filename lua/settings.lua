@@ -2,12 +2,11 @@ local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 local fn = vim.fn
 
-vim.notify = require("notify")
-
 g.mapleader = "\\" -- change leader key
 
 opt.mouse = "a" -- enable mouse support
 opt.swapfile = false
+opt.termguicolors = true
 
 -- UI
 opt.number = true

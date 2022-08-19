@@ -111,7 +111,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
     elseif val.kind == "report" then
         p:send_message(val.message, val.percentage)
     elseif val.kind == "end" then
-        p:complete({ message = val.message, type = "info", timeout = 3000 })
+        p:complete({ message = val.message, type = "info", timeout = 500 })
     end
 end
 
