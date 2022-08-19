@@ -4,42 +4,35 @@ require("settings")
 require("keymaps")
 require("colorscheme")
 
+require("plugins/dressing")
+require("plugins/alpha-nvim")
+require("plugins/barbar")
+require("plugins/nvim-tree")
+
+require("plugins/nvim-autopairs")
+require("plugins/indentline")
+require("plugins/nerdcommenter")
+require("plugins/nvim-colorizer")
+
+require("plugins/lualine")
+require("plugins/gitsigns")
+
 require("plugins/nvim-telescope")
 require("plugins/nvim-treesitter")
-
-require("plugins/dressing")
-vim.notify = require("notify")
+require("plugins/neoclip")
 
 require("plugins/mason")
+
 require("plugins/nvim-lspconfig")
 require("plugins/lsp_signature")
 require("plugins/nvim-cmp")
-require("plugins/nvim-autopairs")
-
-require("plugins/lualine")
+require("plugins/symbol-outline")
 
 require("plugins/markdown-preview")
 
-require("plugins/nerdcommenter")
-
-require("plugins/gitsigns")
-
 require("plugins/vimtex")
 
-require("plugins/indentline")
-
-require("plugins/neoclip")
-
-require("plugins/barbar")
-
-require("plugins/nvim-tree")
-
-require("plugins/nvim-colorizer")
+require("plugins/neovim-cmake")
 
 require("plugins/nvim-dap")
 
-require("plugins/alpha-nvim")
-
-require("plugins/symbol-outline")
-
-require("plugins/neovim-cmake")
