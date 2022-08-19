@@ -1,5 +1,5 @@
-local dap = require("dap")
-local dapui  = require("dapui")
+local dap   = require("dap")
+local dapui = require("dapui")
 
 dapui.setup({
     icons = { expanded = "▾", collapsed = "▸" },
@@ -35,34 +35,27 @@ dapui.setup({
             position = "left"
         },
         {
-          elements = {
-            -- "repl",
-            "console",
-          },
-          size = 0.25, -- 25% of total lines
-          position = "bottom"
+            elements = {
+                -- "repl",
+                "console",
+            },
+            size = 0.25, -- 25% of total lines
+            position = "bottom"
         },
     },
     floating = {
-    max_height = nil, -- These can be integers or a float between 0 and 1.
-    max_width = nil, -- Floats will be treated as percentage of your screen.
-    border = "single", -- Border style. Can be "single", "double" or "rounded"
-    mappings = {
-        close = { "q", "<Esc>" },
-    },
+        max_height = nil, -- These can be integers or a float between 0 and 1.
+        max_width = nil, -- Floats will be treated as percentage of your screen.
+        border = "single", -- Border style. Can be "single", "double" or "rounded"
+        mappings = {
+            close = { "q", "<Esc>" },
+        },
     },
     windows = { indent = 1 },
     render = {
         max_type_length = nil, -- Can be integer or nil.
     }
 })
-
-dap.adapters.cppdbg = {
-    type = 'executable',
-    command = 'C:\\cpptools-win32\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe',
-    name = "cppdbg",
-    options = { detached = false },
-}
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
@@ -81,7 +74,7 @@ end
 
 
 local function input_condition()
-    vim.ui.input({prompt = 'Breakpoint condition: '}, function(cond) dap.set_breakpoint(cond) end)
+    vim.ui.input({ prompt = 'Breakpoint condition: ' }, function(cond) dap.set_breakpoint(cond) end)
 end
 
 vim.keymap.set("n", "<F4>", dap.terminate)
@@ -95,28 +88,28 @@ vim.keymap.set("n", "<F12>", dap.step_out)
 local keymap_restore = {}
 
 dap.listeners.after.event_initialized['keymap'] = function()
-  for _, buf in pairs(vim.api.nvim_list_bufs()) do
-    local keymaps = vim.api.nvim_buf_get_keymap(buf, 'n')
-    for _, keymap in pairs(keymaps) do
-      if keymap.lhs == "K" then
-        table.insert(keymap_restore, keymap)
-        vim.api.nvim_buf_del_keymap(buf, 'n', 'K')
-      end
+    for _, buf in pairs(vim.api.nvim_list_bufs()) do
+        local keymaps = vim.api.nvim_buf_get_keymap(buf, 'n')
+        for _, keymap in pairs(keymaps) do
+            if keymap.lhs == "K" then
+                table.insert(keymap_restore, keymap)
+                vim.api.nvim_buf_del_keymap(buf, 'n', 'K')
+            end
+        end
     end
-  end
-   vim.keymap.set("n", "K", dapui.eval, { silent = true })
+    vim.keymap.set("n", "K", dapui.eval, { silent = true })
 end
 
 dap.listeners.after.event_terminated['keymap'] = function()
-  for _, keymap in pairs(keymap_restore) do
+    for _, keymap in pairs(keymap_restore) do
         vim.keymap.set(
-          keymap.mode,
-          keymap.lhs,
-          keymap.rhs or keymap.callback,
-          { silent = keymap.silent == 1 }
+            keymap.mode,
+            keymap.lhs,
+            keymap.rhs or keymap.callback,
+            { silent = keymap.silent == 1 }
         )
-  end
-  keymap_restore = {}
+    end
+    keymap_restore = {}
 end
 
 dap.listeners.after.disconnect['keymap'] = dap.listeners.after.event_terminated['keymap']

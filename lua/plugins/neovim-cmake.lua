@@ -18,13 +18,13 @@ local function cmake_progress_wrapper(func, title, message, succ, err)
     return function()
         local job = native()
         if job then
-            spinner:start({title = title, message = message})
+            spinner:start({ title = title, message = message })
             job:after(vim.schedule_wrap(
                 function(_, exit_code)
                     if exit_code == 0 then
-                        spinner:complete({message = succ, type = "info", icon =  "", timeout = 3000})
+                        spinner:complete({ message = succ, type = "info", icon = "", timeout = 3000 })
                     else
-                        spinner:complete({message = err, type = "error", icon =  "", timeout = 3000})
+                        spinner:complete({ message = err, type = "error", icon = "", timeout = 3000 })
                     end
                 end
             ))
@@ -37,12 +37,12 @@ CMake.setup({
     cmake_executable = 'cmake', -- CMake executable to run.
     save_before_build = true, -- Save all buffers before building.
     parameters_file = 'neovim.json', -- JSON file to store information about selected target, run arguments and build type.
-    default_parameters = {run_dir = '{cwd}', args = {}, build_type = 'Debug'},
+    default_parameters = { run_dir = '{cwd}', args = {}, build_type = 'Debug' },
     build_dir = tostring(Path:new('{cwd}', 'build', '{os}-{build_type}')), -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values. Could be a function that return the path to the build directory.
     samples_path = fn.stdpath("data") .. "/site/pack/packer/start/neovim-cmake/samples",
     default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'projects')),
     configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1', '-G', "MinGW Makefiles" }, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
-    build_args = {'-j'..u.num_of_processers}, -- Default arguments that will be always passed at cmake build step.
+    build_args = { '-j' .. u.num_of_processers }, -- Default arguments that will be always passed at cmake build step.
     on_build_output = cmake_update_progress, -- Callback that will be called each time data is received by the current process. Accepts the received data as an argument.
     quickfix = {
         pos = 'botright', -- Where to open quickfix
@@ -58,7 +58,8 @@ CMake.setup({
     dap_open_command = require('dapui').open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
 
-CMake.configure = cmake_progress_wrapper(CMake.configure, "CMake configure", "Start configuring...", "Configure Complete!", "Configure failed!")
+CMake.configure = cmake_progress_wrapper(CMake.configure, "CMake configure", "Start configuring...",
+    "Configure Complete!", "Configure failed!")
 CMake.build = cmake_progress_wrapper(CMake.build, "CMake build", "Start buliding...", "Build Complete!", "Build failed!")
 CMake.clean = cmake_progress_wrapper(CMake.clean, "CMake clean", "Start cleaning...", "Clean Complete!", "Clean failed!")
 
@@ -112,4 +113,3 @@ vim.keymap.set("n", "<leader>s", cmake_try_select)
 vim.keymap.set("n", "<leader>b", cmake_try_build)
 vim.keymap.set("n", "<leader>r", cmake_try_build_and_run)
 vim.keymap.set("n", "<leader>d", cmake_try_build_and_debug)
-

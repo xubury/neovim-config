@@ -7,7 +7,7 @@ local new_maker = function(filepath, bufnr, opts)
     Job:new(
         {
             command = "file",
-            args = {"--mime-type", "-b", filepath},
+            args = { "--mime-type", "-b", filepath },
             on_exit = function(j)
                 local mime_type = vim.split(j:result()[1], "/")[1]
                 if mime_type == "text" then
@@ -16,7 +16,7 @@ local new_maker = function(filepath, bufnr, opts)
                     -- maybe we want to write something to the buffer here
                     vim.schedule(
                         function()
-                            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {"BINARY"})
+                            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
                         end
                     )
                 end
@@ -46,12 +46,12 @@ require("telescope").setup(
                 i = {
                     ["<Tab>"] = actions.move_selection_worse,
                     ["<S-Tab>"] = actions.move_selection_better,
-                    ["<C-v>"] = {"<C-r>+\"", type = "command"},
+                    ["<C-v>"] = { "<C-r>+\"", type = "command" },
                 },
                 n = {
                     ["<Tab>"] = actions.move_selection_worse,
                     ["<S-Tab>"] = actions.move_selection_better,
-                    ["<C-v>"] = {"<C-r>+\"", type = "command"},
+                    ["<C-v>"] = { "<C-r>+\"", type = "command" },
                 }
             }
         }

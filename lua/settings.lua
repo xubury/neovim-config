@@ -66,7 +66,7 @@ if fn.has("wsl") > 0 then
             autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . clip, @+) | endif
         augroup END
     endif
-]],
+]]       ,
         false
     )
 end

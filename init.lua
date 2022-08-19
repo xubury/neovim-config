@@ -22,8 +22,6 @@ require("plugins/markdown-preview")
 
 require("plugins/nerdcommenter")
 
-require("plugins/vim-autoformat")
-
 require("plugins/gitsigns")
 
 require("plugins/vimtex")
@@ -45,4 +43,3 @@ require("plugins/alpha-nvim")
 require("plugins/symbol-outline")
 
 require("plugins/neovim-cmake")
-

@@ -38,6 +38,7 @@ return packer.startup(
         -- Portable package manager for Neovim that runs everywhere Neovim runs.
         use 'williamboman/mason.nvim'
         use "williamboman/mason-lspconfig.nvim"
+        use "WhoIsSethDaniel/mason-tool-installer.nvim"
 
         use "simrat39/symbols-outline.nvim"
 
@@ -68,9 +69,6 @@ return packer.startup(
 
         -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
         use "tpope/vim-surround"
-
-        -- Autoformat
-        use "Chiel92/vim-autoformat"
 
         -- Markdown preview
         use {

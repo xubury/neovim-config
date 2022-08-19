@@ -30,26 +30,26 @@ cmp.setup(
                 ["<Tab>"] = cmp.mapping(
                     function(fallback)
                         if cmp.visible() then
-                            cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                         elseif has_words_before() then
-                            cmp.complete({select = false})
+                            cmp.complete({ select = false })
                         else
                             fallback()
                         end
                     end,
-                    {"i", "s"}
+                    { "i", "s" }
                 ),
                 ["<S-Tab>"] = cmp.mapping(
                     function(fallback)
                         if cmp.visible() then
-                            cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+                            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                         elseif has_words_before() then
-                            cmp.complete({select = false})
+                            cmp.complete({ select = false })
                         else
                             fallback()
                         end
                     end,
-                    {"i", "s"}
+                    { "i", "s" }
                 ),
                 ["<Backspace>"] = cmp.mapping(
                     function(fallback)
@@ -58,20 +58,20 @@ cmp.setup(
                         end
                         fallback()
                     end,
-                    {"i", "s"}
+                    { "i", "s" }
                 ),
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.close(),
-                ["<CR>"] = cmp.mapping(cmp.mapping.confirm({select = true}), {"i", "s", "c"}),
+                ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "s", "c" }),
                 ["<C-j>"] = cmp.mapping(
                     function()
                         if vim.fn["vsnip#available"]() == 1 then
                             feedkey("<Plug>(vsnip-expand-or-jump)", "")
                         end
                     end,
-                    {"i", "s"}
+                    { "i", "s" }
                 ),
                 ["<C-k>"] = cmp.mapping(
                     function()
@@ -79,15 +79,15 @@ cmp.setup(
                             feedkey("<Plug>(vsnip-jump-prev)", "")
                         end
                     end,
-                    {"i", "s"}
+                    { "i", "s" }
                 )
             }
         ),
         sources = {
-            {name = "nvim_lsp"},
-            {name = "vsnip"},
-            {name = "path"},
-            {name = "buffer"}
+            { name = "nvim_lsp" },
+            { name = "vsnip" },
+            { name = "path" },
+            { name = "buffer" }
         }
     }
 )
@@ -99,24 +99,24 @@ cmp.setup.cmdline(
             ["<Tab>"] = {
                 c = function()
                     if cmp.visible() then
-                        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                     else
-                        cmp.complete({select = false})
+                        cmp.complete({ select = false })
                     end
                 end
             },
             ["<S-Tab>"] = {
                 c = function()
                     if cmp.visible() then
-                        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                     else
-                        cmp.complete({select = false})
+                        cmp.complete({ select = false })
                     end
                 end
             }
         },
         sources = {
-            {name = "buffer"}
+            { name = "buffer" }
         }
     }
 )
@@ -129,28 +129,28 @@ cmp.setup.cmdline(
             ["<Tab>"] = {
                 c = function()
                     if cmp.visible() then
-                        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                     else
-                        cmp.complete({select = false})
+                        cmp.complete({ select = false })
                     end
                 end
             },
             ["<S-Tab>"] = {
                 c = function()
                     if cmp.visible() then
-                        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                     else
-                        cmp.complete({select = false})
+                        cmp.complete({ select = false })
                     end
                 end
             }
         },
         sources = cmp.config.sources(
             {
-                {name = "path"}
+                { name = "path" }
             },
             {
-                {name = "cmdline"}
+                { name = "cmdline" }
             }
         )
     }

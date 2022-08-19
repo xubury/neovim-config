@@ -1,8 +1,9 @@
 local nvim_lsp = require("lspconfig")
+local u = require("utils")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
@@ -11,7 +12,7 @@ local on_attach = function(client, bufnr)
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
-    local opts = {noremap = true, silent = true, buffer = bufnr}
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -31,26 +32,27 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-    vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, opts)
+    vim.keymap.set("n", "<A-F>", vim.lsp.buf.formatting, opts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
--- Vim
-nvim_lsp.vimls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
+local function setup(lsp, extra)
+    local args = { on_attach = on_attach, capabilities = capabilities }
+    if extra ~= nil then
+        args = vim.tbl_extend("keep", args, extra)
+    end
+    nvim_lsp[lsp].setup(args)
+end
 
--- Lua
+setup('vimls') -- Vim
+
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-nvim_lsp.sumneko_lua.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
+setup("sumneko_lua",
+    { settings = {
         Lua = {
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -60,49 +62,30 @@ nvim_lsp.sumneko_lua.setup {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {"vim"}
+                globals = { "vim" }
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true)
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
                 enable = false
             }
         }
-    }
-}
+    } }
+)
+-- Lua
 
--- CPP
-nvim_lsp.clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = {
-        "clangd",
-        "--background-index",
-        "--header-insertion=never",
-    },
-    filetypes = {"c", "cpp", "objc", "objcpp"}
-}
-
--- cmake
-nvim_lsp.cmake.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
--- latex
-nvim_lsp.texlab.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
--- python
-nvim_lsp.pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
+setup("clangd",
+    {
+        cmd = { "clangd", "--background-index", "--header-insertion=never", },
+        filetypes = { "c", "cpp", "objc", "objcpp" }
+    }) -- cpp
+setup("cmake") -- cmake
+setup("texlab") -- latex
+setup("pyright") --python
 
 
 
@@ -135,6 +118,6 @@ end
 -- table from lsp severity to vim severity.
 local severity = { "error", "warn", "info", "info" }
 
-vim.lsp.handlers["window/showMessage"] = function(err, method, params, client_id)
+vim.lsp.handlers["window/showMessage"] = function(_, method, params, _)
     vim.notify(method.message, severity[params.type])
 end

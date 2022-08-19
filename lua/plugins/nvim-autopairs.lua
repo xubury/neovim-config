@@ -1,5 +1,5 @@
 require("nvim-autopairs").setup(
     {
-        disable_filetype = {"TelescopePrompt", "guihua"}
+        disable_filetype = { "TelescopePrompt", "guihua" }
     }
 )

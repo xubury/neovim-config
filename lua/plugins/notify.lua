@@ -45,7 +45,7 @@ end
 function M:start(table)
     self.notification = notify(table.message or "Progress", "info", {
         title = format_title(table.title, table.client_name),
-        icon =  self.spinner_frames[1],
+        icon = self.spinner_frames[1],
         timeout = false,
         hide_from_history = false,
     })
@@ -56,8 +56,8 @@ end
 
 function M:send_message(message, percentage)
     self.notification = notify(format_message(message, percentage), "info", {
-          replace = self.notification,
-          hide_from_history = false,
+        replace = self.notification,
+        hide_from_history = false,
     })
 end
 
@@ -65,10 +65,10 @@ function M:complete(table)
     local msg = format_message(table.message, table.percentage)
     self.notification = notify(msg ~= "" and msg or "Complete",
         table.type or "info", {
-            icon = table.icon or "",
-            replace = self.notification,
-            timeout = table.timeout or 3000
-        })
+        icon = table.icon or "",
+        replace = self.notification,
+        timeout = table.timeout or 3000
+    })
     self.spinner = nil
 end
 
