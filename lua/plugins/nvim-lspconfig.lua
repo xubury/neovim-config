@@ -1,5 +1,4 @@
 local nvim_lsp = require("lspconfig")
-local u = require("utils")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -120,4 +119,11 @@ local severity = { "error", "warn", "info", "info" }
 
 vim.lsp.handlers["window/showMessage"] = function(_, method, params, _)
     vim.notify(method.message, severity[params.type])
+end
+
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end

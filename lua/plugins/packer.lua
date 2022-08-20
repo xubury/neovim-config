@@ -34,6 +34,10 @@ return packer.startup(
                 "kyazdani42/nvim-web-devicons" -- optional, for file icon
             }
         }
+
+        -- Better quick fix
+        use "kevinhwang91/nvim-bqf"
+
         -- Tmux navigator
         use "christoomey/vim-tmux-navigator"
 
