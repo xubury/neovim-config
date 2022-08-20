@@ -1,5 +1,3 @@
-local u = require("utils")
-
 local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
 local new_maker = function(filepath, bufnr, opts)
@@ -33,7 +31,7 @@ require("telescope").setup(
                 fuzzy = true, -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
-                case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+                case_mode = "smart_case", -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
             }
         },
@@ -58,7 +56,7 @@ require("telescope").setup(
     }
 )
 
-require("telescope").load_extension("fzf")
+require('telescope').load_extension('fzf')
 
 local telescope_project_files = function()
     local opts = { show_untracked = true } -- define here if you want to define something
@@ -74,3 +72,4 @@ vim.keymap.set("n", "<A-b>", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", ';', "<cmd>Telescope<cr>")

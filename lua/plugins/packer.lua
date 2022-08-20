@@ -15,6 +15,8 @@ return packer.startup(
 
         -- Colorscheme
         use "eddyekofo94/gruvbox-flat.nvim"
+        use { "catppuccin/nvim", as = "catppuccin" }
+
         -- Neovim plugin to improve the default vim.ui interfaces
         use "stevearc/dressing.nvim"
         use "rcarriga/nvim-notify"
@@ -75,11 +77,8 @@ return packer.startup(
                 "nvim-lua/plenary.nvim"
             }
         }
-
-        use {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
-        }
+        use { 'nvim-telescope/telescope-fzf-native.nvim',
+            run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
         use {
             "nvim-treesitter/nvim-treesitter",

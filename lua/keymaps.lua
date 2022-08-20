@@ -17,9 +17,9 @@ vim.keymap.set("c", "<S-Insert>", "<C-R>+")
 
 -- Use CTRL-S for saving, also in Insert mode (<C-O> doesn't work well when
 -- using completions).
-vim.keymap.set("", "<C-S>", ":update<CR>")
-vim.keymap.set("v", "<C-S>", "<C-C>:update<CR>")
-vim.keymap.set("i", "<C-S>", "<Esc>:update<CR>gi")
+vim.keymap.set("", "<C-S>", "<cmd>update<cr>")
+vim.keymap.set("v", "<C-S>", "<C-C>:update<cr>")
+vim.keymap.set("i", "<C-S>", "<Esc>:update<cr>gi")
 
 -- Esc
 vim.keymap.set("i", "jj", "<Esc>")
@@ -40,18 +40,19 @@ vim.keymap.set("", "<leader>7", "7gt")
 vim.keymap.set("", "<leader>8", "8gt")
 vim.keymap.set("", "<leader>9", "9gt")
 -- Last tab
-vim.keymap.set("", "<leader>0", ":tablast<cr>")
+vim.keymap.set("", "<leader>0", "<cmd>tablast<cr>")
 
 -- Last buffer
-vim.keymap.set("", "<space><tab>", ":b# <cr>")
+vim.keymap.set("", "<space><tab>", "<cmd>b# <cr>")
 -- Delete buffer
-vim.keymap.set("", "<space>w", ":bp<cr>:bd #<cr>")
+vim.keymap.set("", "<space>w", "<cmd>bp<cr>:bd #<cr>")
 
 -- no hightlight
-vim.keymap.set("n", "<leader>n", ":noh<cr>")
+vim.keymap.set("n", "<leader>n", "<cmd>noh<cr>")
 
 -- remap manual
 vim.keymap.set("n", "<S-k>", "<Nop>")
 
 -- terminal
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
+
