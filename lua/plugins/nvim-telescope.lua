@@ -52,6 +52,7 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 
+-- keymap
 local telescope_project_files = function()
 	local opts = { show_untracked = true } -- define here if you want to define something
 	local ok = pcall(require("telescope.builtin").git_files, opts)
@@ -60,9 +61,10 @@ local telescope_project_files = function()
 	end
 end
 
--- Telescope keymaps
-vim.keymap.set("n", "<C-p>", telescope_project_files)
 vim.keymap.set("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-vim.keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>ff", telescope_project_files)
+vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>")
+vim.keymap.set("n", "<leader>fn", "<cmd>ene <BAR> startinsert<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
 vim.keymap.set("n", ";", "<cmd>Telescope<cr>")
