@@ -10,8 +10,8 @@ vim.keymap.set("v", "<C-insert>", '"+y')
 -- CTRL-V and SHIFT-Insert are Paste
 vim.keymap.set("", "<C-V>", '"+p')
 vim.keymap.set("", "<C-insert>", '"+p')
-vim.keymap.set("i", "<C-V>", '<C-R>+')
-vim.keymap.set("i", "<C-insert>", '<C-R>+')
+vim.keymap.set("i", "<C-V>", "<C-R>+")
+vim.keymap.set("i", "<C-insert>", "<C-R>+")
 vim.keymap.set("c", "<C-V>", "<C-R>+")
 vim.keymap.set("c", "<S-Insert>", "<C-R>+")
 
@@ -24,7 +24,7 @@ vim.keymap.set("i", "<C-S>", "<Esc>:update<cr>gi")
 -- Esc
 vim.keymap.set("i", "jj", "<Esc>")
 
--- Goto last insert 
+-- Goto last insert
 vim.keymap.set("n", "ti", "`^")
 -- Goto mark
 vim.keymap.set("n", "t", "`")
@@ -44,8 +44,6 @@ vim.keymap.set("", "<leader>0", "<cmd>tablast<cr>")
 
 -- Last buffer
 vim.keymap.set("", "<leader><tab>", "<cmd>b# <cr>")
--- Delete buffer
-vim.keymap.set("", "<leader>w", "<cmd>bp<cr>:bd #<cr>")
 
 -- no highlight
 vim.keymap.set("n", "<leader>n", "<cmd>noh<cr>")
@@ -55,4 +53,3 @@ vim.keymap.set("n", "<S-k>", "<Nop>")
 
 -- terminal
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
-

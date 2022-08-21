@@ -55,11 +55,12 @@ CMake.setup({
 	dap_open_command = require("dapui").open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
 
+local configure = CMake.configure
 CMake.configure = cmake_progress_wrapper(function()
 	local project_path = Path:new(fn.getcwd())
 	local cmake_project_file = project_path:joinpath("CMakeLists.txt").filename
 	if fn.empty(fn.glob(cmake_project_file)) == 0 then
-		CMake.configure()
+		configure()
 	end
 end, "CMake configure", "Start configuring...", "Configure Complete!", "Configure failed!")
 CMake.build =
