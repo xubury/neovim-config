@@ -7,7 +7,7 @@ require("colorscheme")
 vim.notify = require("notify")
 
 require("plugins/dressing")
-require("plugins/alpha-nvim")
+require("plugins/alpha")
 require("plugins/barbar")
 require("plugins/nvim-tree")
 

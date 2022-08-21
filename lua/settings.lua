@@ -48,9 +48,9 @@ opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 
 -- File format
 if fn.has("win32") > 0 then
-    opt.fileformats = "dos"
+	opt.fileformats = "dos"
 elseif fn.has("unix") > 0 then
-    opt.fileformats = "unix"
+	opt.fileformats = "unix"
 end
 
 -- Clipboard
@@ -58,8 +58,8 @@ opt.clipboard:append("unnamedplus")
 
 -- WSL clipboard
 if fn.has("wsl") > 0 then
-    vim.api.nvim_exec(
-        [[
+	vim.api.nvim_exec(
+		[[
     let clip = 'clip.exe'
     if executable(clip)
         augroup WSLYank
@@ -67,7 +67,7 @@ if fn.has("wsl") > 0 then
             autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . clip, @+) | endif
         augroup END
     endif
-]]       ,
-        false
-    )
+]],
+		false
+	)
 end

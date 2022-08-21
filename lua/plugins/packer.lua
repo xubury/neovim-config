@@ -19,8 +19,10 @@ return packer.startup(function(use)
 	-- Neovim plugin to improve the default vim.ui interfaces
 	use("stevearc/dressing.nvim")
 	use("rcarriga/nvim-notify")
+
 	-- Intro screen
 	use("goolord/alpha-nvim")
+
 	-- Tabline plugin
 	use({
 		"romgrk/barbar.nvim",
