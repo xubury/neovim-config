@@ -1,8 +1,9 @@
 local cmp = require("cmp")
 
-local has_words_before = function()
+local has_words_before = function(deleting)
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col > 1 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	local start_col = deleting and 1 or 0
+	return col > start_col and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 local feedkey = function(key, mode)
@@ -46,7 +47,7 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 		["<Backspace>"] = cmp.mapping(function(fallback)
-			if cmp.visible() and not has_words_before() then
+			if cmp.visible() and not has_words_before(true) then
 				cmp.close()
 			end
 			fallback()

@@ -50,20 +50,17 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local function setup(lsp, extra)
-	local args = { on_attach = on_attach, capabilities = capabilities }
-	if extra ~= nil then
-		args = vim.tbl_extend("keep", args, extra)
-	end
-	nvim_lsp[lsp].setup(args)
+local function lsp_setup(lsp, extra)
+	local defaults = { on_attach = on_attach, debounce_text_changes = 150, capabilities = capabilities }
+	nvim_lsp[lsp].setup(vim.tbl_extend("force", defaults, extra or {}))
 end
 
-setup("vimls") -- Vim
+lsp_setup("vimls") -- Vim
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-setup("sumneko_lua", {
+lsp_setup("sumneko_lua", {
 	settings = {
 		Lua = {
 			runtime = {
@@ -90,13 +87,13 @@ setup("sumneko_lua", {
 })
 -- Lua
 
-setup("clangd", {
+lsp_setup("clangd", {
 	cmd = { "clangd", "--background-index", "--header-insertion=never" },
 	filetypes = { "c", "cpp", "objc", "objcpp" },
 }) -- cpp
-setup("cmake") -- cmake
-setup("texlab") -- latex
-setup("pyright") --python
+lsp_setup("cmake") -- cmake
+lsp_setup("texlab") -- latex
+lsp_setup("pyright") --python
 
 -- LSP notify integration
 local notify = require("plugins/notify")
