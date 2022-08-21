@@ -12,6 +12,7 @@ require("mason-tool-installer").setup({
 		"cmake-language-server",
 		"cmakelang",
 		"pyright",
+        "texlab"
 	},
 
 	-- if set to true this will check each tool for updates. If updates
