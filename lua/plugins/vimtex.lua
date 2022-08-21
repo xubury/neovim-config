@@ -12,7 +12,7 @@ end
 g.vimtex_syntax_conceal_disable = 1
 
 cmd([[
-autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>b <Plug>(vimtex-compile)
-autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>v <Plug>(vimtex-view)
-autocmd FileType tex autocmd BufEnter <buffer> nmap <leader>c <Plug>(vimtex-clean)
+autocmd FileType tex autocmd BufEnter <buffer> nmap <buffer> <leader>b <Plug>(vimtex-compile)
+autocmd FileType tex autocmd BufEnter <buffer> nmap <buffer> <leader>v <Plug>(vimtex-view)
+autocmd FileType tex autocmd BufEnter <buffer> nmap <buffer> <leader>c <Plug>(vimtex-clean)
 ]])
