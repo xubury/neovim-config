@@ -2,7 +2,7 @@ local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 local fn = vim.fn
 
-g.mapleader = "\\" -- change leader key
+g.mapleader = " "
 
 opt.mouse = "a" -- enable mouse support
 opt.swapfile = false

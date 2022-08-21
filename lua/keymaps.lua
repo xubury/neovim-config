@@ -43,11 +43,11 @@ vim.keymap.set("", "<leader>9", "9gt")
 vim.keymap.set("", "<leader>0", "<cmd>tablast<cr>")
 
 -- Last buffer
-vim.keymap.set("", "<space><tab>", "<cmd>b# <cr>")
+vim.keymap.set("", "<leader><tab>", "<cmd>b# <cr>")
 -- Delete buffer
-vim.keymap.set("", "<space>w", "<cmd>bp<cr>:bd #<cr>")
+vim.keymap.set("", "<leader>w", "<cmd>bp<cr>:bd #<cr>")
 
--- no hightlight
+-- no highlight
 vim.keymap.set("n", "<leader>n", "<cmd>noh<cr>")
 
 -- remap manual
