@@ -27,6 +27,7 @@ require("plugins/mason")
 
 require("plugins/nvim-lspconfig")
 require("plugins/lsp_signature")
+require("plugins/null-ls")
 require("plugins/nvim-cmp")
 require("plugins/symbol-outline")
 

@@ -2,10 +2,10 @@ local NTree = require("nvim-tree")
 NTree.setup {
     respect_buf_cwd = true,
     auto_reload_on_write = true,
-    disable_netrw = false,
+    disable_netrw = true,
     hijack_cursor = false,
     hijack_netrw = true,
-    hijack_unnamed_buffer_when_opening = false,
+    hijack_unnamed_buffer_when_opening = true,
     ignore_buffer_on_setup = false,
     open_on_setup = false,
     open_on_setup_file = false,
@@ -38,7 +38,7 @@ NTree.setup {
     },
     hijack_directories = {
         enable = true,
-        auto_open = true
+        auto_open = false
     },
     update_focused_file = {
         enable = false,

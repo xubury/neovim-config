@@ -24,9 +24,9 @@ vim.keymap.set("i", "<C-S>", "<Esc>:update<cr>gi")
 -- Esc
 vim.keymap.set("i", "jj", "<Esc>")
 
--- Last insert tag
-vim.keymap.set("n", "gi", "`^")
--- Tag
+-- Goto last insert 
+vim.keymap.set("n", "ti", "`^")
+-- Goto mark
 vim.keymap.set("n", "t", "`")
 
 -- Go to tab by number

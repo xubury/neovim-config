@@ -27,7 +27,7 @@ opt.autoread = true
 opt.expandtab = true
 
 -- Memory
-opt.hidden = true -- background buffer
+opt.hidden = false -- background buffer
 opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 240 -- max column for syntax highlight

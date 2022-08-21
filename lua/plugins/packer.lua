@@ -100,6 +100,7 @@ return packer.startup(
         -- LSP support
         use "neovim/nvim-lspconfig"
         use "ray-x/lsp_signature.nvim"
+        use "jose-elias-alvarez/null-ls.nvim"
 
         -- LSP complete menu
         use {
