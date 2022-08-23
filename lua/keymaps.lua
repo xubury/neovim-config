@@ -1,5 +1,6 @@
 -- Clipboard keymaps
 vim.keymap.set("v", "p", '"0p')
+vim.keymap.set("v", "d", '"+d')
 -- CTRL-X and SHIFT-Del are Cut
 vim.keymap.set("v", "<C-X>", '"+x')
 vim.keymap.set("v", "<S-Del>", '"+x')
