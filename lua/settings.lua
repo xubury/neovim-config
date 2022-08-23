@@ -29,7 +29,7 @@ opt.expandtab = true
 -- Memory
 opt.hidden = false -- background buffer
 opt.history = 100
-opt.lazyredraw = true
+opt.lazyredraw = false
 opt.synmaxcol = 240 -- max column for syntax highlight
 opt.updatetime = 100
 

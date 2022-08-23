@@ -15,7 +15,6 @@ local function format_message(message, percentage)
 	return (percentage and percentage .. "%\t" or "") .. (message or "")
 end
 
-local notify = require("notify")
 local M = {}
 M.__index = M
 M.spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
@@ -25,13 +24,17 @@ function M.new(_, freq, frames)
 	local t = {}
 	t.freq = freq
 	t.spinner_frames = frames
-	t.spinner = nil 
+	t.spinner = nil
 	return setmetatable(t, M)
+end
+
+function M.setup()
+	vim.notify = require("notify")
 end
 
 function M:update()
 	if self.spinner then
-		self.notification = notify(
+		self.notification = vim.notify(
 			nil,
 			nil,
 			{ hide_from_history = true, icon = self.spinner_frames[self.spinner + 1], replace = self.notification }
@@ -45,7 +48,7 @@ function M:update()
 end
 
 function M:start(table)
-	self.notification = notify(table.message or "Progress", "info", {
+	self.notification = vim.notify(table.message or "Progress", "info", {
 		title = format_title(table.title, table.client_name),
 		icon = self.spinner_frames[1],
 		timeout = false,
@@ -57,7 +60,7 @@ end
 
 function M:send_message(message, percentage)
 	if self.spinner then
-		self.notification = notify(format_message(message, percentage), "info", {
+		self.notification = vim.notify(format_message(message, percentage), "info", {
 			replace = self.notification,
 			hide_from_history = false,
 		})
@@ -68,9 +71,9 @@ function M:complete(table)
 	if self.spinner then
 		local msg = format_message(table.message, table.percentage)
 		msg = msg == "" and "Complete" or msg
-		self.notification = notify(
-            msg,
-            table.type or "info",
+		self.notification = vim.notify(
+			msg,
+			table.type or "info",
 			{ icon = table.icon or "", replace = self.notification, timeout = table.timeout or 1000 }
 		)
 		self.spinner = nil

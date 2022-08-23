@@ -4,7 +4,7 @@ require("settings")
 require("keymaps")
 require("colorscheme")
 
-vim.notify = require("notify")
+require("plugins/notify").setup()
 
 require("plugins/dressing")
 require("plugins/alpha")

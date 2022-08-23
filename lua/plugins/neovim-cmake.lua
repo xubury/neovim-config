@@ -56,13 +56,15 @@ CMake.setup({
 })
 
 local configure = CMake.configure
+
 CMake.configure = cmake_progress_wrapper(function()
 	local project_path = Path:new(fn.getcwd())
 	local cmake_project_file = project_path:joinpath("CMakeLists.txt").filename
 	if fn.empty(fn.glob(cmake_project_file)) == 0 then
-		configure()
+		return configure()
 	end
 end, "CMake configure", "Start configuring...", "Configure Complete!", "Configure failed!")
+
 CMake.build =
 	cmake_progress_wrapper(CMake.build, "CMake build", "Start building...", "Build Complete!", "Build failed!")
 CMake.clean =
