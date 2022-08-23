@@ -100,7 +100,11 @@ local notify = require("plugins/notify")
 local progress = {}
 vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	local client_id = ctx.client_id
-	local client_name = vim.lsp.get_client_by_id(client_id).name
+	local client = vim.lsp.get_client_by_id(client_id)
+    if client == nil then
+        return
+    end
+    local client_name = client.name
 	if client_name == "null-ls" then
 		return
 	end

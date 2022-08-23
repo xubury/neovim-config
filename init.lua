@@ -2,8 +2,8 @@ require("plugins/packer")
 
 require("settings")
 require("keymaps")
-require("colorscheme")
 
+require("plugins/colorscheme")
 require("plugins/notify").setup()
 
 require("plugins/dressing")
