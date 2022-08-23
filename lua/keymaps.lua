@@ -1,4 +1,5 @@
 -- Clipboard keymaps
+vim.keymap.set("v", "p", '"0p')
 -- CTRL-X and SHIFT-Del are Cut
 vim.keymap.set("v", "<C-X>", '"+x')
 vim.keymap.set("v", "<S-Del>", '"+x')
@@ -8,8 +9,10 @@ vim.keymap.set("v", "<C-C>", '"+y')
 vim.keymap.set("v", "<C-insert>", '"+y')
 
 -- CTRL-V and SHIFT-Insert are Paste
-vim.keymap.set("", "<C-V>", '"+p')
-vim.keymap.set("", "<C-insert>", '"+p')
+vim.keymap.set("n", "<C-V>", '"+p')
+vim.keymap.set("n", "<C-insert>", '"+p')
+vim.keymap.set("v", "<C-V>", '"0d"+p')
+vim.keymap.set("v", "<C-insert>", '"0d"+p')
 vim.keymap.set("i", "<C-V>", "<C-R>+")
 vim.keymap.set("i", "<C-insert>", "<C-R>+")
 vim.keymap.set("c", "<C-V>", "<C-R>+")
