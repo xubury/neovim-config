@@ -1,5 +1,5 @@
 -- Clipboard keymaps
-vim.keymap.set("v", "p", '"_dp')
+vim.keymap.set("v", "p", '"_dP')
 
 -- CTRL-X Cut
 vim.keymap.set("v", "<C-X>", '"+x')
