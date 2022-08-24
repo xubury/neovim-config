@@ -56,18 +56,4 @@ end
 -- Clipboard
 opt.clipboard:append("unnamedplus")
 
--- WSL clipboard
-if fn.has("wsl") > 0 then
-	vim.api.nvim_exec(
-		[[
-    let clip = 'clip.exe'
-    if executable(clip)
-        augroup WSLYank
-            autocmd!
-            autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname is '+' | call system('cat |' . clip, @+) | endif
-        augroup END
-    endif
-]],
-		false
-	)
-end
+opt.shell = "bash"

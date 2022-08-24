@@ -5,5 +5,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.cmake_format,
 		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.diagnostics.codespell,
+		null_ls.builtins.formatting.shfmt,
 	},
 })

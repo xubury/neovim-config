@@ -1,23 +1,11 @@
 -- Clipboard keymaps
-vim.keymap.set("v", "p", '"0p')
+-- vim.keymap.set("v", "p", 'p')
 vim.keymap.set("v", "d", '"+d')
 -- CTRL-X and SHIFT-Del are Cut
 vim.keymap.set("v", "<C-X>", '"+x')
-vim.keymap.set("v", "<S-Del>", '"+x')
 
 -- CTRL-C and CTRL-Insert are Copy
-vim.keymap.set("v", "<C-C>", '"+y')
-vim.keymap.set("v", "<C-insert>", '"+y')
-
--- CTRL-V and SHIFT-Insert are Paste
-vim.keymap.set("n", "<C-V>", '"+p')
-vim.keymap.set("n", "<C-insert>", '"+p')
-vim.keymap.set("v", "<C-V>", '"0d"+p')
-vim.keymap.set("v", "<C-insert>", '"0d"+p')
-vim.keymap.set("i", "<C-V>", "<C-R>+")
-vim.keymap.set("i", "<C-insert>", "<C-R>+")
-vim.keymap.set("c", "<C-V>", "<C-R>+")
-vim.keymap.set("c", "<S-Insert>", "<C-R>+")
+vim.keymap.set("v", "<C-c>", '"+y')
 
 -- Use CTRL-S for saving, also in Insert mode (<C-O> doesn't work well when
 -- using completions).
