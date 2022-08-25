@@ -95,7 +95,7 @@ require("catppuccin").setup({
 })
 
 
-vim.g.catppuccin_flavour = "macchiato"
+vim.g.catppuccin_flavour = "mocha"
 cmd("colorscheme catppuccin")
 cmd("syntax enable")
 
