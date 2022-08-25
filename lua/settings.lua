@@ -27,7 +27,7 @@ opt.autoread = true
 opt.expandtab = true
 
 -- Memory
-opt.hidden = false -- background buffer
+opt.hidden = true -- background buffer
 opt.history = 100
 opt.lazyredraw = false
 opt.synmaxcol = 240 -- max column for syntax highlight
@@ -55,5 +55,3 @@ end
 
 -- Clipboard
 opt.clipboard:append("unnamedplus")
-
-opt.shell = "bash"
