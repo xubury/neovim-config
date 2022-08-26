@@ -38,7 +38,16 @@ CMake.setup({
 	build_dir = tostring(Path:new("{cwd}", "build", "{os}-{build_type}")), -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values. Could be a function that return the path to the build directory.
 	samples_path = fn.stdpath("data") .. "/site/pack/packer/start/neovim-cmake/samples",
 	default_projects_path = tostring(Path:new(vim.loop.os_homedir(), "projects")),
-	configure_args = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1", "-G", "MinGW Makefiles" }, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
+	configure_args = {
+		"-D",
+		"CMAKE_EXPORT_COMPILE_COMMANDS=1",
+		"-G",
+		"MinGW Makefiles",
+		"-D",
+        "CMAKE_C_COMPILER=clang",
+		"-D",
+        "CMAKE_CXX_COMPILER=clang++",
+	}, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
 	build_args = { "-j" .. u.num_of_processers }, -- Default arguments that will be always passed at cmake build step.
 	on_build_output = cmake_update_progress, -- Callback that will be called each time data is received by the current process. Accepts the received data as an argument.
 	quickfix = {
