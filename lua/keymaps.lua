@@ -10,8 +10,8 @@ vim.keymap.set("v", "<C-c>", '"+y')
 -- CTRL-V Paste
 vim.keymap.set("n", "<C-v>", "p", { remap = true })
 vim.keymap.set("v", "<C-v>", "p", { remap = true })
-vim.keymap.set("i", "<C-v>", '<C-R>+')
-vim.keymap.set("c", "<C-v>", '<C-R>+')
+vim.keymap.set("i", "<C-v>", "<C-R>+")
+vim.keymap.set("c", "<C-v>", "<C-R>+")
 
 -- Use CTRL-S for saving, also in Insert mode (<C-O> doesn't work well when
 -- using completions).
@@ -51,3 +51,7 @@ vim.keymap.set("n", "<S-k>", "<Nop>")
 
 -- terminal
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
+
+-- Disable command line history window
+vim.keymap.set("n", "q:", "<nop>")
+vim.keymap.set("v", "q:", "<nop>")
