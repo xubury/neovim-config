@@ -1,6 +1,6 @@
 local g = vim.g
 
-g.indent_blankline_filetype_exclude = { "NvimTree", "dashboard" }
+g.indent_blankline_filetype_exclude = { "NvimTree", "alpha" }
 
 require("indent_blankline").setup({
 	-- for example, context is off by default, use this to turn it on
