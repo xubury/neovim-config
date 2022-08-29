@@ -141,3 +141,16 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- null-ls integration
+local null_ls = require("null-ls")
+null_ls.setup({
+    on_attach = on_attach,
+	sources = {
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.cmake_format,
+		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.diagnostics.codespell,
+		null_ls.builtins.formatting.shfmt,
+	},
+})
