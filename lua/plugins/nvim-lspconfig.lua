@@ -47,7 +47,6 @@ local on_attach = function(_, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.offsetEncoding = { "utf-16" }
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local function lsp_setup(lsp, extra)
@@ -57,6 +56,7 @@ end
 
 lsp_setup("vimls") -- Vim
 
+-- Lua
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -85,12 +85,16 @@ lsp_setup("sumneko_lua", {
 		},
 	},
 })
--- Lua
 
+-- CPP
+local clangd_cap = vim.deepcopy(capabilities)
+clangd_cap.offsetEncoding = { "utf-16" }
 lsp_setup("clangd", {
+	capabilities = clangd_cap,
 	cmd = { "clangd", "--background-index", "--header-insertion=never" },
 	filetypes = { "c", "cpp", "objc", "objcpp" },
-}) -- cpp
+})
+
 lsp_setup("cmake") -- cmake
 lsp_setup("texlab") -- latex
 lsp_setup("pyright") --python
@@ -101,10 +105,10 @@ local progress = {}
 vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	local client_id = ctx.client_id
 	local client = vim.lsp.get_client_by_id(client_id)
-    if client == nil then
-        return
-    end
-    local client_name = client.name
+	if client == nil then
+		return
+	end
+	local client_name = client.name
 	if client_name == "null-ls" then
 		return
 	end
@@ -145,7 +149,7 @@ end
 -- null-ls integration
 local null_ls = require("null-ls")
 null_ls.setup({
-    on_attach = on_attach,
+	on_attach = on_attach,
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.cmake_format,
