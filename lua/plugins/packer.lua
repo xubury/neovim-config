@@ -36,9 +36,6 @@ return packer.startup(function(use)
 		},
 	})
 
-	-- Better quick fix
-	use("kevinhwang91/nvim-bqf")
-
 	-- Tmux navigator
 	use("christoomey/vim-tmux-navigator")
 
