@@ -99,47 +99,6 @@ lsp_setup("cmake") -- cmake
 lsp_setup("texlab") -- latex
 lsp_setup("pyright") --python
 
--- LSP notify integration
-local notify = require("plugins/notify")
-local progress = {}
-vim.lsp.handlers["$/progress"] = function(_, result, ctx)
-	local client_id = ctx.client_id
-	local client = vim.lsp.get_client_by_id(client_id)
-	if client == nil then
-		return
-	end
-	local client_name = client.name
-	if client_name == "null-ls" then
-		return
-	end
-
-	local val = result.value
-	if not val.kind then
-		return
-	end
-	if progress[client_id] == nil then
-		progress[client_id] = {}
-	end
-	if progress[client_id][result.token] == nil then
-		progress[client_id][result.token] = notify.new()
-	end
-	local p = progress[client_id][result.token]
-	if val.kind == "begin" then
-		p:start({ client_name = client_name, title = val.title, message = val.message, percentage = val.percentage })
-	elseif p and val.kind == "report" then
-		p:send_message(val.message, val.percentage)
-	elseif p and val.kind == "end" then
-		p:complete({ message = val.message, type = "info", timeout = 500 })
-	end
-end
-
--- table from lsp severity to vim severity.
-local severity = { "error", "warn", "info", "info" }
-
-vim.lsp.handlers["window/showMessage"] = function(_, method, params, _)
-	vim.notify(method.message, severity[params.type])
-end
-
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type

@@ -4,7 +4,7 @@ require("settings")
 require("keymaps")
 
 require("plugins/colorscheme")
-require("plugins/notify").setup()
+-- require("plugins/notify").setup()
 
 require("plugins/dressing")
 require("plugins/alpha")

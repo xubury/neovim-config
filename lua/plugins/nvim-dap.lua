@@ -115,20 +115,20 @@ end
 dap.listeners.after.disconnect['keymap'] = dap.listeners.after.event_terminated['keymap']
 
 -- DAP notify integration
-local notify = require("plugins/notify")
-local progress = {}
-dap.listeners.before['event_progressStart']['progress-notifications'] = function(_, body)
-    if progress[body.progressId] == nil then
-        progress[body.progressId] = notify.new()
-    end
-    progress[body.progressId].start({ title = body.title, message = body.message, percentage = body.percentage })
-end
+-- local notify = require("plugins/notify")
+-- local progress = {}
+-- dap.listeners.before['event_progressStart']['progress-notifications'] = function(_, body)
+--     if progress[body.progressId] == nil then
+--         progress[body.progressId] = notify.new()
+--     end
+--     progress[body.progressId].start({ title = body.title, message = body.message, percentage = body.percentage })
+-- end
 
-dap.listeners.before['event_progressUpdate']['progress-notifications'] = function(_, body)
-    progress[body.progressId].send_message(body.message, body.percentage)
-end
+-- dap.listeners.before['event_progressUpdate']['progress-notifications'] = function(_, body)
+--     progress[body.progressId].send_message(body.message, body.percentage)
+-- end
 
-dap.listeners.before['event_progressEnd']['progress-notifications'] = function(_, body)
-    progress[body.progressId].complete({ message = body.message, type = "info", timeout = 3000 })
-end
+-- dap.listeners.before['event_progressEnd']['progress-notifications'] = function(_, body)
+--     progress[body.progressId].complete({ message = body.message, type = "info", timeout = 3000 })
+-- end
 
