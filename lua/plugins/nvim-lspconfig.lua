@@ -86,7 +86,7 @@ lsp_setup("sumneko_lua", {
 	},
 })
 
--- CPP
+-- cpp
 local clangd_cap = vim.deepcopy(capabilities)
 clangd_cap.offsetEncoding = { "utf-16" }
 lsp_setup("clangd", {
@@ -95,10 +95,21 @@ lsp_setup("clangd", {
 	filetypes = { "c", "cpp", "objc", "objcpp" },
 })
 
-lsp_setup("cmake") -- cmake
-lsp_setup("texlab") -- latex
-lsp_setup("pyright") --python
+-- cmake
+lsp_setup("cmake")
 
+-- latex
+lsp_setup("texlab") 
+
+-- python
+lsp_setup("pyright")
+
+-- typescript
+lsp_setup("tsserver")
+
+
+
+-- Sign icons
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type

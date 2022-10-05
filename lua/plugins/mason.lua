@@ -13,7 +13,8 @@ require("mason-tool-installer").setup({
 		"cmakelang",
 		"pyright",
         "texlab",
-        "shfmt"
+        "shfmt",
+        "typescript-language-server"
 	},
 
 	-- if set to true this will check each tool for updates. If updates

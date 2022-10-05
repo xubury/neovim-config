@@ -7,7 +7,7 @@ require("plugins/colorscheme")
 -- require("plugins/notify").setup()
 
 require("plugins/dressing")
-require("plugins/alpha")
+-- require("plugins/alpha")
 require("plugins/barbar")
 require("plugins/nvim-tree")
 
