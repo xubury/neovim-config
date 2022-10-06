@@ -21,7 +21,11 @@ NTree.setup({
 		signcolumn = "yes",
 		mappings = {
 			custom_only = false,
-			list = {},
+			list = {
+				{ key = "<F2>", action = "rename" },
+				{ key = "u", action = "dir_up" },
+                { key = "<CR>", action = "cd"}
+			},
 		},
 	},
 	renderer = {
