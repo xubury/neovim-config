@@ -14,7 +14,8 @@ require("mason-tool-installer").setup({
 		"pyright",
         "texlab",
         "shfmt",
-        "typescript-language-server"
+        "typescript-language-server",
+        "vue-language-server",
 	},
 
 	-- if set to true this will check each tool for updates. If updates

@@ -50,7 +50,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local function lsp_setup(lsp, extra)
-	local defaults = { on_attach = on_attach, debounce_text_changes = 150, capabilities = capabilities }
+	local defaults = {
+		on_attach = on_attach,
+		debounce_text_changes = 150,
+		capabilities = capabilities,
+		root_dir = function()
+			return vim.fn.getcwd()
+		end,
+	}
 	nvim_lsp[lsp].setup(vim.tbl_extend("force", defaults, extra or {}))
 end
 
@@ -99,7 +106,7 @@ lsp_setup("clangd", {
 lsp_setup("cmake")
 
 -- latex
-lsp_setup("texlab") 
+lsp_setup("texlab")
 
 -- python
 lsp_setup("pyright")
@@ -107,7 +114,8 @@ lsp_setup("pyright")
 -- typescript
 lsp_setup("tsserver")
 
-
+-- vue
+lsp_setup("volar")
 
 -- Sign icons
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
