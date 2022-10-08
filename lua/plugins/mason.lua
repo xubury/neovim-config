@@ -16,6 +16,7 @@ require("mason-tool-installer").setup({
         "shfmt",
         "typescript-language-server",
         "vue-language-server",
+        "prettier",
 	},
 
 	-- if set to true this will check each tool for updates. If updates
