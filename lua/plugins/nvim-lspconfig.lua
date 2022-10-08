@@ -53,9 +53,6 @@ local function lsp_setup(lsp, extra)
 	local defaults = {
 		on_attach = on_attach,
 		capabilities = capabilities,
-		root_dir = function()
-			return vim.fn.getcwd()
-		end,
 	}
 	nvim_lsp[lsp].setup(vim.tbl_extend("force", defaults, extra or {}))
 end
