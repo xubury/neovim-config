@@ -52,7 +52,6 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 local function lsp_setup(lsp, extra)
 	local defaults = {
 		on_attach = on_attach,
-		debounce_text_changes = 150,
 		capabilities = capabilities,
 		root_dir = function()
 			return vim.fn.getcwd()
@@ -134,6 +133,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.diagnostics.codespell,
 		null_ls.builtins.formatting.shfmt,
-        null_ls.builtins.formatting.prettier
+		null_ls.builtins.formatting.prettier,
 	},
 })
