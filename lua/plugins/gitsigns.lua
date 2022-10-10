@@ -36,9 +36,5 @@ require("gitsigns").setup({
 		map("n", "gS", gs.stage_buffer)
 		map("n", "gU", gs.reset_buffer)
 		map("n", "gs", gs.preview_hunk)
-		map("n", "gd", gs.diffthis)
-		map("n", "gD", function()
-			gs.diffthis("~")
-		end)
 	end,
 })

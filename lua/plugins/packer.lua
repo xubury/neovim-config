@@ -94,15 +94,15 @@ return packer.startup(function(use)
 	-- Clipboard manager
 	use("AckslD/nvim-neoclip.lua")
 
+	-- Portable package manager for Neovim that runs everywhere Neovim runs.
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+    use("jayp0521/mason-null-ls.nvim")
 
 	-- LSP support
 	use("neovim/nvim-lspconfig")
 	use("ray-x/lsp_signature.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
-	-- Portable package manager for Neovim that runs everywhere Neovim runs.
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-    use("jayp0521/mason-null-ls.nvim")
 
 	-- LSP complete menu
 	use({
