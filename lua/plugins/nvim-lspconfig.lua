@@ -1,3 +1,9 @@
+require("mason-lspconfig").setup({
+	automatic_installation = { exclude = {
+		"clangd",
+	} },
+})
+
 local nvim_lsp = require("lspconfig")
 
 local lsp_formatting = function(bufnr)
@@ -132,4 +138,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.shfmt,
 		null_ls.builtins.formatting.prettier,
 	},
+})
+
+require("mason-null-ls").setup({
+	automatic_installation = true,
 })

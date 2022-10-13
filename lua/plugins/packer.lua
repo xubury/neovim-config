@@ -15,6 +15,7 @@ return packer.startup(function(use)
 	-- Colorscheme
 	use("eddyekofo94/gruvbox-flat.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("rebelot/kanagawa.nvim")
 
 	-- Neovim plugin to improve the default vim.ui interfaces
 	use("stevearc/dressing.nvim")
@@ -97,7 +98,8 @@ return packer.startup(function(use)
 	-- Portable package manager for Neovim that runs everywhere Neovim runs.
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
-    use("jayp0521/mason-null-ls.nvim")
+	use("jayp0521/mason-null-ls.nvim")
+    use("jayp0521/mason-nvim-dap.nvim")
 
 	-- LSP support
 	use("neovim/nvim-lspconfig")

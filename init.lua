@@ -3,7 +3,7 @@ require("plugins/packer")
 require("settings")
 require("keymaps")
 
-require("plugins/colorscheme")
+require("plugins/kanagawa")
 -- require("plugins/notify").setup()
 
 require("plugins/dressing")
@@ -24,12 +24,12 @@ require("plugins/nvim-treesitter")
 require("plugins/neoclip")
 
 
+require("plugins/mason")
 require("plugins/nvim-lspconfig")
 -- require("plugins/lsp_signature")
 require("plugins/nvim-cmp")
 require("plugins/symbol-outline")
-
-require("plugins/mason")
+require("plugins/nvim-dap")
 
 require("plugins/markdown-preview")
 
@@ -37,4 +37,3 @@ require("plugins/vimtex")
 
 require("plugins/neovim-cmake")
 
-require("plugins/nvim-dap")
