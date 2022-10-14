@@ -6,7 +6,13 @@ local NTree = require("nvim-tree")
 NTree.setup({
 	sort_by = "case_sensitive",
 	sync_root_with_cwd = true,
+	actions = {
+		open_file = {
+			resize_window = false,
+		},
+	},
 	view = {
+		adaptive_size = true,
 		mappings = {
 			list = {
 				{ key = "u", action = "dir_up" },
