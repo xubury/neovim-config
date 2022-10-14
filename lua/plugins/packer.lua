@@ -87,6 +87,14 @@ return packer.startup(function(use)
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
 
+	-- Find the enemy and replace them with dark power
+	use({
+		"nvim-pack/nvim-spectre",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -99,7 +107,7 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("jayp0521/mason-null-ls.nvim")
-    use("jayp0521/mason-nvim-dap.nvim")
+	use("jayp0521/mason-nvim-dap.nvim")
 
 	-- LSP support
 	use("neovim/nvim-lspconfig")

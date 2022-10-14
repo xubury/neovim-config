@@ -37,3 +37,5 @@ require("plugins/vimtex")
 
 require("plugins/neovim-cmake")
 
+require("plugins/nvim-spectre")
+

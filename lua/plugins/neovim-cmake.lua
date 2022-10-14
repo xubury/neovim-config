@@ -35,7 +35,7 @@ CMake.setup({
 })
 
 vim.keymap.set("n", "<leader>g", CMake.configure)
-vim.keymap.set("n", "<leader>s", CMake.select_target)
+-- vim.keymap.set("n", "<leader>s", CMake.select_target)
 vim.keymap.set("n", "<leader>b", CMake.build)
 vim.keymap.set("n", "<leader>r", CMake.build_and_run)
 vim.keymap.set("n", "<leader>d", CMake.build_and_debug)
