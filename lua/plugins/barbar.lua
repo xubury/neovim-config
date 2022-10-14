@@ -81,7 +81,7 @@ vim.keymap.set("n", "<A-6>", "<cmd>BufferGoto 6<CR>")
 vim.keymap.set("n", "<A-7>", "<cmd>BufferGoto 7<CR>")
 vim.keymap.set("n", "<A-8>", "<cmd>BufferGoto 8<CR>")
 vim.keymap.set("n", "<A-9>", "<cmd>BufferGoto 9<CR>")
-vim.keymap.set("n", "<A-0>", "<cmd>BufferLast<CR>")
+vim.keymap.set("n", "<A-0>", "<cmd>BufferGoto 10<CR>")
 -- Close buffer
 vim.keymap.set("n", "<A-w>", "<cmd>BufferClose<CR>")
 -- Wipeout buffer
