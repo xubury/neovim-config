@@ -56,3 +56,5 @@ vim.keymap.set("v", "q:", "<nop>")
 
 vim.keymap.set("n", "K", "<nop>")
 vim.keymap.set("v", "K", "<nop>")
+
+vim.keymap.set("n", "<A-F>", "<cmd>let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><cr>")
