@@ -26,6 +26,9 @@ opt.autoindent = true
 opt.autoread = true
 opt.expandtab = true
 
+-- Wrap
+vim.wo.wrap = false
+
 -- Memory
 opt.hidden = true -- background buffer
 opt.history = 100
