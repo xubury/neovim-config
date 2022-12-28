@@ -1,6 +1,7 @@
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 local fn = vim.fn
+local cmd = vim.cmd
 
 g.mapleader = " "
 
@@ -58,3 +59,5 @@ end
 
 -- Clipboard
 opt.clipboard:append("unnamedplus")
+
+cmd("syntax enable")

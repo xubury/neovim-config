@@ -16,6 +16,7 @@ return packer.startup(function(use)
 	use("eddyekofo94/gruvbox-flat.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("rebelot/kanagawa.nvim")
+    use("pappasam/papercolor-theme-slim")
 
 	-- Neovim plugin to improve the default vim.ui interfaces
 	use("stevearc/dressing.nvim")

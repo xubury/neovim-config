@@ -131,3 +131,10 @@ dap.listeners.after.disconnect["keymap"] = dap.listeners.after.event_terminated[
 require("mason-nvim-dap").setup({
 	automatic_installation = true,
 })
+
+
+vim.fn.sign_define('DapBreakpoint', { text='', texthl='@debug', linehl='@debug', numhl='@debug' })
+vim.fn.sign_define('DapBreakpointCondition', { text='ﳁ', texthl='@debug', linehl='@debug', numhl='@debug' })
+vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='@debug', linehl='@debug', numhl= '@debug' })
+vim.fn.sign_define('DapLogPoint', { text='', texthl='@character', linehl='@character', numhl= '@character' })
+vim.fn.sign_define('DapStopped', { text='', texthl='@exception', linehl='@exception', numhl= '@exception' })
