@@ -9,7 +9,8 @@ require("plugins/papercolor")
 
 require("plugins/dressing")
 -- require("plugins/alpha")
-require("plugins/barbar")
+-- require("plugins/barbar")
+require("plugins/bufferline")
 require("plugins/nvim-tree")
 
 require("plugins/nvim-autopairs")

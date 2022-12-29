@@ -16,7 +16,7 @@ return packer.startup(function(use)
 	use("eddyekofo94/gruvbox-flat.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("rebelot/kanagawa.nvim")
-    use("pappasam/papercolor-theme-slim")
+	use("pappasam/papercolor-theme-slim")
 
 	-- Neovim plugin to improve the default vim.ui interfaces
 	use("stevearc/dressing.nvim")
@@ -26,15 +26,13 @@ return packer.startup(function(use)
 	use("goolord/alpha-nvim")
 
 	-- Tabline plugin
-	use({
-		"romgrk/barbar.nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
+
 	-- File explorer
 	use({
-		"kyazdani42/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua",
 		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			"nvim-tree/nvim-web-devicons", -- optional, for file icon
 		},
 	})
 
