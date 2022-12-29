@@ -3,8 +3,8 @@ require("plugins/packer")
 require("settings")
 require("keymaps")
 
-require("plugins/kanagawa")
--- require("plugins/papercolor")
+-- require("plugins/kanagawa")
+require("plugins/papercolor")
 -- require("plugins/notify").setup()
 
 require("plugins/dressing")
