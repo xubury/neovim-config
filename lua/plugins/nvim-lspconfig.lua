@@ -96,6 +96,7 @@ lsp_setup("sumneko_lua", {
 
 -- cpp
 local clangd_cap = vim.deepcopy(capabilities)
+clangd_cap.offsetEncoding = { "utf-16" }
 lsp_setup("clangd", {
 	capabilities = clangd_cap,
 	cmd = { "clangd", "--background-index", "--header-insertion=never" },
