@@ -11,6 +11,13 @@ vim.keymap.set("", "<leader>E", function()
 	hop.hint_words({ direction = directions.AFTER_CURSOR, current_line_only = false, hint_position = positions.END })
 end)
 
+vim.keymap.set("", "<leader>ge", function()
+	hop.hint_words({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_position = positions.END })
+end)
+vim.keymap.set("", "<leader>gE", function()
+	hop.hint_words({ direction = directions.BEFORE_CURSOR, current_line_only = false, hint_position = positions.END })
+end)
+
 vim.keymap.set("", "<leader>w", function()
 	hop.hint_words({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end)

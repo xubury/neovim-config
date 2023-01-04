@@ -34,8 +34,6 @@ CMake.setup({
 	dap_open_command = require("dapui").open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
 
-vim.keymap.set("n", "<leader>g", CMake.configure)
--- vim.keymap.set("n", "<leader>s", CMake.select_target)
 vim.keymap.set("n", "<leader>c", CMake.build)
 vim.keymap.set("n", "<leader>r", CMake.build_and_run)
 vim.keymap.set("n", "<leader>d", CMake.build_and_debug)
