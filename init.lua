@@ -7,6 +7,8 @@ require("keymaps")
 require("plugins/papercolor")
 -- require("plugins/notify").setup()
 
+require("plugins/hop")
+
 require("plugins/dressing")
 -- require("plugins/alpha")
 -- require("plugins/barbar")
