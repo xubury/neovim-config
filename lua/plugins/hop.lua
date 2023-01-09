@@ -43,6 +43,6 @@ vim.keymap.set("", "<leader>k", function()
 	hop.hint_vertical({ direction = directions.BEFORE_CURSOR })
 end)
 
-vim.keymap.set("", "<leader>l", function()
+vim.keymap.set("", "<leader>gg", function()
 	hop.hint_lines()
 end)

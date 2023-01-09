@@ -8,6 +8,8 @@ vim.keymap.set("n", "<C-_>", "<Plug>NERDCommenterToggle")
 -- Add spaces after comment delimiters by default
 g.NERDSpaceDelims = 1
 
+g.NERDCreateDefaultMappings = 0
+
 -- Use compact syntax for prettified multi-line comments
 g.NERDCompactSexyComs = 1
 

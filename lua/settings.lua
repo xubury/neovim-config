@@ -28,7 +28,7 @@ opt.autoread = true
 opt.expandtab = true
 
 -- Wrap
-vim.wo.wrap = false
+vim.wo.wrap = true
 
 -- Memory
 opt.hidden = true -- background buffer
