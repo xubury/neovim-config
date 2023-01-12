@@ -61,3 +61,7 @@ end
 opt.clipboard:append("unnamedplus")
 
 cmd("syntax enable")
+
+cmd([[
+	au BufRead,BufNewFile *.gltf setfiletype json
+]])
