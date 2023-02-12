@@ -12,7 +12,7 @@ local packer = require("packer")
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
-    use({ "phaazon/hop.nvim", branch = "v2" })
+    use({ "aznhe21/hop.nvim", branch = "fix-some-bugs" })
 
 	-- Colorscheme
 	use("eddyekofo94/gruvbox-flat.nvim")

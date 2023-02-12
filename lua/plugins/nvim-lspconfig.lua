@@ -68,7 +68,7 @@ lsp_setup("vimls") -- Vim
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-lsp_setup("sumneko_lua", {
+lsp_setup("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = {
