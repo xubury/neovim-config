@@ -6,6 +6,8 @@ require("mason-lspconfig").setup({
 
 local nvim_lsp = require("lspconfig")
 
+vim.lsp.set_log_level("ERROR")
+
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
@@ -104,7 +106,7 @@ lsp_setup("clangd", {
 })
 
 -- cmake
-lsp_setup("cmake")
+lsp_setup("neocmake")
 
 -- latex
 lsp_setup("texlab")

@@ -5,7 +5,6 @@ require("keymaps")
 
 -- require("plugins/kanagawa")
 require("plugins/papercolor")
--- require("plugins/notify").setup()
 
 require("plugins/hop")
 
