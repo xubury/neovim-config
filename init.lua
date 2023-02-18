@@ -33,6 +33,7 @@ require("plugins/nvim-lspconfig")
 require("plugins/nvim-cmp")
 require("plugins/symbol-outline")
 require("plugins/nvim-dap")
+require("plugins/adaptor")
 
 require("plugins/markdown-preview")
 
