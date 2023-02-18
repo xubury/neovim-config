@@ -153,6 +153,10 @@ return packer.startup(function(use)
 
 	-- Better slash
 	use("junegunn/vim-slash")
+
+    -- Buffer delete
+    use("ojroques/nvim-bufdel")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
