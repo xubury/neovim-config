@@ -5,7 +5,7 @@ local dbg = require("emmy_core")
 dbg.tcpListen("localhost", 9966)
 dbg.waitIDE()
 
-require("debug_example.debug_example")
+require("debug_example")
 print("yes?")
 
 local incre = function (var)

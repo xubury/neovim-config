@@ -9,8 +9,7 @@ dap.adapters.lua = {
 
 dap.configurations.lua = {
 	{
-		cwd = "${workspaceFolder}",
-		name = "Default launch lua",
+		name = "Launch EmmyLua",
 		type = "lua",
 		codePaths = { "${workspaceFolder}" },
 		request = "launch",

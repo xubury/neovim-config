@@ -68,7 +68,6 @@ class EmmyDebugSession extends DebugSession_1.DebugSession {
   }
   launchRequest(response, args) {
     this.ext = args.ext;
-    this.cwd = args.cwd;
     this.extensionPath = args.extensionPath;
     this.codePaths = args.codePaths;
     if (!args.ideConnectDebugger) {
@@ -222,22 +221,28 @@ class EmmyDebugSession extends DebugSession_1.DebugSession {
         const stacks = this.breakNotify.stacks;
         for (let i = 0; i < stacks.length; i++) {
           const stack = stacks[i];
-          let file = "";
+          let fullFilename = "";
+          let filename = stack.file;
           if (stack.line >= 0) {
-            if (stack.file[0] == ".") {
-                file = path_1.join(this.cwd, stack.file.substring(1));
-            } else {
-              for (let j = 0; j < this.codePaths.length; j++) {
-                file = this.findFile(this.codePaths[j], stack.file);
-                if (file !== "") {
-                  break;
-                }
+            if (
+              filename[0] == "." &&
+              (filename[1] == "/" || filename[1] == "\\")
+            ) {
+              filename = filename.substring(2);
+            }
+            for (let j = 0; j < this.codePaths.length; j++) {
+              fullFilename = this.findFile(this.codePaths[j], filename);
+              if (fullFilename !== "") {
+                break;
               }
             }
           } else if (i < stacks.length - 1) {
             continue;
           }
-          let source = new vscode_debugadapter_1.Source(stack.file, file);
+          let source = new vscode_debugadapter_1.Source(
+            stack.file,
+            fullFilename
+          );
           stackFrames.push(
             new vscode_debugadapter_1.StackFrame(
               stack.level,
@@ -259,10 +264,10 @@ class EmmyDebugSession extends DebugSession_1.DebugSession {
     if (path_1.isAbsolute(file)) {
       return file;
     }
-    const r = this._fileCache.get(file);
-    if (r) {
-      return r;
+    if (this._fileCache.has(file)) {
+      return this._fileCache.get(file);
     }
+
     if (!fs_1.existsSync(startPath)) {
       this.sendEvent(
         new vscode_debugadapter_1.OutputEvent(
@@ -274,15 +279,35 @@ class EmmyDebugSession extends DebugSession_1.DebugSession {
     var files = fs_1.readdirSync(startPath);
     for (var i = 0; i < files.length; i++) {
       var filename = path_1.join(startPath, files[i]);
-      this._fileCache.set(file, filename);
       var stat = fs_1.lstatSync(filename);
       if (stat.isDirectory()) {
-        return this.findFile(filename, file); //recurse
-      } else if (filename.indexOf(file) >= 0) {
-        this._fileCache.set(file, filename);
-        return filename;
+        filename = this.findFile(filename, file); //recurse
+        if (filename == "") {
+          continue;
+        }
+      } else if (!this.ext.includes(path_1.parse(files[i]).ext)) {
+        // skip non-target file
+        continue;
+      }
+
+      // match filename
+      if (filename.indexOf(file) >= 0) {
+        // cache max match filename
+        if (
+          this._fileCache.has(file) &&
+          this._fileCache.get(file).length < filename.length
+        ) {
+          this._fileCache.set(file, filename);
+        } else {
+          this._fileCache.set(file, filename);
+        }
       }
     }
+
+    if (this._fileCache.has(file)) {
+      return this._fileCache.get(file);
+    }
+
     return "";
   }
   scopesRequest(response, args) {
