@@ -37,8 +37,6 @@ require("plugins/adaptor")
 
 require("plugins/markdown-preview")
 
-require("plugins/vimtex")
-
 require("plugins/neovim-cmake")
 
 require("plugins/nvim-spectre")

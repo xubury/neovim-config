@@ -136,9 +136,6 @@ return packer.startup(function(use)
 		run = "cd app && yarn install",
 	})
 
-	-- Latex
-	use("lervag/vimtex")
-
 	-- CMake
 	use({
 		"Shatur/neovim-cmake",
@@ -148,7 +145,7 @@ return packer.startup(function(use)
 	})
 
 	-- Visual Debugger
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } , commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23"})
 
 	if packer_bootstrap then
 		require("packer").sync()

@@ -108,9 +108,6 @@ lsp_setup("clangd", {
 -- cmake
 lsp_setup("neocmake")
 
--- latex
-lsp_setup("texlab")
-
 -- python
 lsp_setup("pyright")
 
