@@ -12,7 +12,7 @@ local packer = require("packer")
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
-    use({ "aznhe21/hop.nvim", branch = "fix-some-bugs" })
+	use({ "aznhe21/hop.nvim", branch = "fix-some-bugs" })
 
 	-- Colorscheme
 	use("eddyekofo94/gruvbox-flat.nvim")
@@ -145,8 +145,14 @@ return packer.startup(function(use)
 	})
 
 	-- Visual Debugger
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } , commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23"})
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
+	})
 
+	-- Better slash
+	use("junegunn/vim-slash")
 	if packer_bootstrap then
 		require("packer").sync()
 	end
