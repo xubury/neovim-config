@@ -68,11 +68,8 @@ dap.listeners.after.event_terminated["dapui_config"] = function()
 	dapui.close()
 end
 dap.listeners.after.disconnect["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
-
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dap.repl.close()
-	dapui.close()
-end
+dap.listeners.after.terminate["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
+dap.listeners.after.event_exited["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
 
 local function input_condition()
 	vim.ui.input({ prompt = "Breakpoint condition: " }, function(cond)
