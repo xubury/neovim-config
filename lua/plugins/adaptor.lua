@@ -13,7 +13,6 @@ dap.configurations.lua = {
 		type = "lua",
 		codePaths = { "${workspaceFolder}" },
 		request = "launch",
-		extensionPath = "C:/Users/bury/projects/Nvim-EmmyLua",
 		host = "127.0.0.1",
 		port = 9966,
 		ext = { ".lua", ".lua.txt", ".lua.bytes" },
