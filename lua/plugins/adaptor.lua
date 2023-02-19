@@ -3,7 +3,7 @@ local dap = require("dap")
 dap.adapters.lua = {
 	type = "executable",
 	command = "node",
-	args = { "C:/Users/bury/.vscode/extensions/tangzx.emmylua-0.5.11/out/debugger/EmmyDebugAdapter.js" },
+	args = { "C:/Users/bury/projects/Nvim-EmmyLua/out/debugger/EmmyDebugAdapter.js" },
 	name = "lua",
 }
 
@@ -13,7 +13,7 @@ dap.configurations.lua = {
 		type = "lua",
 		codePaths = { "${workspaceFolder}" },
 		request = "launch",
-		extensionPath = "C:/Users/bury/.vscode/extensions/tangzx.emmylua-0.5.11",
+		extensionPath = "C:/Users/bury/projects/Nvim-EmmyLua",
 		host = "127.0.0.1",
 		port = 9966,
 		ext = { ".lua", ".lua.txt", ".lua.bytes" },

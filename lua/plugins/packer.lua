@@ -148,9 +148,6 @@ return packer.startup(function(use)
 		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 	})
 
-	-- Better slash
-	use("junegunn/vim-slash")
-
     -- Buffer delete
     use("ojroques/nvim-bufdel")
 

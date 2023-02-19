@@ -1,7 +1,7 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-dap.set_log_level('TRACE')
+dap.set_log_level("TRACE")
 
 dapui.setup({
 	icons = { expanded = "▾", collapsed = "▸" },

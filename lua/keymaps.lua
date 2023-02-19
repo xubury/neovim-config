@@ -56,8 +56,13 @@ vim.keymap.set("v", "q:", "<nop>")
 vim.keymap.set("n", "K", "<nop>")
 vim.keymap.set("v", "K", "<nop>")
 
+-- Delete trailing spaces
 vim.keymap.set("n", "<A-F>", "<cmd>let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><cr>")
 
+vim.keymap.set("", "c", '"_c')
+vim.keymap.set("", "C", '"_C')
+
+-- Prevent typo
 vim.api.nvim_create_user_command("WQ", "wq", {})
 vim.api.nvim_create_user_command("Wq", "wq", {})
 vim.api.nvim_create_user_command("W", "w", {})
