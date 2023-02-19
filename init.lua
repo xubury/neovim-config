@@ -5,10 +5,11 @@ require("keymaps")
 
 require("plugins/papercolor")
 
+require("plugins/bufdel")
 require("plugins/hop")
+require("plugins/bufferline")
 
 require("plugins/dressing")
-require("plugins/bufferline")
 require("plugins/nvim-tree")
 
 require("plugins/nvim-autopairs")

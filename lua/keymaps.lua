@@ -53,11 +53,13 @@ vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
 vim.keymap.set("n", "q:", "<nop>")
 vim.keymap.set("v", "q:", "<nop>")
 
-
 vim.keymap.set("n", "K", "<nop>")
 vim.keymap.set("v", "K", "<nop>")
 
 vim.keymap.set("n", "<A-F>", "<cmd>let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><cr>")
 
--- buffer delete
-vim.keymap.set("n", "<A-w>", "<cmd>BufDel<cr>")
+vim.api.nvim_create_user_command("WQ", "wq", {})
+vim.api.nvim_create_user_command("Wq", "wq", {})
+vim.api.nvim_create_user_command("W", "w", {})
+vim.api.nvim_create_user_command("Qa", "qa", {})
+vim.api.nvim_create_user_command("Q", "q", {})
