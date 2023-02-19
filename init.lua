@@ -3,14 +3,11 @@ require("plugins/packer")
 require("settings")
 require("keymaps")
 
--- require("plugins/kanagawa")
 require("plugins/papercolor")
 
 require("plugins/hop")
 
 require("plugins/dressing")
--- require("plugins/alpha")
--- require("plugins/barbar")
 require("plugins/bufferline")
 require("plugins/nvim-tree")
 

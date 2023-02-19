@@ -15,9 +15,6 @@ return packer.startup(function(use)
 	use({ "aznhe21/hop.nvim", branch = "fix-some-bugs" })
 
 	-- Colorscheme
-	use("eddyekofo94/gruvbox-flat.nvim")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("rebelot/kanagawa.nvim")
 	use("pappasam/papercolor-theme-slim")
 
 	-- Neovim plugin to improve the default vim.ui interfaces
