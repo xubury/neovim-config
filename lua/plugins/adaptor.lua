@@ -16,7 +16,6 @@ dap.configurations.lua = {
 		host = "127.0.0.1",
 		port = 9966,
 		ext = { ".lua", ".lua.txt", ".lua.bytes" },
-		ideConnectDebugger = true,
 	},
 }
 
