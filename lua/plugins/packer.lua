@@ -153,6 +153,10 @@ return packer.startup(function(use)
 	-- Buffer delete
 	use("ojroques/nvim-bufdel")
 
+
+    -- my EmmyDeggger
+    use({"xubury/Nvim-EmmyLua", run = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js"})
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
