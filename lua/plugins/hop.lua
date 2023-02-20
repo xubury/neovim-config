@@ -46,3 +46,4 @@ end)
 vim.keymap.set("", "<leader>gg", function()
 	hop.hint_lines()
 end)
+

@@ -8,6 +8,10 @@ NTree.setup({
 	actions = {
 		open_file = {
 			resize_window = false,
+			window_picker = {
+				enable = true,
+				picker = require("window-picker").pick_window,
+			},
 		},
 	},
 	view = {

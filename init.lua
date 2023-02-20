@@ -7,6 +7,7 @@ require("plugins/papercolor")
 
 require("plugins/bufdel")
 require("plugins/hop")
+require("plugins/window-picker")
 require("plugins/bufferline")
 
 require("plugins/dressing")

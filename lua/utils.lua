@@ -20,4 +20,8 @@ function u.dump(o)
     end
 end
 
+function u.get_color(group, attr)
+    return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
+end
+
 return u

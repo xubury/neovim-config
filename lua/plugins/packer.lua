@@ -14,6 +14,8 @@ return packer.startup(function(use)
 
 	use({ "aznhe21/hop.nvim", branch = "fix-some-bugs" })
 
+	use({ "s1n7ax/nvim-window-picker", tag = "v1.*" })
+
 	-- Colorscheme
 	use("pappasam/papercolor-theme-slim")
 
@@ -148,8 +150,8 @@ return packer.startup(function(use)
 		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 	})
 
-    -- Buffer delete
-    use("ojroques/nvim-bufdel")
+	-- Buffer delete
+	use("ojroques/nvim-bufdel")
 
 	if packer_bootstrap then
 		require("packer").sync()
