@@ -25,17 +25,17 @@ vim.keymap.set("n", "ti", "`^")
 vim.keymap.set("n", "t", "`")
 
 -- Go to tab by number
-vim.keymap.set("", "<leader>1", "1gt")
-vim.keymap.set("", "<leader>2", "2gt")
-vim.keymap.set("", "<leader>3", "3gt")
-vim.keymap.set("", "<leader>4", "4gt")
-vim.keymap.set("", "<leader>5", "5gt")
-vim.keymap.set("", "<leader>6", "6gt")
-vim.keymap.set("", "<leader>7", "7gt")
-vim.keymap.set("", "<leader>8", "8gt")
-vim.keymap.set("", "<leader>9", "9gt")
+vim.keymap.set("", "<A-1>", "1gt")
+vim.keymap.set("", "<A-2>", "2gt")
+vim.keymap.set("", "<A-3>", "3gt")
+vim.keymap.set("", "<A-4>", "4gt")
+vim.keymap.set("", "<A-5>", "5gt")
+vim.keymap.set("", "<A-6>", "6gt")
+vim.keymap.set("", "<A-7>", "7gt")
+vim.keymap.set("", "<A-8>", "8gt")
+vim.keymap.set("", "<A-9>", "9gt")
 -- Last tab
-vim.keymap.set("", "<leader>0", "<cmd>tablast<cr>")
+vim.keymap.set("", "<Alt-0>", "<cmd>tablast<cr>")
 
 -- Last buffer
 vim.keymap.set("", "<leader><tab>", "<cmd>b# <cr>")
