@@ -1,6 +1,12 @@
 local g = vim.g
-local cmd = vim.cmd
 
 g.vim_markdown_math = 1
-
-cmd [[autocmd FileType markdown nmap <leader>v <Plug>MarkdownPreviewToggle]]
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown" },
+	callback = function(event)
+		vim.keymap.set("n", "<leader>v", "<Plug>MarkdownPreviewToggle", {
+			buffer = event.buf,
+			silent = true,
+		})
+	end,
+})
