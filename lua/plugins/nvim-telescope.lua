@@ -29,6 +29,7 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("projects")
 
 -- keymap
 local telescope_project_files = function()
@@ -42,7 +43,7 @@ end
 vim.keymap.set("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set("n", "<leader>ff", telescope_project_files)
 vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>")
+vim.keymap.set("n", "<leader>fr", "<cmd>Telescope projects<cr>")
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fn", "<cmd>ene <BAR> startinsert<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")

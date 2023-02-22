@@ -25,7 +25,6 @@ require("plugins/nvim-telescope")
 require("plugins/nvim-treesitter")
 require("plugins/neoclip")
 
-
 require("plugins/mason")
 require("plugins/nvim-lspconfig")
 require("plugins/lsp_signature")
@@ -39,4 +38,5 @@ require("plugins/markdown-preview")
 require("plugins/neovim-cmake")
 
 require("plugins/nvim-spectre")
+require("plugins/project")
 
