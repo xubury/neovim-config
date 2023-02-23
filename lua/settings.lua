@@ -9,6 +9,9 @@ opt.mouse = "a" -- enable mouse support
 opt.swapfile = false
 opt.termguicolors = true
 
+opt.guifont = { "Iosevka NF", "h14" }
+opt.guifontwide = { "Sarasa UI SC" }
+
 -- UI
 opt.number = true
 opt.relativenumber = true
@@ -24,6 +27,7 @@ opt.cursorline = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.autoindent = true
+opt.smartindent = true
 opt.autoread = true
 opt.expandtab = true
 

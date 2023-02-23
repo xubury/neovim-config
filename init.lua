@@ -38,5 +38,5 @@ require("plugins/markdown-preview")
 require("plugins/neovim-cmake")
 
 require("plugins/nvim-spectre")
-require("plugins/project")
 
+require("neovide")

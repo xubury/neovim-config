@@ -1,12 +1,3 @@
-" Enable Mouse
-set mouse=a
-
-" Set Editor Font
-if exists(':GuiFont')
-    " Use GuiFont! to ignore font errors
-    GuiFont! Iosevka NF:h8
-endif
-
 " Disable GUI Tabline
 if exists(':GuiTabline')
     GuiTabline 0
@@ -27,8 +18,3 @@ nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
 inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
 xnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
 snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
-
-vmap <C-/>  <Plug>NERDCommenterToggle
-nmap <C-/>  <Plug>NERDCommenterToggle
-
-set conceallevel=0

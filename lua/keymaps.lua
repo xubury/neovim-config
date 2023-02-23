@@ -48,6 +48,7 @@ vim.keymap.set("n", "<S-k>", "<Nop>")
 
 -- terminal
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
+vim.keymap.set("t", "jj", "<C-\\><C-N>")
 
 -- Disable command line history window
 -- vim.keymap.set("n", "q:", "<nop>") -- conflicted with other setting close for now
@@ -70,7 +71,7 @@ vim.api.nvim_create_user_command("Qa", "qa", {})
 vim.api.nvim_create_user_command("Q", "q", {})
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf", "help" },
+	pattern = { "qf", "help", "git", "gitcommit" },
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
 		vim.keymap.set("n", "q", "<cmd>close<cr>", {

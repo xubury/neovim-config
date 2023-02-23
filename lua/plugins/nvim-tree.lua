@@ -5,12 +5,12 @@ local NTree = require("nvim-tree")
 
 NTree.setup({
 	sort_by = "case_sensitive",
-	sync_root_with_cwd = true,
-	respect_buf_cwd = true,
-	update_focused_file = {
-		enable = true,
-		update_root = true,
-	},
+    -- sync_root_with_cwd = true,
+    respect_buf_cwd = true,
+    -- update_focused_file = {
+    --     enable = true,
+    --     update_root = true,
+	-- },
 	actions = {
 		open_file = {
 			resize_window = false,

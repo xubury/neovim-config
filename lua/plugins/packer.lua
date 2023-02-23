@@ -84,6 +84,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
+	use("nvim-telescope/telescope-project.nvim")
 
 	-- Find the enemy and replace them with dark power
 	use({
@@ -158,11 +159,10 @@ return packer.startup(function(use)
 		"xubury/Nvim-EmmyLua",
 		run = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
 	})
-
-	use({
-		"ahmedkhalf/project.nvim",
-		requires = { "neovim/nvim-lspconfig" },
-	})
+	-- use({
+	--     "ahmedkhalf/project.nvim",
+	--     requires = { "neovim/nvim-lspconfig" },
+	-- })
 	if packer_bootstrap then
 		require("packer").sync()
 	end
