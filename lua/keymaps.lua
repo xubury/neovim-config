@@ -47,12 +47,12 @@ vim.keymap.set("n", "<leader>n", "<cmd>noh<cr>")
 vim.keymap.set("n", "<S-k>", "<Nop>")
 
 -- terminal
-vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
+-- vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
 vim.keymap.set("t", "jj", "<C-\\><C-N>")
 
 -- Disable command line history window
--- vim.keymap.set("n", "q:", "<nop>") -- conflicted with other setting close for now
--- vim.keymap.set("v", "q:", "<nop>")
+vim.keymap.set("n", "q", "<nop>") -- conflicted with other setting close for now
+vim.keymap.set("v", "q", "<nop>")
 
 vim.keymap.set("n", "K", "<nop>")
 vim.keymap.set("v", "K", "<nop>")
