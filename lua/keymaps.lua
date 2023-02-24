@@ -35,7 +35,7 @@ vim.keymap.set("", "<A-7>", "7gt")
 vim.keymap.set("", "<A-8>", "8gt")
 vim.keymap.set("", "<A-9>", "9gt")
 -- Last tab
-vim.keymap.set("", "<Alt-0>", "<cmd>tablast<cr>")
+vim.keymap.set("", "<A-0>", "<cmd>tablast<cr>")
 
 -- Last buffer
 vim.keymap.set("", "<leader><tab>", "<cmd>b# <cr>")
