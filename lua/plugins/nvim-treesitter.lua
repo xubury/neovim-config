@@ -4,7 +4,7 @@ require("nvim-treesitter.configs").setup({
 	indent = { enable = true },
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "lua", "latex", "javascript", "typescript" },
+		disable = {},
 	},
 	additional_vim_regex_highlighting = false,
 })

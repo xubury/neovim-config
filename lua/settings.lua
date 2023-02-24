@@ -10,7 +10,7 @@ opt.swapfile = false
 opt.termguicolors = true
 
 opt.guifont = { "Iosevka NF", "h14" }
-opt.guifontwide = { "Sarasa UI SC" }
+opt.guifontwide = "Sarasa Gothic SC"
 
 -- UI
 opt.number = true
