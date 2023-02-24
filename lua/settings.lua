@@ -22,6 +22,8 @@ opt.smartcase = true
 opt.ignorecase = true
 opt.signcolumn = "yes:1"
 opt.cursorline = true
+opt.winblend = 15
+opt.pumblend = 15
 
 -- Tabs, indent
 opt.tabstop = 4

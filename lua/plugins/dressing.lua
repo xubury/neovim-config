@@ -31,7 +31,7 @@ require('dressing').setup({
 
         win_options = {
             -- Window transparency (0-100)
-            winblend = 10,
+            winblend = 15,
             -- Change default highlight groups (see :help winhl)
             winhighlight = "",
         },
@@ -103,7 +103,7 @@ require('dressing').setup({
                 filetype = "DressingSelect",
             },
             win_options = {
-                winblend = 10,
+                winblend = 15,
             },
             max_width = 80,
             max_height = 40,
@@ -121,7 +121,7 @@ require('dressing').setup({
 
             -- Window transparency (0-100)
             win_options = {
-                winblend = 10,
+                winblend = 15,
                 -- Change default highlight groups (see :help winhl)
                 winhighlight = "",
             },
