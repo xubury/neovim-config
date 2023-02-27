@@ -9,8 +9,7 @@ opt.mouse = "a" -- enable mouse support
 opt.swapfile = false
 opt.termguicolors = true
 
-opt.guifont = { "Iosevka NF", "h14" }
-opt.guifontwide = "Sarasa Gothic SC"
+opt.guifont = "Sarasa Mono SC"
 
 -- UI
 opt.number = true
