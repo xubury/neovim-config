@@ -95,14 +95,15 @@ dap.listeners.after.event_initialized["keymap"] = function()
 				vim.api.nvim_buf_del_keymap(buf, "n", "K")
 			end
 		end
+	    vim.keymap.set("n", "K", dapui.eval, { buffer = buf, silent = true })
 	end
-	vim.keymap.set("n", "K", dapui.eval, { silent = true })
 end
 
 dap.listeners.after.event_terminated["keymap"] = function()
 	for _, keymap in pairs(keymap_restore) do
-		vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs or keymap.callback, { silent = keymap.silent == 1 })
+		vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs or keymap.callback, { buffer = keymap.buffer, silent = keymap.silent == 1 })
 	end
+    vim.cmd("update")
 	keymap_restore = {}
 end
 
