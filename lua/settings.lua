@@ -53,7 +53,7 @@ opt.encoding = "utf-8"
 opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 
 -- Exclusive inclusive behaviors
-opt.selection = "exclusive"
+opt.selection = "old"
 
 -- Disable auto correct file format for now because of git crlf setting
 -- File format
