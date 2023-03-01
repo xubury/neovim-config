@@ -4,12 +4,13 @@ vim.g.loaded_netrwPlugin = 1
 local NTree = require("nvim-tree")
 
 NTree.setup({
+	filters = { custom = { ".git" } },
 	sort_by = "case_sensitive",
-    -- sync_root_with_cwd = true,
-    respect_buf_cwd = true,
-    -- update_focused_file = {
-    --     enable = true,
-    --     update_root = true,
+	sync_root_with_cwd = true,
+	-- respect_buf_cwd = true,
+	-- update_focused_file = {
+	--     enable = true,
+	--     update_root = true,
 	-- },
 	actions = {
 		open_file = {
@@ -24,14 +25,18 @@ NTree.setup({
 		adaptive_size = true,
 		mappings = {
 			list = {
+				{ key = "e", action = "" },
 				{ key = "u", action = "dir_up" },
-				{ key = "<F2>", action = "rename" },
+				{ key = "<F2>", action = "rename_basename" },
 				{ key = "<cr>", action = "cd" },
+				{ key = "B", action = "" },
+				{ key = "E", action = "" },
+				{ key = "bmv", action = "" },
 			},
 		},
 	},
 })
 
 vim.keymap.set("n", "<C-b>", function()
-	NTree.toggle(true, true)
+	NTree.toggle()
 end)

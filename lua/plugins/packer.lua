@@ -12,12 +12,25 @@ local packer = require("packer")
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
-	use({ "aznhe21/hop.nvim", branch = "fix-some-bugs" })
-
-	use({ "s1n7ax/nvim-window-picker", tag = "v1.*" })
-
 	-- Colorscheme
 	use("pappasam/papercolor-theme-slim")
+
+	-- Cursor hop
+	use({
+		"aznhe21/hop.nvim",
+		branch = "fix-some-bugs",
+	})
+
+	-- Buffer delete
+	use({
+		"ojroques/nvim-bufdel",
+	})
+
+	-- Window picker
+	use({
+		"s1n7ax/nvim-window-picker",
+		tag = "v1.*",
+	})
 
 	-- Neovim plugin to improve the default vim.ui interfaces
 	use("stevearc/dressing.nvim")
@@ -74,12 +87,15 @@ return packer.startup(function(use)
 	})
 	use("tpope/vim-fugitive")
 
+    -- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
 	})
+
+	-- Telecope extensions
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -150,9 +166,6 @@ return packer.startup(function(use)
 		requires = { "mfussenegger/nvim-dap" },
 		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 	})
-
-	-- Buffer delete
-	use("ojroques/nvim-bufdel")
 
 	-- my EmmyDeggger
 	use({
