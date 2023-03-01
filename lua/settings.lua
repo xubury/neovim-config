@@ -67,6 +67,5 @@ opt.clipboard:append("unnamedplus")
 
 cmd("syntax enable")
 
-cmd([[
-	au BufRead,BufNewFile *.gltf setfiletype json
-]])
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.gltf", command = "setfiletype json" })
+vim.api.nvim_create_autocmd("FocusGained", { pattern = "*", command = "checktime" })
