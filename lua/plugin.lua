@@ -15,6 +15,7 @@ require("lazy").setup({
 	-- Colorscheme
 	{
 		"pappasam/papercolor-theme-slim",
+		priority = 1000,
 		lazy = false,
 		config = function()
 			require("plugins/papercolor")
@@ -53,15 +54,6 @@ require("lazy").setup({
 		config = function()
 			require("plugins/dressing")
 		end,
-	},
-
-	-- Intro screen
-	{
-		"goolord/alpha-nvim",
-		config = function()
-			require("plugins/alpha")
-		end,
-		cond = false,
 	},
 
 	-- Tabline plugin
@@ -146,7 +138,8 @@ require("lazy").setup({
 		end,
 	},
 
-	"tpope/vim-fugitive",
+	{ "tpope/vim-fugitive" },
+
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -260,7 +253,7 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
-			require("plugins/neovim-cmake")
+			require("plugins/neovim-tasks")
 		end,
 	},
 

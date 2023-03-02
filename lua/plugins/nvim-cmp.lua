@@ -56,7 +56,16 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
-		["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "s", "c" }),
+		["<CR>"] = cmp.mapping({
+			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+				else
+					fallback()
+				end
+			end,
+		}),
 		["<C-j>"] = cmp.mapping(function()
 			if vim.fn["vsnip#available"]() == 1 then
 				feedkey("<Plug>(vsnip-expand-or-jump)", "")

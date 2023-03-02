@@ -1,4 +1,4 @@
-local u = require("utils")
+local u = require("util")
 local tasks = require("tasks")
 local Path = require("plenary.path")
 
@@ -16,7 +16,7 @@ tasks.setup({
 		},
 	},
 	params_file = "neovim.json",
-    dap_open_command = require("dapui").open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
+	dap_open_command = require("dapui").open, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 	quickfix = {
 		pos = "botright", -- Where to open quickfix
 		height = 10, -- Height of the opened quickfix.

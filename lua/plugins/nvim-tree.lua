@@ -38,5 +38,5 @@ NTree.setup({
 })
 
 vim.keymap.set("n", "<C-b>", function()
-	NTree.toggle()
+	NTree.toggle(true)
 end)

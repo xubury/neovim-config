@@ -1,5 +1,5 @@
 local picker = require("window-picker")
-local u = require("utils")
+local u = require("util")
 
 vim.keymap.set("n", "<C-P>", function()
 	local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()

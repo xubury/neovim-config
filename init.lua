@@ -1,5 +1,4 @@
-require("settings")
-require("keymaps")
+require("setting")
+require("keymap")
 require("neovide")
-
-require("plugins/lazy")
+require("plugin")
