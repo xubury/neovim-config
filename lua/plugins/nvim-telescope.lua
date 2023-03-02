@@ -29,11 +29,13 @@ telescope.setup({
 	},
 })
 
+require("neoclip").setup({
+	default_register = { '"', "+", "*" },
+})
+
 telescope.load_extension("fzf")
 telescope.load_extension("project")
-
 telescope.load_extension("neoclip")
-require("neoclip").setup()
 
 -- keymap
 local telescope_project_files = function()
@@ -55,4 +57,4 @@ vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fn", "<cmd>ene <BAR> startinsert<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
 
-vim.keymap.set("n", "<leader>y", '<cmd>Telescope neoclip "<cr>')
+vim.keymap.set("n", "<leader>y", "<cmd>Telescope neoclip<cr>")
