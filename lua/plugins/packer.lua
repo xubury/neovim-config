@@ -87,7 +87,7 @@ return packer.startup(function(use)
 	})
 	use("tpope/vim-fugitive")
 
-    -- Telescope
+	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {

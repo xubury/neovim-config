@@ -23,7 +23,6 @@ require("plugins/gitsigns")
 
 require("plugins/nvim-telescope")
 require("plugins/nvim-treesitter")
-require("plugins/neoclip")
 
 require("plugins/mason")
 require("plugins/nvim-lspconfig")

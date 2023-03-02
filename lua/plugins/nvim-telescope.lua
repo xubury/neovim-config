@@ -32,6 +32,9 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("project")
 
+telescope.load_extension("neoclip")
+require("neoclip").setup()
+
 -- keymap
 local telescope_project_files = function()
 	local opts = { show_untracked = true } -- define here if you want to define something
@@ -51,3 +54,5 @@ vim.keymap.set("n", "<leader>fp", telescope_project)
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fn", "<cmd>ene <BAR> startinsert<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
+
+vim.keymap.set("n", "<leader>y", '<cmd>Telescope neoclip "<cr>')
