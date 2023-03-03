@@ -16,9 +16,8 @@ require("lazy").setup({
 	{
 		"pappasam/papercolor-theme-slim",
 		priority = 1000,
-		lazy = false,
 		config = function()
-			require("plugins/papercolor")
+			require("config/papercolor")
 		end,
 	},
 
@@ -26,33 +25,45 @@ require("lazy").setup({
 	{
 		"aznhe21/hop.nvim",
 		branch = "fix-some-bugs",
-		config = function()
-			require("plugins/hop")
+		init = function()
+			require("init/hop")
 		end,
+		config = function()
+			require("config/hop")
+		end,
+		lazy = true,
 	},
 
 	-- Buffer delete
 	{
 		"ojroques/nvim-bufdel",
-		config = function()
-			require("plugins/bufdel")
+		init = function()
+			require("init/nvim-bufdel")
 		end,
+		config = function()
+			require("config/nvim-bufdel")
+		end,
+		lazy = true,
 	},
 
 	-- Window picker
 	{
 		"s1n7ax/nvim-window-picker",
 		version = "v1.*",
-		config = function()
-			require("plugins/window-picker")
+		init = function()
+			require("init/nvim-window-picker")
 		end,
+		config = function()
+			require("config/nvim-window-picker")
+		end,
+		lazy = true,
 	},
 
 	-- Neovim plugin to improve the default vim.ui interfaces
 	{
 		"stevearc/dressing.nvim",
 		config = function()
-			require("plugins/dressing")
+			require("config/nvim-dressing")
 		end,
 	},
 
@@ -61,8 +72,11 @@ require("lazy").setup({
 		"akinsho/bufferline.nvim",
 		version = "v3.*",
 		dependencies = "nvim-tree/nvim-web-devicons",
+		init = function()
+			require("init/nvim-bufferline")
+		end,
 		config = function()
-			require("plugins/bufferline")
+			require("config/nvim-bufferline")
 		end,
 	},
 
@@ -71,18 +85,24 @@ require("lazy").setup({
 		"nvim-tree/nvim-tree.lua",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icon
+			"s1n7ax/nvim-window-picker",
 		},
-		config = function()
-			require("plugins/nvim-tree")
+		init = function()
+			require("init/ntree")
 		end,
+		config = function()
+			require("config/ntree")
+		end,
+		lazy = true,
 	},
+
 	-- Tmux navigator
 	"christoomey/vim-tmux-navigator",
 
 	{
 		"windwp/nvim-autopairs",
 		config = function()
-			require("plugins/nvim-autopairs")
+			require("config/nvim-autopairs")
 		end,
 	},
 
@@ -93,7 +113,7 @@ require("lazy").setup({
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("plugins/indentline")
+			require("config/indentline")
 		end,
 	},
 
@@ -101,7 +121,7 @@ require("lazy").setup({
 	{
 		"preservim/nerdcommenter",
 		init = function()
-			require("plugins/nerdcommenter")
+			require("init/nerdcommenter")
 		end,
 	},
 
@@ -109,7 +129,7 @@ require("lazy").setup({
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("plugins/nvim-colorizer")
+			require("config/nvim-colorizer")
 		end,
 	},
 
@@ -124,7 +144,7 @@ require("lazy").setup({
 			"arkav/lualine-lsp-progress",
 		},
 		config = function()
-			require("plugins/lualine")
+			require("config/lualine")
 		end,
 	},
 	-- Git plugin
@@ -134,7 +154,7 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
-			require("plugins/gitsigns")
+			require("config/gitsigns")
 		end,
 	},
 
@@ -146,17 +166,21 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require("plugins/nvim-telescope")
+		init = function()
+			require("init/nvim-telescope")
 		end,
+		config = function()
+			require("config/nvim-telescope")
+		end,
+		lazy = true,
 	},
 
 	-- Telecope extensions
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-		lazy = false,
 	},
+
 	"nvim-telescope/telescope-project.nvim",
 
 	-- Find the enemy and replace them with dark power
@@ -165,16 +189,17 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require("plugins/nvim-spectre")
+		init = function()
+			require("init/nvim-spectre")
 		end,
+        lazy = true,
 	},
 	-- Syntax highlight
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			require("plugins/nvim-treesitter")
+			require("config/nvim-treesitter")
 		end,
 	},
 
@@ -190,7 +215,7 @@ require("lazy").setup({
 			"jayp0521/mason-nvim-dap.nvim",
 		},
 		config = function()
-			require("plugins/mason")
+			require("config/mason")
 		end,
 	},
 
@@ -201,13 +226,13 @@ require("lazy").setup({
 			"jose-elias-alvarez/null-ls.nvim",
 		},
 		config = function()
-			require("plugins/nvim-lspconfig")
+			require("config/nvim-lspconfig")
 		end,
 	},
 	{
 		"ray-x/lsp_signature.nvim",
 		config = function()
-			require("plugins/lsp_signature")
+			require("config/nvim-lsp_signature")
 		end,
 	},
 
@@ -225,7 +250,7 @@ require("lazy").setup({
 			"rafamadriz/friendly-snippets",
 		},
 		config = function()
-			require("plugins/nvim-cmp")
+			require("config/nvim-cmp")
 		end,
 	},
 
@@ -233,28 +258,39 @@ require("lazy").setup({
 	{
 		"simrat39/symbols-outline.nvim",
 		config = function()
-			require("plugins/symbol-outline")
+			require("config/symbols-outline")
 		end,
+		init = function()
+			require("init/symbols-outline")
+		end,
+		lazy = true,
 	},
 
 	-- Markdown preview
 	{
 		"iamcco/markdown-preview.nvim",
 		build = "cd app && yarn install",
-		config = function()
-			require("plugins/markdown-preview")
+		init = function()
+			require("init/markdown-preview")
 		end,
+		lazy = false,
 	},
 
 	-- CMake tool
 	{
-		"Shatur/neovim-tasks",
+		"xubury/neovim-tasks",
+		branch = "rundir",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"rcarriga/nvim-dap-ui",
 		},
 		config = function()
-			require("plugins/neovim-tasks")
+			require("config/neovim-tasks")
 		end,
+		init = function()
+			require("init/neovim-tasks")
+		end,
+		lazy = true,
 	},
 
 	-- Visual Debugger
@@ -263,9 +299,13 @@ require("lazy").setup({
 		dependencies = { "mfussenegger/nvim-dap" },
 		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 		config = function()
-			require("plugins/nvim-dap")
-			require("plugins/adapter")
+			require("config/nvim-dap")
+			require("init/adapter")
 		end,
+		init = function()
+			require("init/nvim-dap")
+		end,
+		lazy = true,
 	},
 
 	-- my EmmyDeggger

@@ -7,6 +7,7 @@ tasks.setup({
 		cmake = {
 			cmd = "cmake", -- CMake executable to use, can be changed using `:Task set_module_param cmake cmd`.
 			build_dir = tostring(Path:new("{cwd}", "build", "{os}-{build_type}")), -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values. Could be a function that return the path to the build directory.
+			run_dir = "{cwd}",
 			build_type = "Debug", -- Build type, can be changed using `:Task set_module_param cmake build_type`.
 			dap_name = "cppdbg", -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
 			args = { -- Task default arguments.
@@ -23,7 +24,3 @@ tasks.setup({
 		only_on_error = false, -- Open quickfix window only if target build failed.
 	},
 })
-
-vim.keymap.set("n", "<leader>c", "<cmd>Task start cmake build<cr>")
-vim.keymap.set("n", "<leader>r", "<cmd>Task start cmake run<cr>")
-vim.keymap.set("n", "<leader>d", "<cmd>Task start cmake debug<cr>")

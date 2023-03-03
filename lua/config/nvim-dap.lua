@@ -1,7 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-
 dapui.setup({
 	icons = { expanded = "▾", collapsed = "▸" },
 	mappings = {
@@ -58,6 +57,10 @@ dapui.setup({
 	},
 })
 
+require("mason-nvim-dap").setup({
+	automatic_installation = true,
+})
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -70,19 +73,6 @@ dap.listeners.after.disconnect["dapui_config"] = dap.listeners.after.event_termi
 dap.listeners.after.terminate["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
 dap.listeners.after.event_exited["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
 
-local function input_condition()
-	vim.ui.input({ prompt = "Breakpoint condition: " }, function(cond)
-		dap.set_breakpoint(cond)
-	end)
-end
-
-vim.keymap.set("n", "<F4>", dap.terminate)
-vim.keymap.set("n", "<F5>", dap.continue)
-vim.keymap.set("n", "<F9>", dap.toggle_breakpoint)
-vim.keymap.set("n", "<leader><F9>", input_condition)
-vim.keymap.set("n", "<F10>", dap.step_over)
-vim.keymap.set("n", "<F11>", dap.step_into)
-vim.keymap.set("n", "<F12>", dap.step_out)
 
 local keymap_restore = {}
 
@@ -127,12 +117,3 @@ dap.listeners.after.disconnect["keymap"] = dap.listeners.after.event_terminated[
 --     progress[body.progressId].complete({ message = body.message, type = "info", timeout = 3000 })
 -- end
 
-require("mason-nvim-dap").setup({
-	automatic_installation = true,
-})
-
-vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "@debug", linehl = "@debug", numhl = "@debug" })
-vim.fn.sign_define("DapBreakpointCondition", { text = "ﳁ", texthl = "@debug", linehl = "@debug", numhl = "@debug" })
-vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "@debug", linehl = "@debug", numhl = "@debug" })
-vim.fn.sign_define("DapLogPoint", { text = "", texthl = "@character", linehl = "@character", numhl = "@character" })
-vim.fn.sign_define("DapStopped", { text = "", texthl = "@exception", linehl = "@exception", numhl = "@exception" })

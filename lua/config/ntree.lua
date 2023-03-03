@@ -1,9 +1,4 @@
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
-local NTree = require("nvim-tree")
-
-NTree.setup({
+require("nvim-tree") .setup({
 	filters = { custom = { ".git" } },
 	sort_by = "case_sensitive",
 	sync_root_with_cwd = true,
@@ -37,6 +32,3 @@ NTree.setup({
 	},
 })
 
-vim.keymap.set("n", "<C-b>", function()
-	NTree.toggle(true)
-end)

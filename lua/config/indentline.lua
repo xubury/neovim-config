@@ -1,5 +1,4 @@
 local g = vim.g
-
 g.indent_blankline_filetype_exclude = { "NvimTree", "alpha" }
 
 require("indent_blankline").setup({

@@ -36,25 +36,3 @@ require("neoclip").setup({
 telescope.load_extension("fzf")
 telescope.load_extension("project")
 telescope.load_extension("neoclip")
-
--- keymap
-local telescope_project_files = function()
-	local opts = { show_untracked = true } -- define here if you want to define something
-	local ok = pcall(require("telescope.builtin").git_files, opts)
-	if not ok then
-		require("telescope.builtin").find_files()
-	end
-end
-local telescope_project = function()
-	require("telescope").extensions.project.project({})
-end
-
-vim.keymap.set("n", "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-vim.keymap.set("n", "<leader>ff", telescope_project_files)
-vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>fp", telescope_project)
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>fn", "<cmd>ene <BAR> startinsert<cr>")
-vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
-
-vim.keymap.set("n", "<leader>y", "<cmd>Telescope neoclip<cr>")
