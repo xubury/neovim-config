@@ -260,10 +260,10 @@ require("lazy").setup({
 	{
 		"simrat39/symbols-outline.nvim",
 		config = function()
-			require("config/symbols-outline")
+			require("config/nvim-symbols-outline")
 		end,
 		init = function()
-			require("init/symbols-outline")
+			require("init/nvim-symbols-outline")
 		end,
 		lazy = true,
 	},
