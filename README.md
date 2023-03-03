@@ -6,6 +6,9 @@ My personal neovim config out of the box.
 
 Install the following program to configure properly:
 
+### Basic
+
+-   Any terminal that support guicolor
 -   git
 -   cmake
 -   wget
@@ -13,4 +16,9 @@ Install the following program to configure properly:
 -   node npm yarn
 -   cargo
 -   go
--   SarasaGothic font (If using neovim gui)
+-   nerdfonts
+
+### GUI related
+
+-   neovide
+-   Sarasa Gothic NF (Optional, change setting.lua's guifont accordingly)
