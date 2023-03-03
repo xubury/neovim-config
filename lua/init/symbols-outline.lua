@@ -1,1 +1,3 @@
-vim.keymap.set("n", "<leader>o", require("symbols-outline").toggle_outline)
+vim.keymap.set("n", "<leader>o", function()
+	require("symbols-outline").toggle_outline()
+end)

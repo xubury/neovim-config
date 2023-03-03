@@ -26,10 +26,10 @@ require("lazy").setup({
 		"aznhe21/hop.nvim",
 		branch = "fix-some-bugs",
 		init = function()
-			require("init/hop")
+			require("init/nvim-hop")
 		end,
 		config = function()
-			require("config/hop")
+			require("config/nvim-hop")
 		end,
 		lazy = true,
 	},
@@ -144,7 +144,7 @@ require("lazy").setup({
 			"arkav/lualine-lsp-progress",
 		},
 		config = function()
-			require("config/lualine")
+			require("config/nvim-lualine")
 		end,
 	},
 	-- Git plugin
@@ -165,6 +165,9 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"AckslD/nvim-neoclip.lua",
+			"nvim-telescope/telescope-fzf-native.nvim",
+			"nvim-telescope/telescope-project.nvim",
 		},
 		init = function()
 			require("init/nvim-telescope")
@@ -179,9 +182,8 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		lazy = true,
 	},
-
-	"nvim-telescope/telescope-project.nvim",
 
 	-- Find the enemy and replace them with dark power
 	{
@@ -192,7 +194,7 @@ require("lazy").setup({
 		init = function()
 			require("init/nvim-spectre")
 		end,
-        lazy = true,
+		lazy = true,
 	},
 	-- Syntax highlight
 	{
@@ -203,9 +205,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Clipboard manager
-	"AckslD/nvim-neoclip.lua",
-
 	-- Mason lsp/dap tool package manager
 	{
 		"williamboman/mason.nvim",
@@ -215,7 +214,7 @@ require("lazy").setup({
 			"jayp0521/mason-nvim-dap.nvim",
 		},
 		config = function()
-			require("config/mason")
+			require("config/nvim-mason")
 		end,
 	},
 
@@ -224,11 +223,13 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"jose-elias-alvarez/null-ls.nvim",
+			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
 			require("config/nvim-lspconfig")
 		end,
 	},
+    -- LSP signature
 	{
 		"ray-x/lsp_signature.nvim",
 		config = function()
@@ -252,6 +253,7 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-cmp")
 		end,
+		lazy = true,
 	},
 
 	-- LSP outline
@@ -273,7 +275,6 @@ require("lazy").setup({
 		init = function()
 			require("init/markdown-preview")
 		end,
-		lazy = false,
 	},
 
 	-- CMake tool
@@ -300,7 +301,7 @@ require("lazy").setup({
 		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 		config = function()
 			require("config/nvim-dap")
-			require("init/adapter")
+			require("config/adapter")
 		end,
 		init = function()
 			require("init/nvim-dap")
@@ -312,5 +313,6 @@ require("lazy").setup({
 	{
 		"xubury/Nvim-EmmyLua",
 		build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
+		lazy = true,
 	},
 })

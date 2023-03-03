@@ -1,2 +1,7 @@
-vim.keymap.set("n", "<leader>S", require("spectre").open)
-vim.keymap.set("n", "<leader>s", require("spectre").open_file_search)
+vim.keymap.set("n", "<leader>S", function()
+	require("spectre").open()
+end)
+
+vim.keymap.set("n", "<leader>s", function()
+	require("spectre").open_file_search()
+end)
