@@ -302,9 +302,9 @@ require("lazy").setup({
 		},
 		config = function()
 			require("config/nvim-dap")
+			require("config/adapter")
 		end,
 		init = function()
-			require("init/adapter")
 			require("init/nvim-dap")
 		end,
 		lazy = true,

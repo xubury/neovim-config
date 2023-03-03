@@ -33,13 +33,10 @@ if registry.is_installed("cpptools") then
 		src:copy({ destination = dst })
 	end
 end
+
 dap.adapters.cppdbg = {
 	type = "executable",
 	command = (cpptools_path / "OpenDebugAD7").filename,
 	name = "cppdbg",
 	options = { detached = false },
 }
-
-require("mason-nvim-dap").setup({
-	automatic_installation = true,
-})

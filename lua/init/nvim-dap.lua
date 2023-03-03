@@ -1,6 +1,6 @@
 local function input_condition()
-	local dap = require("dap")
 	vim.ui.input({ prompt = "Breakpoint condition: " }, function(cond)
+		local dap = require("dap")
 		dap.set_breakpoint(cond)
 	end)
 end
