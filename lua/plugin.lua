@@ -229,7 +229,8 @@ require("lazy").setup({
 			require("config/nvim-lspconfig")
 		end,
 	},
-    -- LSP signature
+
+	-- LSP signature
 	{
 		"ray-x/lsp_signature.nvim",
 		config = function()
