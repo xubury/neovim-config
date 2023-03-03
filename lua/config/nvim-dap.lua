@@ -7,7 +7,7 @@ dapui.setup({
 		-- Use a table to apply multiple mappings
 		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
-		remove = "d",
+		remove = "dd",
 		edit = "e",
 		repl = "r",
 		toggle = "t",
@@ -55,10 +55,6 @@ dapui.setup({
 	render = {
 		max_type_length = nil, -- Can be integer or nil.
 	},
-})
-
-require("mason-nvim-dap").setup({
-	automatic_installation = true,
 })
 
 dap.listeners.after.event_initialized["dapui_config"] = function()

@@ -208,11 +208,7 @@ require("lazy").setup({
 	-- Mason lsp/dap tool package manager
 	{
 		"williamboman/mason.nvim",
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			"jayp0521/mason-null-ls.nvim",
-			"jayp0521/mason-nvim-dap.nvim",
-		},
+		dependencies = {},
 		config = function()
 			require("config/nvim-mason")
 		end,
@@ -224,6 +220,8 @@ require("lazy").setup({
 		dependencies = {
 			"jose-elias-alvarez/null-ls.nvim",
 			"hrsh7th/cmp-nvim-lsp",
+			"williamboman/mason-lspconfig.nvim",
+			"jayp0521/mason-null-ls.nvim",
 		},
 		config = function()
 			require("config/nvim-lspconfig")
@@ -297,16 +295,24 @@ require("lazy").setup({
 
 	-- Visual Debugger
 	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap" },
-		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"jayp0521/mason-nvim-dap.nvim",
+		},
 		config = function()
 			require("config/nvim-dap")
-			require("config/adapter")
 		end,
 		init = function()
+			require("init/adapter")
 			require("init/nvim-dap")
 		end,
+		lazy = true,
+	},
+
+	{
+		"rcarriga/nvim-dap-ui",
+		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 		lazy = true,
 	},
 
