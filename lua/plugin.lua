@@ -115,6 +115,7 @@ require("lazy").setup({
 		config = function()
 			require("config/indentline")
 		end,
+        enabled = false
 	},
 
 	-- Commenter
