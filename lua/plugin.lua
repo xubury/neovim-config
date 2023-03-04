@@ -12,6 +12,21 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local opt = {
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"tutor",
+				"netrwPlugin",
+				"zipPlugin",
+				"tarPlugin",
+				"tohtml",
+			},
+		},
+	},
+}
+
 require("lazy").setup({
 	-- Colorscheme
 	{
@@ -95,7 +110,7 @@ require("lazy").setup({
 		config = function()
 			require("config/ntree")
 		end,
-		lazy = true,
+		event = "VeryLazy",
 	},
 
 	-- Tmux navigator
@@ -130,6 +145,7 @@ require("lazy").setup({
 		init = function()
 			require("init/nerdcommenter")
 		end,
+		event = "VeryLazy",
 	},
 
 	-- Color preview
@@ -138,7 +154,7 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-colorizer")
 		end,
-        event = "VeryLazy"
+		event = "VeryLazy",
 	},
 
 	-- Status line
@@ -360,4 +376,4 @@ require("lazy").setup({
 		build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
 		lazy = true,
 	},
-})
+}, opt)
