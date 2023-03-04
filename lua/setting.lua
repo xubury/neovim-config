@@ -1,6 +1,5 @@
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
-local fn = vim.fn
 local cmd = vim.cmd
 
 g.mapleader = " "
@@ -54,14 +53,6 @@ opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 
 -- Exclusive inclusive behaviors
 opt.selection = "old"
-
--- Disable auto correct file format for now because of git crlf setting
--- File format
--- if fn.has("win32") > 0 then
---     opt.fileformats = "dos"
--- elseif fn.has("unix") > 0 then
---     opt.fileformats = "unix"
--- end
 
 -- Clipboard
 opt.clipboard:append("unnamedplus")
