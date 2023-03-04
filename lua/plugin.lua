@@ -1,3 +1,4 @@
+------------ lazy.nvim bootstrap ------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -9,8 +10,8 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
-
 vim.opt.rtp:prepend(lazypath)
+------------ lazy.nvim bootstrap ------------
 
 local opt = {
 	performance = {
@@ -130,15 +131,6 @@ require("lazy").setup({
 	-- Multi cursor
 	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 
-	-- Adds indentation guides to all lines
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("config/indentline")
-		end,
-		enabled = false,
-	},
-
 	-- Commenter
 	{
 		"preservim/nerdcommenter",
@@ -169,7 +161,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Find the enemy and replace them with dark power
+	-- Easy find/replace
 	{
 		"nvim-pack/nvim-spectre",
 		dependencies = {
@@ -205,6 +197,8 @@ require("lazy").setup({
 		init = function()
 			require("init/neovim-tasks")
 		end,
+		cmd = { "Task" },
+
 		lazy = true,
 	},
 
@@ -219,20 +213,8 @@ require("lazy").setup({
 			require("config/gitsigns")
 		end,
 	},
-
-	-- Git plugin (Some features are not working correctly, disabled for now.)
-	{
-		"TimUntersberger/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		config = function()
-			require("neogit").setup()
-		end,
-		enabled = false,
-	},
 	-- Run git command in nvim
-	"tpope/vim-fugitive",
+	{ "tpope/vim-fugitive", cmd = "Git", lazy = true },
 
 	--------------* Git Related Plugin 	*--------------
 
@@ -398,4 +380,28 @@ require("lazy").setup({
 		lazy = true,
 	},
 	--------------* DAP Related Plugin *--------------
+
+	--------------* Disabled Plugin *--------------
+
+	-- Adds indentation guides to all lines
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("config/indentline")
+		end,
+		enabled = false,
+	},
+
+	-- Git plugin (Some features are not working correctly, disabled for now.)
+	{
+		"TimUntersberger/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("neogit").setup()
+		end,
+		enabled = false,
+	},
+	--------------* Disable Plugin *--------------
 }, opt)
