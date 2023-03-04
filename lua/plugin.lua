@@ -9,6 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -65,6 +66,7 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-dressing")
 		end,
+		event = "VeryLazy",
 	},
 
 	-- Tabline plugin
@@ -115,7 +117,7 @@ require("lazy").setup({
 		config = function()
 			require("config/indentline")
 		end,
-        enabled = false
+		enabled = false,
 	},
 
 	-- Commenter
@@ -148,6 +150,7 @@ require("lazy").setup({
 			require("config/nvim-lualine")
 		end,
 	},
+
 	-- Git plugin
 	{
 		"lewis6991/gitsigns.nvim",
@@ -204,15 +207,17 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-treesitter")
 		end,
+		event = "VeryLazy",
 	},
 
 	-- Mason lsp/dap tool package manager
 	{
 		"williamboman/mason.nvim",
-		dependencies = {},
 		config = function()
 			require("config/nvim-mason")
 		end,
+		cmd = { "Mason", "MasonInsall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+		lazy = true,
 	},
 
 	-- LSP support
@@ -223,10 +228,12 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"williamboman/mason-lspconfig.nvim",
 			"jayp0521/mason-null-ls.nvim",
+			"williamboman/mason.nvim",
 		},
 		config = function()
 			require("config/nvim-lspconfig")
 		end,
+		event = "VeryLazy",
 	},
 
 	-- LSP signature
@@ -235,6 +242,7 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-lsp_signature")
 		end,
+		event = "VeryLazy",
 	},
 
 	-- LSP complete menu
@@ -275,6 +283,7 @@ require("lazy").setup({
 		init = function()
 			require("init/markdown-preview")
 		end,
+		ft = "markdown",
 	},
 
 	-- CMake tool
@@ -296,28 +305,38 @@ require("lazy").setup({
 
 	-- Visual Debugger
 	{
-		"mfussenegger/nvim-dap",
+		"rcarriga/nvim-dap-ui",
 		dependencies = {
-			"rcarriga/nvim-dap-ui",
-			"jayp0521/mason-nvim-dap.nvim",
+			"mfussenegger/nvim-dap",
 		},
 		config = function()
-			require("config/nvim-dap")
+			require("config/adapter")
+			require("config/nvim-dapui")
+		end,
+		init = function()
+			require("init/nvim-dap")
+		end,
+		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
+		lazy = true,
+	},
+
+	-- Dap client
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"jayp0521/mason-nvim-dap.nvim",
+			"williamboman/mason.nvim",
+		},
+		config = function()
 			require("config/adapter")
 		end,
 		init = function()
 			require("init/nvim-dap")
 		end,
-		lazy = true,
+		event = "VeryLazy",
 	},
 
-	{
-		"rcarriga/nvim-dap-ui",
-		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
-		lazy = true,
-	},
-
-	-- my EmmyDeggger
+	-- My EmmyDeggger
 	{
 		"xubury/Nvim-EmmyLua",
 		build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",

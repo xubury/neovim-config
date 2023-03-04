@@ -88,9 +88,9 @@ lsp_setup("lua_ls", {
 				library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
 			},
-            semantic = {
-                enable = false,
-            },
+			semantic = {
+				enable = false,
+			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
 				enable = false,

@@ -71,7 +71,7 @@ vim.api.nvim_create_user_command("Qa", "qa", {})
 vim.api.nvim_create_user_command("Q", "q", {})
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf", "help", "git", "gitcommit", "spectre_panel" },
+	pattern = { "qf", "help", "git", "gitcommit", "spectre_panel", "fugitiveblame" },
 	callback = function(event)
 		vim.keymap.set("n", "q", "<cmd>close<cr>", {
 			buffer = event.buf,

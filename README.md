@@ -1,4 +1,4 @@
-# My neovim config
+# Neovim config
 
 My personal neovim config out of the box.
 

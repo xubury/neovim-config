@@ -69,7 +69,6 @@ dap.listeners.after.disconnect["dapui_config"] = dap.listeners.after.event_termi
 dap.listeners.after.terminate["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
 dap.listeners.after.event_exited["dapui_config"] = dap.listeners.after.event_terminated["dapui_config"]
 
-
 local keymap_restore = {}
 
 dap.listeners.after.event_initialized["keymap"] = function()
@@ -81,35 +80,21 @@ dap.listeners.after.event_initialized["keymap"] = function()
 				vim.api.nvim_buf_del_keymap(buf, "n", "K")
 			end
 		end
-	    vim.keymap.set("n", "K", dapui.eval, { buffer = buf, silent = true })
+		vim.keymap.set("n", "K", dapui.eval, { buffer = buf, silent = true })
 	end
 end
 
 dap.listeners.after.event_terminated["keymap"] = function()
 	for _, keymap in pairs(keymap_restore) do
-		vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs or keymap.callback, { buffer = keymap.buffer, silent = keymap.silent == 1 })
+		vim.keymap.set(
+			keymap.mode,
+			keymap.lhs,
+			keymap.rhs or keymap.callback,
+			{ buffer = keymap.buffer, silent = keymap.silent == 1 }
+		)
 	end
-    vim.cmd("update")
+	vim.cmd("update")
 	keymap_restore = {}
 end
-
 dap.listeners.after.disconnect["keymap"] = dap.listeners.after.event_terminated["keymap"]
-
--- DAP notify integration
--- local notify = require("plugins/notify")
--- local progress = {}
--- dap.listeners.before['event_progressStart']['progress-notifications'] = function(_, body)
---     if progress[body.progressId] == nil then
---         progress[body.progressId] = notify.new()
---     end
---     progress[body.progressId].start({ title = body.title, message = body.message, percentage = body.percentage })
--- end
-
--- dap.listeners.before['event_progressUpdate']['progress-notifications'] = function(_, body)
---     progress[body.progressId].send_message(body.message, body.percentage)
--- end
-
--- dap.listeners.before['event_progressEnd']['progress-notifications'] = function(_, body)
---     progress[body.progressId].complete({ message = body.message, type = "info", timeout = 3000 })
--- end
-
+dap.listeners.after.event_exited["keymap"] = dap.listeners.after.event_terminated["keymap"]

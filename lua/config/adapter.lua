@@ -40,3 +40,7 @@ dap.adapters.cppdbg = {
 	name = "cppdbg",
 	options = { detached = false },
 }
+
+require("mason-nvim-dap").setup({
+	automatic_installation = true,
+})
