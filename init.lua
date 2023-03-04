@@ -1,4 +1,4 @@
 require("setting")
-require("keymap")
+require("keymap").setup()
 require("neovide")
 require("plugin")

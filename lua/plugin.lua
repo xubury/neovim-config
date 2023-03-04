@@ -106,10 +106,14 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-autopairs")
 		end,
+		event = "VeryLazy",
 	},
 
 	-- Delete/change/add parentheses/quotes/XML-tags/much more with ease
-	"tpope/vim-surround",
+	{ "tpope/vim-surround", event = "VeryLazy" },
+
+	-- Multi cursor
+	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 
 	-- Adds indentation guides to all lines
 	{
@@ -134,10 +138,8 @@ require("lazy").setup({
 		config = function()
 			require("config/nvim-colorizer")
 		end,
+        event = "VeryLazy"
 	},
-
-	-- Multi cursor
-	"mg979/vim-visual-multi",
 
 	-- Status line
 	{
@@ -162,7 +164,8 @@ require("lazy").setup({
 		end,
 	},
 
-	{ "tpope/vim-fugitive" },
+	-- Run git command in nvim
+	"tpope/vim-fugitive",
 
 	-- Telescope
 	{
@@ -220,19 +223,50 @@ require("lazy").setup({
 		lazy = true,
 	},
 
+	-- Mason dap
+	{
+		"jayp0521/mason-nvim-dap.nvim",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"williamboman/mason.nvim",
+		},
+		lazy = true,
+	},
+
+	-- Mason null-ls
+	{
+		"jayp0521/mason-null-ls.nvim",
+		dependencies = {
+			"jose-elias-alvarez/null-ls.nvim",
+			"williamboman/mason.nvim",
+		},
+		lazy = true,
+	},
+
 	-- LSP support
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"jose-elias-alvarez/null-ls.nvim",
 			"hrsh7th/cmp-nvim-lsp",
-			"williamboman/mason-lspconfig.nvim",
-			"jayp0521/mason-null-ls.nvim",
+			"williamboman/mason-lspconfig.nvim", -- mason-lspconfig need to load before lspconfig
 			"williamboman/mason.nvim",
 		},
+
 		config = function()
 			require("config/nvim-lspconfig")
 		end,
+		event = "VeryLazy",
+	},
+
+	-- null-ls
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+
+		config = function()
+			require("config/nvim-null-ls")
+		end,
+
 		event = "VeryLazy",
 	},
 
@@ -318,22 +352,6 @@ require("lazy").setup({
 		end,
 		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 		lazy = true,
-	},
-
-	-- Dap client
-	{
-		"mfussenegger/nvim-dap",
-		dependencies = {
-			"jayp0521/mason-nvim-dap.nvim",
-			"williamboman/mason.nvim",
-		},
-		config = function()
-			require("config/adapter")
-		end,
-		init = function()
-			require("init/nvim-dap")
-		end,
-		event = "VeryLazy",
 	},
 
 	-- My EmmyDeggger
