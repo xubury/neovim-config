@@ -169,7 +169,47 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Git plugin
+	-- Find the enemy and replace them with dark power
+	{
+		"nvim-pack/nvim-spectre",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		init = function()
+			require("init/nvim-spectre")
+		end,
+		lazy = true,
+	},
+
+	-- Markdown preview
+	{
+		"iamcco/markdown-preview.nvim",
+		build = "cd app && yarn install",
+		init = function()
+			require("init/markdown-preview")
+		end,
+		ft = "markdown",
+	},
+
+	-- CMake tool
+	{
+		"xubury/neovim-tasks",
+		branch = "rundir",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"rcarriga/nvim-dap-ui",
+		},
+		config = function()
+			require("config/neovim-tasks")
+		end,
+		init = function()
+			require("init/neovim-tasks")
+		end,
+		lazy = true,
+	},
+
+	--------------* Git Related Plugin 	*--------------
+	-- Show git signs in nvim
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = {
@@ -180,9 +220,23 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Git plugin (Some features are not working correctly, disabled for now.)
+	{
+		"TimUntersberger/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("neogit").setup()
+		end,
+		enabled = false,
+	},
 	-- Run git command in nvim
 	"tpope/vim-fugitive",
 
+	--------------* Git Related Plugin 	*--------------
+
+	--------------* Telescope Related Plugin *--------------
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -207,28 +261,9 @@ require("lazy").setup({
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 		lazy = true,
 	},
+	--------------* Telescope Related Plugin *--------------
 
-	-- Find the enemy and replace them with dark power
-	{
-		"nvim-pack/nvim-spectre",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		init = function()
-			require("init/nvim-spectre")
-		end,
-		lazy = true,
-	},
-	-- Syntax highlight
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			require("config/nvim-treesitter")
-		end,
-		event = "VeryLazy",
-	},
-
+	--------------* Mason Related Plugin *--------------
 	-- Mason lsp/dap tool package manager
 	{
 		"williamboman/mason.nvim",
@@ -258,7 +293,9 @@ require("lazy").setup({
 		},
 		lazy = true,
 	},
+	--------------* Mason Related Plugin *--------------
 
+	--------------* LSP Related Plugin *--------------
 	-- LSP support
 	{
 		"neovim/nvim-lspconfig",
@@ -325,34 +362,18 @@ require("lazy").setup({
 		end,
 		lazy = true,
 	},
-
-	-- Markdown preview
+	-- Syntax highlight
 	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && yarn install",
-		init = function()
-			require("init/markdown-preview")
-		end,
-		ft = "markdown",
-	},
-
-	-- CMake tool
-	{
-		"xubury/neovim-tasks",
-		branch = "rundir",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"rcarriga/nvim-dap-ui",
-		},
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
 		config = function()
-			require("config/neovim-tasks")
+			require("config/nvim-treesitter")
 		end,
-		init = function()
-			require("init/neovim-tasks")
-		end,
-		lazy = true,
+		event = "VeryLazy",
 	},
+	--------------* LSP Related Plugin *--------------
 
+	--------------* DAP Related Plugin *--------------
 	-- Visual Debugger
 	{
 		"rcarriga/nvim-dap-ui",
@@ -376,4 +397,5 @@ require("lazy").setup({
 		build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
 		lazy = true,
 	},
+	--------------* DAP Related Plugin *--------------
 }, opt)

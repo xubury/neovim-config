@@ -18,7 +18,11 @@ Install the following program to configure properly:
 -   go
 -   nerdfonts
 
-### GUI related
+### GUI related (Optional)
 
 -   neovide
--   Sarasa Gothic NF (Optional, change setting.lua's guifont accordingly)
+-   Sarasa Gothic NF (Change vim.g.guifont accordingly)
+
+## TODO
+
+-   neogit is unstable
