@@ -36,3 +36,5 @@ require("neoclip").setup({
 telescope.load_extension("fzf")
 telescope.load_extension("project")
 telescope.load_extension("neoclip")
+telescope.load_extension("file_browser")
+telescope.load_extension('media_files')

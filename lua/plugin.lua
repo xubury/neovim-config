@@ -213,6 +213,7 @@ local plugins = {
 			"AckslD/nvim-neoclip.lua",
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"nvim-telescope/telescope-project.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
 		},
 		init = function()
 			require("init/nvim-telescope")

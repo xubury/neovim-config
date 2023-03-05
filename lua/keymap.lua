@@ -65,13 +65,6 @@ M.setup = function()
 	vim.keymap.set("", "c", '"_c')
 	vim.keymap.set("", "C", '"_C')
 
-	-- Prevent typo
-	vim.api.nvim_create_user_command("WQ", "wq", {})
-	vim.api.nvim_create_user_command("Wq", "wq", {})
-	vim.api.nvim_create_user_command("W", "w", {})
-	vim.api.nvim_create_user_command("Qa", "qa", {})
-	vim.api.nvim_create_user_command("Q", "q", {})
-
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = { "qf", "help", "git", "gitcommit", "spectre_panel", "fugitive", "fugitiveblame" },
 		callback = function(event)
