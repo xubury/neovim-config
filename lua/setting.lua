@@ -22,6 +22,7 @@ opt.signcolumn = "yes:1"
 opt.cursorline = true
 opt.winblend = 15
 opt.pumblend = 15
+opt.laststatus = 3 -- Global status line
 
 -- Tabs, indent
 opt.tabstop = 4
@@ -59,5 +60,14 @@ opt.clipboard:append("unnamedplus")
 
 cmd("syntax enable")
 
+-- set ft: GLTF -> json
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.gltf", command = "setfiletype json" })
+
+-- Auto update file change on disk
 vim.api.nvim_create_autocmd("FocusGained", { pattern = "*", command = "checktime" })
+
+-- Forbid neovim formatting comment when changing to a newline
+vim.api.nvim_create_autocmd(
+	"FileType",
+	{ pattern = "*", command = "set formatoptions-=c formatoptions-=r formatoptions-=o" }
+)

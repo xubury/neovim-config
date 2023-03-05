@@ -1,18 +1,3 @@
------------- lazy.nvim bootstrap ------------
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
------------- lazy.nvim bootstrap ------------
-
 local opt = {
 	performance = {
 		rtp = {
@@ -28,7 +13,7 @@ local opt = {
 	},
 }
 
-require("lazy").setup({
+local plugins = {
 	-- Colorscheme
 	{
 		"pappasam/papercolor-theme-slim",
@@ -212,9 +197,10 @@ require("lazy").setup({
 		config = function()
 			require("config/gitsigns")
 		end,
+		event = "VeryLazy",
 	},
 	-- Run git command in nvim
-	{ "tpope/vim-fugitive", cmd = "Git", lazy = true },
+	{ "tpope/vim-fugitive", event = "VeryLazy" },
 
 	--------------* Git Related Plugin 	*--------------
 
@@ -404,4 +390,21 @@ require("lazy").setup({
 		enabled = false,
 	},
 	--------------* Disable Plugin *--------------
-}, opt)
+}
+
+------------ lazy.nvim bootstrap ------------
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+------------ lazy.nvim bootstrap ------------
+
+require("lazy").setup(plugins, opt)
