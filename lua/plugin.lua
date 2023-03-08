@@ -345,9 +345,9 @@ local plugins = {
 	--------------* DAP Related Plugin *--------------
 	-- Visual Debugger
 	{
-		"rcarriga/nvim-dap-ui",
+		"mfussenegger/nvim-dap",
 		dependencies = {
-			"mfussenegger/nvim-dap",
+		    "rcarriga/nvim-dap-ui",
 		},
 		config = function()
 			require("config/adapter")
