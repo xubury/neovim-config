@@ -174,6 +174,7 @@ local plugins = {
 		branch = "rundir",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"jayp0521/mason-nvim-dap.nvim",
 			"rcarriga/nvim-dap-ui",
 		},
 		config = function()
@@ -347,7 +348,7 @@ local plugins = {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
-		    "rcarriga/nvim-dap-ui",
+			"rcarriga/nvim-dap-ui",
 		},
 		config = function()
 			require("config/adapter")
