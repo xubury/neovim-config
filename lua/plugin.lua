@@ -16,10 +16,10 @@ local opt = {
 local plugins = {
 	-- Colorscheme
 	{
-		"pappasam/papercolor-theme-slim",
+        "tanvirtin/monokai.nvim",
 		priority = 1000,
 		config = function()
-			require("config/papercolor")
+			require("config/colorscheme")
 		end,
 	},
 

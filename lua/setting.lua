@@ -22,7 +22,7 @@ opt.signcolumn = "yes:1"
 opt.cursorline = true
 opt.winblend = 15
 opt.pumblend = 15
-opt.laststatus = 3 -- Global status line
+opt.laststatus = 2 -- (3: Global status line)
 
 -- Tabs, indent
 opt.tabstop = 4
