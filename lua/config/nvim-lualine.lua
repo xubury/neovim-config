@@ -71,6 +71,10 @@ local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
 
+local function ins_left_inactive(component)
+  table.insert(config.inactive_sections.lualine_a, component)
+end
+
 -- Inserts a component in lualine_x ot right section
 local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
@@ -130,7 +134,15 @@ ins_left {
   color = { fg = colors.magenta, gui = 'bold' },
 }
 
+ins_left_inactive {
+  'filename',
+  cond = conditions.buffer_not_empty,
+  color = { fg = colors.magenta, gui = 'bold' },
+}
+
 ins_left { 'location' }
+
+ins_left_inactive { 'location' }
 
 ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
