@@ -137,12 +137,15 @@ ins_left {
 ins_left_inactive {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+  color = { fg = colors.fg },
 }
 
 ins_left { 'location' }
 
-ins_left_inactive { 'location' }
+ins_left_inactive { 'location',
+  cond = conditions.buffer_not_empty,
+  color = { fg = colors.fg },
+}
 
 ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
