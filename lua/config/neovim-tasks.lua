@@ -11,7 +11,7 @@ tasks.setup({
 			build_type = "Debug", -- Build type, can be changed using `:Task set_module_param cmake build_type`.
 			dap_name = "cppdbg", -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
 			args = { -- Task default arguments.
-				configure = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1", "-G", "MinGW Makefiles" },
+				configure = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1", "-G", "Ninja" },
 				build = { "-j" .. u.num_of_processers }, -- Default arguments that will be always passed at cmake build step.
 			},
 		},

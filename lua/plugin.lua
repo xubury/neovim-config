@@ -16,7 +16,7 @@ local opt = {
 local plugins = {
 	-- Colorscheme
 	{
-        "tanvirtin/monokai.nvim",
+		"tanvirtin/monokai.nvim",
 		priority = 1000,
 		config = function()
 			require("config/colorscheme")

@@ -8,7 +8,7 @@ dapui.setup({
 		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
 		remove = "dd",
-		edit = "e",
+		edit = "i",
 		repl = "r",
 		toggle = "t",
 	},
