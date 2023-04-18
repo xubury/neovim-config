@@ -28,7 +28,3 @@ end)
 vim.keymap.set("n", "<leader>y", function()
 	require("telescope").extensions.neoclip.default()
 end)
-
-vim.keymap.set("n", ";", function()
-	require("telescope.command").load_command()
-end)
