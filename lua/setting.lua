@@ -19,7 +19,7 @@ opt.infercase = true
 opt.smartcase = true
 opt.ignorecase = true
 opt.signcolumn = "yes:1"
-opt.cursorline = true
+opt.cursorline = false
 opt.winblend = 15
 opt.pumblend = 15
 opt.laststatus = 2 -- (3: Global status line)
@@ -81,3 +81,6 @@ vim.api.nvim_create_user_command("Q", "q", {})
 
 -- don't jump while search
 opt.incsearch = false
+
+vim.opt.statusline =
+	"  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  "

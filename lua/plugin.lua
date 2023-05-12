@@ -16,7 +16,7 @@ local opt = {
 local plugins = {
 	-- Colorscheme
 	{
-		"tanvirtin/monokai.nvim",
+        "felipeagc/fleet-theme-nvim",
 		priority = 1000,
 		config = function()
 			require("config/colorscheme")
@@ -134,18 +134,6 @@ local plugins = {
 		event = "VeryLazy",
 	},
 
-	-- Status line
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"arkav/lualine-lsp-progress",
-		},
-		config = function()
-			require("config/nvim-lualine")
-		end,
-	},
-
 	-- Easy find/replace
 	{
 		"nvim-pack/nvim-spectre",
@@ -201,7 +189,7 @@ local plugins = {
 		event = "VeryLazy",
 	},
 	-- Run git command in nvim
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{ "tpope/vim-fugitive" },
 
 	--------------* Git Related Plugin 	*--------------
 
