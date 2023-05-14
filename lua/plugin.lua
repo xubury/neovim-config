@@ -70,18 +70,6 @@ local plugins = {
 		event = "VeryLazy",
 	},
 
-	-- Tabline plugin
-	{
-		"akinsho/bufferline.nvim",
-		version = "v3.*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		init = function()
-			require("init/nvim-bufferline")
-		end,
-		config = function()
-			require("config/nvim-bufferline")
-		end,
-	},
 
 	-- File explorer
 	{
@@ -358,6 +346,19 @@ local plugins = {
 	--------------* DAP Related Plugin *--------------
 
 	--------------* Disabled Plugin *--------------
+	-- Tabline plugin
+	{
+		"akinsho/bufferline.nvim",
+		version = "v3.*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		init = function()
+			require("init/nvim-bufferline")
+		end,
+		config = function()
+			require("config/nvim-bufferline")
+		end,
+        enabled = false,
+	},
 
 	-- Adds indentation guides to all lines
 	{
