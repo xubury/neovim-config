@@ -116,5 +116,5 @@ require("nvim-tree").setup({
 })
 
 vim.keymap.set("n", "<C-b>", function()
-	require("nvim-tree.api").tree.toggle({find_file=false, focus=true})
+	require("nvim-tree.api").tree.toggle({find_file=true, focus=true})
 end)

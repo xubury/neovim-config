@@ -16,7 +16,8 @@ local opt = {
 local plugins = {
 	-- Colorscheme
 	{
-        "felipeagc/fleet-theme-nvim",
+        "catppuccin/nvim",
+        name = "catppuccin",
 		priority = 1000,
 		config = function()
 			require("config/colorscheme")
@@ -69,7 +70,6 @@ local plugins = {
 		end,
 		event = "VeryLazy",
 	},
-
 
 	-- File explorer
 	{
@@ -185,6 +185,7 @@ local plugins = {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"AckslD/nvim-neoclip.lua",
@@ -333,7 +334,6 @@ local plugins = {
 		init = function()
 			require("init/nvim-dap")
 		end,
-		commit = "ffe3e589fe2861b5ed0486832b0974e94587ae23",
 		lazy = true,
 	},
 
@@ -357,7 +357,7 @@ local plugins = {
 		config = function()
 			require("config/nvim-bufferline")
 		end,
-        enabled = false,
+		enabled = false,
 	},
 
 	-- Adds indentation guides to all lines
