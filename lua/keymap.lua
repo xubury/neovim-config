@@ -50,7 +50,6 @@ M.setup = function()
 
 	-- terminal
 	vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
-	vim.keymap.set("t", "jj", "<C-\\><C-N>")
 
 	-- Disable command line history window
     vim.keymap.set("n", "q", "<nop>")
