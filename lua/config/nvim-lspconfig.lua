@@ -75,6 +75,8 @@ lsp_setup("tsserver")
 -- vue
 lsp_setup("volar")
 
+lsp_setup("csharp_ls")
+
 -- Sign icons
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
