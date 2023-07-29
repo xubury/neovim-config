@@ -8,7 +8,7 @@ opt.mouse = "a" -- enable mouse support
 opt.swapfile = false
 opt.termguicolors = true
 
-opt.guifont = "MesloLGM NF"
+opt.guifont = "MesloLGM Nerd Font:h14"
 
 -- UI
 opt.number = true
