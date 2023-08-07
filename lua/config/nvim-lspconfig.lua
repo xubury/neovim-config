@@ -1,7 +1,5 @@
 require("mason-lspconfig").setup({
-	automatic_installation = { exclude = {
-		"clangd",
-	} },
+	automatic_installation = true,
 })
 
 local nvim_lsp = require("lspconfig")
