@@ -21,7 +21,7 @@ Install the following program to configure properly:
 ### GUI related (Optional)
 
 -   neovide
--   Sarasa Gothic NF (Change vim.g.guifont accordingly)
+-   MesloLGM Nerd Font (Change vim.g.guifont accordingly)
 
 ## TODO
 

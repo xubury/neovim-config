@@ -1,4 +1,4 @@
 require("colorizer").setup({
-    '!NvimTree',
-    '!Alpha'
+	"css",
+    "javascript"
 })

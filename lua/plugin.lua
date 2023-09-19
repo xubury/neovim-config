@@ -16,8 +16,8 @@ local opt = {
 local plugins = {
 	-- Colorscheme
 	{
-        "catppuccin/nvim",
-        name = "catppuccin",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 		config = function()
 			require("config/colorscheme")
@@ -144,26 +144,6 @@ local plugins = {
 		ft = "markdown",
 	},
 
-	-- CMake tool
-	{
-		"xubury/neovim-tasks",
-		branch = "rundir",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"jayp0521/mason-nvim-dap.nvim",
-			"rcarriga/nvim-dap-ui",
-		},
-		config = function()
-			require("config/neovim-tasks")
-		end,
-		init = function()
-			require("init/neovim-tasks")
-		end,
-		cmd = { "Task" },
-
-		lazy = true,
-	},
-
 	--------------* Git Related Plugin 	*--------------
 	-- Show git signs in nvim
 	{
@@ -185,7 +165,7 @@ local plugins = {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
+		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"AckslD/nvim-neoclip.lua",
@@ -312,6 +292,7 @@ local plugins = {
 	-- Syntax highlight
 	{
 		"nvim-treesitter/nvim-treesitter",
+		tag = "v0.9.1",
 		build = ":TSUpdate",
 		config = function()
 			require("config/nvim-treesitter")
@@ -344,6 +325,16 @@ local plugins = {
 		lazy = true,
 	},
 	--------------* DAP Related Plugin *--------------
+
+	--------------* Terminal Plugin *--------------
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = function()
+			require("config/toggleterm")
+		end,
+	},
+	--------------* Terminal Plugin *--------------
 
 	--------------* Disabled Plugin *--------------
 	-- Tabline plugin
