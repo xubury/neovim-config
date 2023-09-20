@@ -72,20 +72,19 @@ local plugins = {
 	},
 
 	-- File explorer
-	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icon
-			"s1n7ax/nvim-window-picker",
-		},
-		init = function()
-			require("init/ntree")
-		end,
-		config = function()
-			require("config/ntree")
-		end,
-		event = "VeryLazy",
-	},
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+        event = "VeryLazy",
+        config = function()
+            require("config/neo-tree")
+        end,
+    },
 
 	-- Tmux navigator
 	"christoomey/vim-tmux-navigator",
@@ -144,13 +143,13 @@ local plugins = {
 		ft = "markdown",
 	},
 
-    -- Status line
-    {
-         'nvim-lualine/lualine.nvim',
-        config = function()
-            require("config/lualine")
-        end,
-    },
+	-- Status line
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("config/lualine")
+		end,
+	},
 
 	--------------* Git Related Plugin 	*--------------
 	-- Show git signs in nvim
