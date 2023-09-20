@@ -16,7 +16,6 @@ require("dressing").setup({
 		start_in_insert = true,
 
 		-- These are passed to nvim_open_win
-		override = "SW",
 		border = "rounded",
 		-- 'editor' and 'win' will default to being centered
 		relative = "cursor",
@@ -108,7 +107,6 @@ require("dressing").setup({
 		-- Options for built-in selector
 		builtin = {
 			-- These are passed to nvim_open_win
-			override = "NW",
 			border = "rounded",
 			-- 'editor' and 'win' will default to being centered
 			relative = "editor",

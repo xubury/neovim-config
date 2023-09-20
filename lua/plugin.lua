@@ -144,6 +144,14 @@ local plugins = {
 		ft = "markdown",
 	},
 
+    -- Status line
+    {
+         'nvim-lualine/lualine.nvim',
+        config = function()
+            require("config/lualine")
+        end,
+    },
+
 	--------------* Git Related Plugin 	*--------------
 	-- Show git signs in nvim
 	{
