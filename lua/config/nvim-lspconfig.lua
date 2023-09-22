@@ -4,7 +4,7 @@ require("mason-lspconfig").setup({
 
 local nvim_lsp = require("lspconfig")
 
-vim.lsp.set_log_level("ERROR")
+vim.lsp.set_log_level("OFF")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local on_attach = require("keymap").on_attach

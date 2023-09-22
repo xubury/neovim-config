@@ -57,8 +57,8 @@ vim.keymap.set("", "<leader>j", function()
 	local hint = require("hop.hint")
 	require("hop").hint_vertical({ direction = hint.HintDirection.AFTER_CURSOR })
 end)
+
 vim.keymap.set("", "<leader>J", function()
-	local hint = require("hop.hint")
 	require("hop").hint_vertical()
 end)
 
@@ -69,4 +69,14 @@ end)
 
 vim.keymap.set("", "<leader>gg", function()
 	require("hop").hint_lines()
+end)
+
+vim.keymap.set("", "s", function()
+	local hint = require("hop.hint")
+	require("hop").hint_patterns({  direction = hint.HintDirection.AFTER_CURSOR , current_line_only = false })
+end)
+
+vim.keymap.set("", "S", function()
+	local hint = require("hop.hint")
+	require("hop").hint_patterns({  direction = hint.HintDirection.BEFORE_CURSOR , current_line_only = false })
 end)
