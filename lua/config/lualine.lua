@@ -23,8 +23,6 @@ local bubbles_theme = {
 
     inactive = {
         a = { fg = colors.white, bg = colors.overlay },
-        b = { fg = colors.overlay, bg = colors.overlay },
-        c = { fg = colors.overlay, bg = colors.overlay },
     },
 }
 
@@ -52,7 +50,6 @@ require("lualine").setup({
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { "location" },
     },
     tabline = {},
     extensions = {},
