@@ -1,5 +1,6 @@
 local M = {}
 M.setup = function()
+    vim.keymap.set("v", "Y", "y")
 	-- CTRL-X Cut
 	vim.keymap.set("v", "<C-X>", '"+x')
 
