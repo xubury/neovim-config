@@ -52,14 +52,15 @@ local plugins = {
     -- Window picker
     {
         "s1n7ax/nvim-window-picker",
-        version = "v1.*",
+        name = "window-picker",
+        event = "VeryLazy",
+        version = "v2.*",
         init = function()
             require("init/nvim-window-picker")
         end,
         config = function()
             require("config/nvim-window-picker")
         end,
-        lazy = true,
     },
 
     -- Neovim plugin to improve the default vim.ui interfaces
