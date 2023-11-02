@@ -23,13 +23,13 @@ opt.cursorline = false
 opt.winblend = 15
 opt.pumblend = 15
 opt.laststatus = 2 -- (3: Global status line)
+opt.autoread = true
 
 -- Tabs, indent
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.autoindent = true
 opt.smartindent = true
-opt.autoread = true
 opt.expandtab = true
 
 -- Wrap
