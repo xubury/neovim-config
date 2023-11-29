@@ -53,7 +53,7 @@ M.setup = function()
 	vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
 
 	-- Disable command line history window
-    vim.keymap.set("n", "q", "<nop>")
+    vim.keymap.set("", "q", "<nop>")
 
 	vim.keymap.set("n", "K", "<nop>")
 	vim.keymap.set("v", "K", "<nop>")
