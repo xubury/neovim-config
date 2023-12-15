@@ -59,7 +59,7 @@ local clangd_cap = vim.deepcopy(capabilities)
 clangd_cap.offsetEncoding = { "utf-16" }
 lsp_setup("clangd", {
     capabilities = clangd_cap,
-    cmd = { "clangd", "--background-index", "--header-insertion=never" },
+    cmd = { "clangd", "--header-insertion=never" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
 })
 

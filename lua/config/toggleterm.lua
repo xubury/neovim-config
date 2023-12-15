@@ -1,3 +1,5 @@
-vim.keymap.set("n", "<leader>t" , "<cmd>ToggleTerm<cr>")
+vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<cr>")
 
-require("toggleterm").setup()
+require("toggleterm").setup({
+    shell = "bash --login",
+})
