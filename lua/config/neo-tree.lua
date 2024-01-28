@@ -1,6 +1,22 @@
 vim.keymap.set("n", "<C-b>", "<cmd>Neotree toggle<cr>")
 
 require("neo-tree").setup({
+    filesystem = {
+        filtered_items = {
+            visible = false,
+            hide_dotfiles = true,
+            hide_gitignored = false,
+            hide_by_name = {
+                ".DS_Store",
+                "thumbs.db",
+                "node_modules",
+                "__pycache__",
+            },
+        },
+        follow_current_file = { enabled = true },
+        hijack_netrw_behavior = "open_current",
+        use_libuv_file_watcher = true,
+    },
     window = {
         mappings = {
             ["Y"] = function(state)
@@ -31,7 +47,7 @@ require("neo-tree").setup({
                     if choice then
                         local i = tonumber(choice:sub(1, 1))
                         local result = results[i]
-                        vim.fn.setreg('+', result)
+                        vim.fn.setreg("+", result)
                         vim.notify("Copied: " .. result)
                     end
                 end)

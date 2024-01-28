@@ -164,7 +164,6 @@ local plugins = {
         config = function()
             require("config/gitsigns")
         end,
-        event = "VeryLazy",
     },
     -- Run git command in nvim
     { "tpope/vim-fugitive" },
@@ -247,6 +246,21 @@ local plugins = {
             require("config/nvim-lspconfig")
         end,
         event = "VeryLazy",
+    },
+
+    -- Unreal engine support
+    {
+        "xubury/Unreal.nvim",
+        config = function()
+            -- local unreal = require("unreal.commands")
+            -- print(unreal.LogLevel_Log)
+            -- unreal.LogLevel_Log = 5
+            vim.g.unrealnvim_loglevel = 5
+            vim.g.unrealnvim_debug = true
+        end,
+        dependencies = {
+            "tpope/vim-dispatch",
+        },
     },
 
     -- null-ls

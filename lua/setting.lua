@@ -68,8 +68,8 @@ vim.api.nvim_create_autocmd("FocusGained", { pattern = "*", command = "checktime
 
 -- Forbid neovim formatting comment when changing to a newline
 vim.api.nvim_create_autocmd(
-	"FileType",
-	{ pattern = "*", command = "set formatoptions-=c formatoptions-=r formatoptions-=o" }
+    "FileType",
+    { pattern = "*", command = "set formatoptions-=c formatoptions-=r formatoptions-=o" }
 )
 
 -- Prevent typo
@@ -83,4 +83,4 @@ vim.api.nvim_create_user_command("Q", "q", {})
 opt.incsearch = false
 
 vim.opt.statusline =
-	"  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  "
+    "  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  "

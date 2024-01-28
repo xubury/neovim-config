@@ -62,6 +62,17 @@ lsp_setup("clangd", {
     cmd = { "clangd", "--header-insertion=never" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
 })
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--     callback = function(args)
+--         local client = vim.lsp.get_client_by_id(args.data.client_id)
+--         if client.name == "clangd" then
+--             local path = vim.fs.find({ "compile_commands.json" })
+--             if next(path) == nil then
+--                 vim.lsp.stop_client(args.data.client_id)
+--             end
+--         end
+--     end,
+-- })
 
 -- cmake
 lsp_setup("neocmake")
