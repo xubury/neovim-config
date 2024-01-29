@@ -1,4 +1,4 @@
 require("bufdel").setup({
-	next = "tabs", -- or 'cycle, 'alternate'
-	quit = false, -- quit Neovim when last buffer is closed
+    next = "tabs", -- or 'cycle, 'alternate'
+    quit = false, -- quit Neovim when last buffer is closed
 })

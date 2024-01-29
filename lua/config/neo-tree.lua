@@ -19,6 +19,7 @@ require("neo-tree").setup({
     },
     window = {
         mappings = {
+            ["Z"] = { "expand_all_nodes" },
             ["Y"] = function(state)
                 -- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
                 -- The node is based on [NuiNode](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree#nuitreenode)

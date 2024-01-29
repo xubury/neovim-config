@@ -1,4 +1,4 @@
-local mode = {"n", "x"}
+local mode = { "n", "x" }
 
 vim.keymap.set(mode, "<leader>e", function()
     local hop = require("hop")
