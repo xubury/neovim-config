@@ -342,12 +342,6 @@ local plugins = {
         lazy = true,
     },
 
-    -- My EmmyDeggger
-    {
-        "xubury/Nvim-EmmyLua",
-        build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
-        lazy = true,
-    },
     --------------* DAP Related Plugin *--------------
 
     --------------* Terminal Plugin *--------------
@@ -359,6 +353,13 @@ local plugins = {
         end,
     },
     --------------* Terminal Plugin *--------------
+
+    -- My EmmyDeggger
+    {
+        "xubury/Nvim-EmmyLua",
+        build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
+        lazy = true,
+    },
 
     --------------* Disabled Plugin *--------------
     -- Tabline plugin

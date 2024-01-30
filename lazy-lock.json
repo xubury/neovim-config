@@ -1,5 +1,5 @@
 {
-  "Nvim-EmmyLua": { "branch": "master", "commit": "548beb5e23fa353c6127fa9147d0c073e15a9fe0" },
+  "Nvim-EmmyLua": { "branch": "master", "commit": "354ea925681d6747bcd1eb1705e5c27c7d013d2b" },
   "Unreal.nvim": { "branch": "main", "commit": "ecce8dfd6d769701769205aeecc276a96a97f9c9" },
   "catppuccin": { "branch": "main", "commit": "5e36ca599f4aa41bdd87fbf2c5aae4397ac55074" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },

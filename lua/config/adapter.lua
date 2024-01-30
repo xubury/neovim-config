@@ -4,21 +4,39 @@ local dap = require("dap")
 
 local emmyluaPath = fn.stdpath("data") .. "/lazy/Nvim-EmmyLua"
 
+-- dap.adapters.lua = {
+--     type = "executable",
+--     command = "node",
+--     args = { emmyluaPath .. "/out/debugger/EmmyDebugAdapter.js" },
+--     name = "lua",
+-- }
+
+-- dap.configurations.lua = {
+--     {
+--         name = "Launch EmmyLua",
+--         type = "lua",
+--         codePaths = { "${workspaceFolder}" },
+--         request = "launch",
+--         host = "127.0.0.1",
+--         port = 9966,
+--         ext = { ".lua", ".lua.txt", ".lua.bytes" },
+--     },
+-- }
+
 dap.adapters.lua = {
     type = "executable",
     command = "node",
-    args = { emmyluaPath .. "/out/debugger/EmmyDebugAdapter.js" },
+    args = { emmyluaPath .. "/out/debugger/EmmyAttachDebugAdapter.js" },
     name = "lua",
 }
 
 dap.configurations.lua = {
     {
-        name = "Launch EmmyLua",
+        name = "Attach EmmyLua process",
         type = "lua",
         codePaths = { "${workspaceFolder}" },
-        request = "launch",
-        host = "127.0.0.1",
-        port = 9966,
+        request = "attach",
+        pid = require("dap.utils").pick_process,
         ext = { ".lua", ".lua.txt", ".lua.bytes" },
     },
 }
