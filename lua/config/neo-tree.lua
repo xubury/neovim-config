@@ -13,7 +13,6 @@ require("neo-tree").setup({
                 "__pycache__",
             },
         },
-        follow_current_file = { enabled = false },
         hijack_netrw_behavior = "open_current",
         use_libuv_file_watcher = true,
     },
