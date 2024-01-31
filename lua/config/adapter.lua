@@ -37,7 +37,7 @@ dap.configurations.lua = {
         codePaths = { "${workspaceFolder}" },
         request = "attach",
         pid = require("dap.utils").pick_process,
-        ext = { ".lua", ".lua.txt", ".lua.bytes" },
+        ext = { ".lua" },
     },
 }
 

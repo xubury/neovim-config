@@ -15,6 +15,7 @@ require("neo-tree").setup({
         },
         hijack_netrw_behavior = "open_current",
         use_libuv_file_watcher = true,
+        async_directory_scan  = "always",
     },
     window = {
         mappings = {
