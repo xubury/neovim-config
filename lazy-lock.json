@@ -1,5 +1,5 @@
 {
-  "Nvim-EmmyLua": { "branch": "master", "commit": "354ea925681d6747bcd1eb1705e5c27c7d013d2b" },
+  "Nvim-EmmyLua": { "branch": "master", "commit": "2e778000df3f7b98ade602852b4e3d66b4ed7897" },
   "Unreal.nvim": { "branch": "main", "commit": "ecce8dfd6d769701769205aeecc276a96a97f9c9" },
   "catppuccin": { "branch": "main", "commit": "5e36ca599f4aa41bdd87fbf2c5aae4397ac55074" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
@@ -9,7 +9,7 @@
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "dressing.nvim": { "branch": "master", "commit": "8b7ae53d7f04f33be3439a441db8071c96092d19" },
   "friendly-snippets": { "branch": "main", "commit": "69a2c1675b66e002799f5eef803b87a12f593049" },
-  "gitsigns.nvim": { "branch": "main", "commit": "4aaacbf5e5e2218fd05eb75703fe9e0f85335803" },
+  "gitsigns.nvim": { "branch": "main", "commit": "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae" },
   "hop.nvim": { "branch": "fix-some-bugs", "commit": "2d3085e40154813b034bce1ad034f0d323c0c581" },
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "lsp_signature.nvim": { "branch": "master", "commit": "fed2c8389c148ff1dfdcdca63c2b48d08a50dea0" },
