@@ -356,7 +356,7 @@ local plugins = {
 
     -- My EmmyDeggger
     {
-        "xubury/Nvim-EmmyLua",
+        "xubury/emmylua.nvim",
         build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
         lazy = true,
     },

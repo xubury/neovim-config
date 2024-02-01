@@ -1,8 +1,7 @@
 local Path = require("plenary.path")
 local fn = vim.fn
 local dap = require("dap")
-
-local emmyluaPath = fn.stdpath("data") .. "/lazy/Nvim-EmmyLua"
+local emmylua = require("emmylua")
 
 -- dap.adapters.lua = {
 --     type = "executable",
@@ -23,12 +22,7 @@ local emmyluaPath = fn.stdpath("data") .. "/lazy/Nvim-EmmyLua"
 --     },
 -- }
 
-dap.adapters.lua = {
-    type = "executable",
-    command = "node",
-    args = { emmyluaPath .. "/out/debugger/EmmyAttachDebugAdapter.js" },
-    name = "lua",
-}
+dap.adapters.lua = emmylua.get_attach_adapter()
 
 dap.configurations.lua = {
     {
