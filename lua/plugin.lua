@@ -339,7 +339,6 @@ local plugins = {
         init = function()
             require("init/nvim-dap")
         end,
-        lazy = true,
     },
 
     --------------* DAP Related Plugin *--------------

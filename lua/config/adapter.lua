@@ -3,25 +3,6 @@ local fn = vim.fn
 local dap = require("dap")
 local emmylua = require("emmylua")
 
--- dap.adapters.lua = {
---     type = "executable",
---     command = "node",
---     args = { emmyluaPath .. "/out/debugger/EmmyDebugAdapter.js" },
---     name = "lua",
--- }
-
--- dap.configurations.lua = {
---     {
---         name = "Launch EmmyLua",
---         type = "lua",
---         codePaths = { "${workspaceFolder}" },
---         request = "launch",
---         host = "127.0.0.1",
---         port = 9966,
---         ext = { ".lua", ".lua.txt", ".lua.bytes" },
---     },
--- }
-
 dap.adapters.lua = emmylua.get_attach_adapter()
 
 dap.configurations.lua = {

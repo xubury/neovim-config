@@ -4,6 +4,8 @@ local cmd = vim.cmd
 
 g.mapleader = " "
 
+opt.shadafile = "NONE"
+
 opt.mouse = "a" -- enable mouse support
 opt.swapfile = false
 opt.termguicolors = true
