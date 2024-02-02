@@ -14,12 +14,12 @@ require("neo-tree").setup({
             },
         },
         hijack_netrw_behavior = "open_current",
-        use_libuv_file_watcher = true,
         async_directory_scan  = "always",
     },
     window = {
         mappings = {
-            ["Z"] = { "expand_all_nodes" },
+            ["Z"] = { "close_all_nodes:" },
+            ["z"] = {},
             ["Y"] = function(state)
                 -- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
                 -- The node is based on [NuiNode](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree#nuitreenode)
