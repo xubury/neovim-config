@@ -40,7 +40,7 @@ lsp_setup("lua_ls", {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
+                -- library = vim.api.nvim_get_runtime_file("", true),
                 checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
             },
             semantic = {
