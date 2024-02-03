@@ -9,20 +9,10 @@ Install the following program to configure properly:
 ### Basic
 
 -   Any terminal that support guicolor
+-   nerdfonts
 -   git
--   cmake
 -   wget
--   fzf sed ripgrep
+-   fzf sed ripgrep fd
 -   node npm yarn
 -   cargo
 -   go
--   nerdfonts
-
-### GUI related (Optional)
-
--   neovide
--   MesloLGM Nerd Font (Change vim.g.guifont accordingly)
-
-## TODO
-
--   neogit is unstable

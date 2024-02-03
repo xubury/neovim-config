@@ -60,7 +60,7 @@ M.setup = function()
     vim.keymap.set("", "<leader>c", toggle_qf)
 
     -- Last buffer
-    vim.keymap.set("", "<leader><tab>", "<cmd>b# <cr>")
+    vim.keymap.set("", "<leader><tab>", "<cmd>b#<cr>")
 
     -- no highlight
     vim.keymap.set("n", "<leader>n", "<cmd>noh<cr>")

@@ -168,8 +168,6 @@ local plugins = {
     -- Run git command in nvim
     { "tpope/vim-fugitive" },
 
-    --------------* Git Related Plugin 	*--------------
-
     --------------* Telescope Related Plugin *--------------
     -- Telescope
     {
@@ -197,7 +195,6 @@ local plugins = {
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         lazy = true,
     },
-    --------------* Telescope Related Plugin *--------------
 
     --------------* Mason Related Plugin *--------------
     -- Mason lsp/dap tool package manager
@@ -229,7 +226,6 @@ local plugins = {
         },
         lazy = true,
     },
-    --------------* Mason Related Plugin *--------------
 
     --------------* LSP Related Plugin *--------------
     -- LSP support
@@ -323,7 +319,6 @@ local plugins = {
         end,
         event = "VeryLazy",
     },
-    --------------* LSP Related Plugin *--------------
 
     --------------* DAP Related Plugin *--------------
     -- Visual Debugger
@@ -341,7 +336,11 @@ local plugins = {
         end,
     },
 
-    --------------* DAP Related Plugin *--------------
+    {
+        "xubury/emmylua.nvim",
+        build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
+        lazy = true,
+    },
 
     --------------* Terminal Plugin *--------------
     {
@@ -351,50 +350,8 @@ local plugins = {
             require("config/toggleterm")
         end,
     },
-    --------------* Terminal Plugin *--------------
-
-    -- My EmmyDeggger
-    {
-        "xubury/emmylua.nvim",
-        build = "npm install && npm run compile && node ./build/prepare-version.js && node ./build/prepare.js",
-        lazy = true,
-    },
 
     --------------* Disabled Plugin *--------------
-    -- Tabline plugin
-    {
-        "akinsho/bufferline.nvim",
-        version = "v3.*",
-        dependencies = "nvim-tree/nvim-web-devicons",
-        init = function()
-            require("init/nvim-bufferline")
-        end,
-        config = function()
-            require("config/nvim-bufferline")
-        end,
-        enabled = false,
-    },
-
-    -- Adds indentation guides to all lines
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("config/indentline")
-        end,
-        enabled = false,
-    },
-
-    -- Git plugin (Some features are not working correctly, disabled for now.)
-    {
-        "TimUntersberger/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = function()
-            require("neogit").setup()
-        end,
-        enabled = false,
-    },
     --------------* Disable Plugin *--------------
 }
 
