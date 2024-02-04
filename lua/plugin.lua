@@ -154,6 +154,10 @@ local plugins = {
         end,
     },
 
+    {
+        "arkav/lualine-lsp-progress"
+    },
+
     --------------* Git Related Plugin 	*--------------
     -- Show git signs in nvim
     {
