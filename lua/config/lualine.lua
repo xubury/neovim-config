@@ -1,12 +1,14 @@
+local palette = require("catppuccin.palettes").get_palette()
+
 local colors = {
-    blue = "#80a0ff",
-    cyan = "#79dac8",
+    blue = palette.blue,
+    cyan = palette.sky,
     black = "#080808",
-    white = "#cdd6f4",
-    red = "#ff5189",
-    violet = "#d183e8",
-    grey = "#303030",
-    overlay = "#313244",
+    white = palette.text,
+    red = palette.red,
+    violet = palette.mauve,
+    base = palette.base,
+    overlay = palette.surface0,
 }
 
 local bubbles_theme = {
@@ -22,7 +24,7 @@ local bubbles_theme = {
     terminal = { a = { fg = colors.black, bg = colors.red } },
 
     inactive = {
-        a = { fg = colors.white, bg = colors.overlay },
+        a = { fg = colors.white, bg = colors.base },
     },
 }
 
