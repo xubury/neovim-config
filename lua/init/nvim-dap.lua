@@ -25,8 +25,8 @@ vim.keymap.set("n", "<F12>", function()
     require("dap").step_out()
 end)
 
--- vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "@debug", linehl = "@debug", numhl = "@debug" })
--- vim.fn.sign_define("DapBreakpointCondition", { text = "ﳁ", texthl = "@debug", linehl = "@debug", numhl = "@debug" })
--- vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "@debug", linehl = "@debug", numhl = "@debug" })
--- vim.fn.sign_define("DapLogPoint", { text = "", texthl = "@character", linehl = "@character", numhl = "@character" })
--- vim.fn.sign_define("DapStopped", { text = "", texthl = "@exception", linehl = "@exception", numhl = "@exception" })
+local sign = vim.fn.sign_define
+
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})

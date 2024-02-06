@@ -26,8 +26,8 @@ local plugins = {
 
     -- Cursor hop
     {
-        "aznhe21/hop.nvim",
-        branch = "fix-some-bugs",
+        "smoka7/hop.nvim",
+        -- branch = "fix-some-bugs",
         init = function()
             require("init/nvim-hop")
         end,
@@ -304,7 +304,7 @@ local plugins = {
 
     -- LSP outline
     {
-        "simrat39/symbols-outline.nvim",
+        "hedyhli/outline.nvim",
         config = function()
             require("config/nvim-symbols-outline")
         end,

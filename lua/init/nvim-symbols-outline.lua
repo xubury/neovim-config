@@ -1,3 +1,3 @@
 vim.keymap.set("n", "<leader>o", function()
-    require("symbols-outline").toggle_outline()
+    require("outline").toggle()
 end)
