@@ -149,13 +149,12 @@ local plugins = {
     -- Status line
     {
         "nvim-lualine/lualine.nvim",
+        dependencies = {
+            "arkav/lualine-lsp-progress",
+        },
         config = function()
             require("config/lualine")
         end,
-    },
-
-    {
-        "arkav/lualine-lsp-progress"
     },
 
     --------------* Git Related Plugin 	*--------------
