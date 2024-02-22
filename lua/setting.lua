@@ -62,9 +62,6 @@ opt.clipboard:append("unnamedplus")
 
 cmd("syntax enable")
 
--- set ft: GLTF -> json
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.gltf", command = "setfiletype json" })
-
 -- Auto update file change on disk
 vim.api.nvim_create_autocmd("FocusGained", { pattern = "*", command = "checktime" })
 
@@ -86,3 +83,4 @@ opt.incsearch = false
 
 vim.opt.statusline =
     "  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  "
+
