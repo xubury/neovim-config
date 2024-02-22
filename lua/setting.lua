@@ -80,7 +80,3 @@ vim.api.nvim_create_user_command("Q", "q", {})
 
 -- don't jump while search
 opt.incsearch = false
-
-vim.opt.statusline =
-    "  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  "
-
