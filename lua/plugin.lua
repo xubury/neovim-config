@@ -37,6 +37,11 @@ local plugins = {
         lazy = true,
     },
 
+    {
+        "jesseleite/vim-noh",
+        event = "VeryLazy",
+    },
+
     -- Buffer delete
     {
         "ojroques/nvim-bufdel",
