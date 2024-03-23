@@ -97,32 +97,6 @@ M.setup = function()
     })
 end
 
-local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-        async = true,
-        filter = function(client)
-            -- apply whatever logic you want (in this example, we'll only use null-ls)
-            return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-    })
-end
-
--- TODO: not working
--- local lsp_range_formatting = function(bufnr)
---     vim.lsp.buf.format({
---         filter = function(client)
---             -- apply whatever logic you want (in this example, we'll only use null-ls)
---             return client.name == "null-ls"
---         end,
---         bufnr = bufnr,
---         range = {
---             ['start'] = vim.api.nvim_buf_get_mark(0, '.'),
---             ['end'] = vim.api.nvim_buf_get_mark(0, 'v'),
---         },
---     })
--- end
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 M.on_attach = function(_, bufnr)
@@ -156,8 +130,6 @@ M.on_attach = function(_, bufnr)
     vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
     -- vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-    vim.keymap.set("n", "<A-F>", lsp_formatting, opts)
-    -- vim.keymap.set("v", "<A-F>", lsp_range_formatting, opts)
 end
 
 return M

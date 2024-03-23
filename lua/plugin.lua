@@ -225,14 +225,18 @@ local plugins = {
         lazy = true,
     },
 
-    -- Mason null-ls
     {
-        "jayp0521/mason-null-ls.nvim",
+        "nvimdev/guard.nvim",
         dependencies = {
-            "jose-elias-alvarez/null-ls.nvim",
-            "williamboman/mason.nvim",
+            "nvimdev/guard-collection",
         },
-        lazy = true,
+        init = function()
+            require("init/guard")
+        end,
+        config = function()
+            require("config/guard")
+        end,
+        lazy = true
     },
 
     --------------* LSP Related Plugin *--------------
@@ -240,7 +244,6 @@ local plugins = {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "jose-elias-alvarez/null-ls.nvim",
             "hrsh7th/cmp-nvim-lsp",
             "williamboman/mason-lspconfig.nvim", -- mason-lspconfig need to load before lspconfig
             "williamboman/mason.nvim",
@@ -265,17 +268,6 @@ local plugins = {
         dependencies = {
             "tpope/vim-dispatch",
         },
-    },
-
-    -- null-ls
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-
-        config = function()
-            require("config/nvim-null-ls")
-        end,
-
-        event = "VeryLazy",
     },
 
     -- LSP signature
