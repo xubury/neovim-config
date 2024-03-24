@@ -17,12 +17,10 @@ local bubbles_theme = {
         b = {},
         c = {},
     },
-
     insert = { a = { fg = colors.black, bg = colors.blue } },
     visual = { a = { fg = colors.black, bg = colors.cyan } },
     replace = { a = { fg = colors.black, bg = colors.red } },
     terminal = { a = { fg = colors.black, bg = colors.red } },
-
     inactive = {
         a = { fg = colors.white, bg = colors.base },
     },
@@ -30,7 +28,7 @@ local bubbles_theme = {
 
 require("lualine").setup({
     options = {
-        theme = bubbles_theme,
+        theme = "catppuccin",
         component_separators = "|",
         section_separators = { left = "", right = "" },
     },
@@ -39,9 +37,9 @@ require("lualine").setup({
             { "mode", separator = { left = "" }, right_padding = 2 },
         },
         lualine_b = { "filename", "branch" },
-        lualine_c = { "fileformat", "lsp_progress" },
+        lualine_c = { "lsp_progress" },
         lualine_x = {},
-        lualine_y = { "filetype", "progress" },
+        lualine_y = { "fileformat", "filetype", "progress" },
         lualine_z = {
             { "location", separator = { right = "" }, left_padding = 2 },
         },
