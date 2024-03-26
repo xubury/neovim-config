@@ -1,8 +1,8 @@
 local ft = require('guard.filetype')
 
 ft('c,cpp,glsl'):fmt({ cmd = 'clang-format.cmd' })
-ft('lua'):fmt('stylua')
-ft('javascript,typescript'):fmt('prettier')
+ft('lua'):fmt('lsp')
+ft('javascript,typescript'):fmt({ cmd = 'prettier.cmd' })
 
 -- Call setup() LAST!
 require('guard').setup({
