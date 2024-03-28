@@ -1,11 +1,16 @@
-local ft = require('guard.filetype')
+local ft = require("guard.filetype")
 
-ft('c,cpp,glsl'):fmt({ cmd = 'clang-format.cmd' })
-ft('lua'):fmt('lsp')
-ft('javascript,typescript'):fmt({ cmd = 'prettier.cmd' })
+ft("c,cpp,glsl"):fmt({ cmd = "clang-format.cmd", stdin = true })
+ft("lua"):fmt({ cmd = "stylua.cmd", args = { "-" }, stdin = true })
+ft("javascript,typescript"):fmt({
+    cmd = "prettier.cmd",
+    args = { "--stdin-filepath" },
+    fname = true,
+    stdin = true,
+})
 
 -- Call setup() LAST!
-require('guard').setup({
+require("guard").setup({
     -- Choose to format on every write to a buffer
     fmt_on_save = false,
     -- Use lsp if no formatter was defined for this filetype
