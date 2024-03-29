@@ -1,5 +1,6 @@
 {
   "Unreal.nvim": { "branch": "main", "commit": "5aec548dc3e28040747f4245cb8023ab58ae53fd" },
+  "bufdelete.nvim": { "branch": "master", "commit": "f6bcea78afb3060b198125256f897040538bcb81" },
   "catppuccin": { "branch": "main", "commit": "f66654d5d5190865333e8e46474c1593302c558e" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
@@ -25,7 +26,6 @@
   "nerdcommenter": { "branch": "master", "commit": "e361a44230860d616f799a337bc58f5218ab6e9c" },
   "nui.nvim": { "branch": "main", "commit": "cbd2668414331c10039278f558630ed19b93e69b" },
   "nvim-autopairs": { "branch": "master", "commit": "dbfc1c34bed415906395db8303c71039b3a3ffb4" },
-  "nvim-bufdel": { "branch": "main", "commit": "523d58e94e7212fff3e05c247b962dc8f93bcfde" },
   "nvim-cmp": { "branch": "main", "commit": "97dc716fc914c46577a4f254035ebef1aa72558a" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
   "nvim-dap": { "branch": "master", "commit": "405df1dcc2e395ab5173a9c3d00e03942c023074" },

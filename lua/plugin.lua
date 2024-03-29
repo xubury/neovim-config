@@ -44,12 +44,9 @@ local plugins = {
 
     -- Buffer delete
     {
-        "ojroques/nvim-bufdel",
+        "famiu/bufdelete.nvim",
         init = function()
-            require("init/nvim-bufdel")
-        end,
-        config = function()
-            require("config/nvim-bufdel")
+            require("init/nvim-bufdelete")
         end,
         lazy = true,
     },
