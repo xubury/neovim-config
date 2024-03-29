@@ -56,3 +56,4 @@ require("lualine").setup({
 })
 
 vim.opt.showmode = false
+vim.opt.cmdheight = 0
