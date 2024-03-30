@@ -238,10 +238,10 @@ local plugins = {
             "nvimdev/guard-collection",
         },
         init = function()
-            require("init/guard")
+            require("init/nvim-guard")
         end,
         config = function()
-            require("config/guard")
+            require("config/nvim-guard")
         end,
         lazy = true,
     },
