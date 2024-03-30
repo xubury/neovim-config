@@ -37,7 +37,7 @@ require("lualine").setup({
             { "mode", separator = { left = "" }, right_padding = 2 },
         },
         lualine_b = { "filename", "branch" },
-        lualine_c = { "lsp_progress" },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = { "fileformat", "filetype", "progress" },
         lualine_z = {
@@ -56,4 +56,3 @@ require("lualine").setup({
 })
 
 vim.opt.showmode = false
-vim.opt.cmdheight = 0

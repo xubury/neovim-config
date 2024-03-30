@@ -151,11 +151,20 @@ local plugins = {
     -- Status line
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "arkav/lualine-lsp-progress",
-        },
+        dependencies = {},
         config = function()
             require("config/lualine")
+        end,
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        init = function()
+            require("init/noice")
         end,
     },
 
@@ -184,6 +193,7 @@ local plugins = {
             "nvim-telescope/telescope-fzf-native.nvim",
             "nvim-telescope/telescope-project.nvim",
             "nvim-telescope/telescope-file-browser.nvim",
+            "nvim-telescope/telescope-ui-select.nvim",
         },
         init = function()
             require("init/nvim-telescope")
@@ -191,7 +201,7 @@ local plugins = {
         config = function()
             require("config/nvim-telescope")
         end,
-        lazy = true,
+        event = "VeryLazy",
     },
 
     -- Telecope extensions
@@ -233,7 +243,7 @@ local plugins = {
         config = function()
             require("config/guard")
         end,
-        lazy = true
+        lazy = true,
     },
 
     --------------* LSP Related Plugin *--------------
@@ -267,14 +277,14 @@ local plugins = {
         },
     },
 
-    -- LSP signature
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-            require("config/nvim-lsp_signature")
-        end,
-        event = "VeryLazy",
-    },
+    -- -- LSP signature
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function()
+    --         require("config/nvim-lsp_signature")
+    --     end,
+    --     event = "VeryLazy",
+    -- },
 
     -- LSP complete menu
     {
@@ -323,7 +333,7 @@ local plugins = {
         "mfussenegger/nvim-dap",
         dependencies = {
             "rcarriga/nvim-dap-ui",
-            "nvim-neotest/nvim-nio"
+            "nvim-neotest/nvim-nio",
         },
         config = function()
             require("config/adapter")
