@@ -89,7 +89,7 @@ M.setup = function()
     vim.api.nvim_create_autocmd("FileType", {
         pattern = { "qf", "help", "git", "gitcommit", "spectre_panel", "fugitive", "fugitiveblame" },
         callback = function(event)
-            vim.keymap.set("n", "q", "<cmd>close<cr>", {
+            vim.keymap.set("n", "q", "<cmd>q<cr>", {
                 buffer = event.buf,
                 silent = true,
             })

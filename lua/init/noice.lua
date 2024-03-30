@@ -1,14 +1,7 @@
+-- require("notify").setup({
+--     top_down = false,
+-- })
 require("noice").setup({
-    routes = {
-        {
-            filter = {
-                event = "msg_show",
-                kind = "",
-                find = "written",
-            },
-            opts = { skip = true },
-        },
-    },
     lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
@@ -20,6 +13,7 @@ require("noice").setup({
     notify = {
         enabled = true,
         view = "notify",
+        opts = { merge = true },
     },
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
@@ -54,7 +48,7 @@ require("noice").setup({
         view_error = "mini", -- view for errors
         view_warn = "mini", -- view for warnings
         view_history = "messages", -- view for :messages
-        view_search = false, -- view for search count messages. Set to `false` to disable
+        view_search = "mini", -- view for search count messages. Set to `false` to disable
     },
     -- you can enable a preset for easier configuration
     presets = {
@@ -63,6 +57,28 @@ require("noice").setup({
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
+    },
+    routes = {
+        {
+            filter = {
+                event = "notify",
+                min_height = 10,
+            },
+            view = "split",
+        },
+        {
+            filter = {
+                event = "msg_show",
+                any = {
+                    { find = "%d+L, %d+B" },
+                    { find = "; after #%d+" },
+                    { find = "; before #%d+" },
+                    { find = "fewer" },
+                    { find = "more" },
+                },
+            },
+            view = "mini",
+        },
     },
 })
 

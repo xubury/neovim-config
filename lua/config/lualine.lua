@@ -52,7 +52,7 @@ require("lualine").setup({
         lualine_y = {},
     },
     tabline = {},
-    extensions = {},
+    extensions = { "nvim-dap-ui", "toggleterm", "neo-tree", "quickfix", "fugitive" },
 })
 
 vim.opt.showmode = false
