@@ -15,7 +15,7 @@ require("gitsigns").setup({
                 return "g]"
             end
             vim.schedule(function()
-                gs.next_hunk()
+                gs.next_hunk({ navigation_message = false })
             end)
             return "<Ignore>"
         end, { expr = true })
@@ -25,14 +25,14 @@ require("gitsigns").setup({
                 return "g["
             end
             vim.schedule(function()
-                gs.prev_hunk()
+                gs.prev_hunk({ navigation_message = false })
             end)
             return "<Ignore>"
         end, { expr = true })
 
         -- Actions
-        map({ "n", "v" }, "gs", ":Gitsigns stage_hunk<CR>")
-        map({ "n", "v" }, "gu", ":Gitsigns reset_hunk<CR>")
+        map({ "n", "v" }, "gs", "<cmd>Gitsigns stage_hunk<CR>")
+        map({ "n", "v" }, "gu", "<cmd>Gitsigns reset_hunk<CR>")
         map("n", "gS", gs.stage_buffer)
         map("n", "gU", gs.reset_buffer)
         map("n", "gs", gs.preview_hunk)

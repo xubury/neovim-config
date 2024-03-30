@@ -80,3 +80,5 @@ vim.api.nvim_create_user_command("Q", "q", {})
 
 -- don't jump while search
 opt.incsearch = false
+
+vim.opt.shortmess = "filnxtToOFIW"

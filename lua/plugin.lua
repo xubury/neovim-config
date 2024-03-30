@@ -164,7 +164,7 @@ local plugins = {
             "rcarriga/nvim-notify",
         },
         init = function()
-            require("init/noice")
+            require("init/nvim-noice")
         end,
     },
 
@@ -175,8 +175,8 @@ local plugins = {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        config = function()
-            require("config/gitsigns")
+        init = function()
+            require("init/gitsigns")
         end,
     },
     -- Run git command in nvim
