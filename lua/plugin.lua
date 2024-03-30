@@ -106,7 +106,15 @@ local plugins = {
     { "tpope/vim-surround", event = "VeryLazy" },
 
     -- Multi cursor
-    { "mg979/vim-visual-multi", event = "VeryLazy" },
+    {
+        "mg979/vim-visual-multi",
+        config = function()
+            vim.g.VM_silent_exit = 1
+            vim.g.VM_quit_after_leaving_insert_mode = 1
+            vim.g.VM_show_warnings = 0
+        end,
+        event = "VeryLazy",
+    },
 
     -- Commenter
     {

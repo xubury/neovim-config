@@ -1,6 +1,8 @@
--- require("notify").setup({
---     top_down = false,
--- })
+require("notify").setup({
+    stages = "static",
+    timeout = 1000,
+    top_down = true,
+})
 require("noice").setup({
     lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -60,6 +62,8 @@ require("noice").setup({
                 any = {
                     { find = "; after #%d+" },
                     { find = "; before #%d+" },
+                    { find = "fewer" },
+                    { find = "more" },
                 },
             },
             view = "mini",
