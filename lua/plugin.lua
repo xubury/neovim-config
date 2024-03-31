@@ -182,7 +182,6 @@ local plugins = {
         config = function()
             require("config/nvim-noice")
         end,
-        event = "VeryLazy",
     },
 
     --------------* Git Related Plugin 	*--------------
