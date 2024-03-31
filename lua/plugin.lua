@@ -195,6 +195,7 @@ local plugins = {
         init = function()
             require("init/gitsigns")
         end,
+        event = "VeryLazy",
     },
     -- Run git command in nvim
     { "tpope/vim-fugitive", event = "VeryLazy" },
