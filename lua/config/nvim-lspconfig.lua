@@ -1,7 +1,3 @@
-require("mason-lspconfig").setup({
-    automatic_installation = true,
-})
-
 local nvim_lsp = require("lspconfig")
 local root_pattern = require("lspconfig.util").root_pattern
 

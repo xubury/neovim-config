@@ -8,6 +8,8 @@ local opt = {
                 "zipPlugin",
                 "tarPlugin",
                 "tohtml",
+                "spellfile",
+                "rplugin",
             },
         },
     },
@@ -55,7 +57,6 @@ local plugins = {
     {
         "s1n7ax/nvim-window-picker",
         name = "window-picker",
-        event = "VeryLazy",
         version = "v2.*",
         init = function()
             require("init/nvim-window-picker")
@@ -63,6 +64,8 @@ local plugins = {
         config = function()
             require("config/nvim-window-picker")
         end,
+        event = "VeryLazy",
+        lazy = true,
     },
 
     -- Neovim plugin to improve the default vim.ui interfaces
@@ -92,7 +95,7 @@ local plugins = {
     },
 
     -- Tmux navigator
-    "christoomey/vim-tmux-navigator",
+    { "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 
     {
         "windwp/nvim-autopairs",
@@ -102,8 +105,11 @@ local plugins = {
         event = "VeryLazy",
     },
 
-    -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
-    { "tpope/vim-surround", event = "VeryLazy" },
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+    },
 
     -- Multi cursor
     {
@@ -166,14 +172,14 @@ local plugins = {
     },
     {
         "folke/noice.nvim",
-        event = "VeryLazy",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         },
-        init = function()
-            require("init/nvim-noice")
+        config = function()
+            require("config/nvim-noice")
         end,
+        event = "VeryLazy",
     },
 
     --------------* Git Related Plugin 	*--------------
@@ -188,7 +194,7 @@ local plugins = {
         end,
     },
     -- Run git command in nvim
-    { "tpope/vim-fugitive" },
+    { "tpope/vim-fugitive", event = "VeryLazy" },
 
     --------------* Telescope Related Plugin *--------------
     -- Telescope
@@ -234,7 +240,6 @@ local plugins = {
     {
         "jayp0521/mason-nvim-dap.nvim",
         dependencies = {
-            "mfussenegger/nvim-dap",
             "williamboman/mason.nvim",
         },
         lazy = true,
@@ -283,16 +288,8 @@ local plugins = {
         dependencies = {
             "tpope/vim-dispatch",
         },
+        event = "VeryLazy",
     },
-
-    -- -- LSP signature
-    -- {
-    --     "ray-x/lsp_signature.nvim",
-    --     config = function()
-    --         require("config/nvim-lsp_signature")
-    --     end,
-    --     event = "VeryLazy",
-    -- },
 
     -- LSP complete menu
     {
@@ -350,6 +347,7 @@ local plugins = {
         init = function()
             require("init/nvim-dap")
         end,
+        lazy = true,
     },
 
     {
@@ -365,6 +363,7 @@ local plugins = {
         config = function()
             require("config/toggleterm")
         end,
+        lazy = true,
     },
 
     --------------* Disabled Plugin *--------------
