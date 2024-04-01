@@ -1,6 +1,6 @@
 require("notify").setup({
     stages = "static",
-    timeout = 1000,
+    timeout = 1500,
     top_down = true,
 })
 require("noice").setup({
