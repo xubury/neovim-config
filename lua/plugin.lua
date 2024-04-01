@@ -363,6 +363,9 @@ local plugins = {
     {
         "akinsho/toggleterm.nvim",
         version = "*",
+        init = function()
+            require("init/toggleterm")
+        end,
         config = function()
             require("config/toggleterm")
         end,
