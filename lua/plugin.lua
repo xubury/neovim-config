@@ -364,10 +364,10 @@ local plugins = {
         "akinsho/toggleterm.nvim",
         version = "*",
         init = function()
-            require("init/toggleterm")
+            require("init/nvim-toggleterm")
         end,
         config = function()
-            require("config/toggleterm")
+            require("config/nvim-toggleterm")
         end,
         lazy = true,
     },
