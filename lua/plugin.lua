@@ -68,15 +68,6 @@ local plugins = {
         lazy = true,
     },
 
-    -- Neovim plugin to improve the default vim.ui interfaces
-    {
-        "stevearc/dressing.nvim",
-        config = function()
-            require("config/nvim-dressing")
-        end,
-        event = "VeryLazy",
-    },
-
     -- File explorer
     {
         "nvim-neo-tree/neo-tree.nvim",
