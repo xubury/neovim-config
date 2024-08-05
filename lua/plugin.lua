@@ -318,7 +318,7 @@ local plugins = {
     -- Syntax highlight
     {
         "nvim-treesitter/nvim-treesitter",
-        tag = "v0.9.1",
+        tag = "v0.9.2",
         build = ":TSUpdate",
         config = function()
             require("config/nvim-treesitter")
