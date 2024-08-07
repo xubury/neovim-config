@@ -4,11 +4,12 @@ local root_pattern = require("lspconfig.util").root_pattern
 vim.lsp.set_log_level("OFF")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local on_attach = require("keymap").on_attach
 
 local function lsp_setup(lsp, extra)
     local defaults = {
-        on_attach = on_attach,
+        on_attach = function(client, bufnr)
+            require("keymap").on_attach(client, bufnr)
+        end,
         capabilities = capabilities,
     }
     nvim_lsp[lsp].setup(vim.tbl_extend("force", defaults, extra or {}))
