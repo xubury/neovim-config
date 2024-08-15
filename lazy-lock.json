@@ -1,7 +1,7 @@
 {
   "Unreal.nvim": { "branch": "main", "commit": "5aec548dc3e28040747f4245cb8023ab58ae53fd" },
   "bufdelete.nvim": { "branch": "master", "commit": "f6bcea78afb3060b198125256f897040538bcb81" },
-  "catppuccin": { "branch": "main", "commit": "ba5f4153a5dad99505baba936bd0373534400ac3" },
+  "catppuccin": { "branch": "main", "commit": "18bab5ec4c782cdf7d7525dbe89c60bfa02fc195" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
@@ -9,7 +9,7 @@
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "emmylua.nvim": { "branch": "master", "commit": "3bf67d39d77b4f94fa549b0b23124f474d0b7ee3" },
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
-  "gitsigns.nvim": { "branch": "main", "commit": "58bd9e98d8e3c5a1c98af312e85247ee1afd3ed2" },
+  "gitsigns.nvim": { "branch": "main", "commit": "562dc47189ad3c8696dbf460d38603a74d544849" },
   "guard-collection": { "branch": "main", "commit": "de6587e99371aeb92cfda3415b6a696c1f55d397" },
   "guard.nvim": { "branch": "main", "commit": "14a8e35993c4513da1c93719234de09e7d3a91a2" },
   "hop.nvim": { "branch": "master", "commit": "036462a345792279c58f2f6445756efab706f04a" },
