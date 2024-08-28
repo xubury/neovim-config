@@ -3,26 +3,25 @@ local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local project_actions = require("telescope._extensions.project.actions")
 
--- disable preview binaries
 local previewers = require("telescope.previewers")
-local Job = require("plenary.job")
+local _bad = { ".*%.csv", ".*%.scm", ".*%.asset" }
+local bad_files = function(filepath)
+    for _, v in ipairs(_bad) do
+        if filepath:match(v) then
+            return false
+        end
+    end
+
+    return true
+end
+
 local new_maker = function(filepath, bufnr, opts)
-    filepath = vim.fn.expand(filepath)
-    Job:new({
-        command = "file",
-        args = { "--mime-type", "-b", filepath },
-        on_exit = function(j)
-            local mime_type = vim.split(j:result()[1], "/")[1]
-            if mime_type == "text" then
-                previewers.buffer_previewer_maker(filepath, bufnr, opts)
-            else
-                -- maybe we want to write something to the buffer here
-                vim.schedule(function()
-                    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
-                end)
-            end
-        end,
-    }):sync()
+    opts = opts or {}
+    if opts.use_ft_detect == nil then
+        opts.use_ft_detect = true
+    end
+    opts.use_ft_detect = opts.use_ft_detect == false and false or bad_files(filepath)
+    previewers.buffer_previewer_maker(filepath, bufnr, opts)
 end
 
 telescope.setup({
@@ -43,10 +42,26 @@ telescope.setup({
             end,
         },
     },
+    pickers = {
+        find_files = {
+            find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
+            preview = false,
+        },
+    },
     defaults = {
         buffer_previewer_maker = new_maker,
         preview = {
             timeout = 500,
+            check_mime_type = true,
+        },
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
         },
         mappings = {
             i = {

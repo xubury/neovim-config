@@ -9,6 +9,7 @@ Install the following program to configure properly:
 ### Basic
 
 -   Any terminal that support guicolor
+-   file
 -   nerdfonts
 -   git
 -   wget
