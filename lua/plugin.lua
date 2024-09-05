@@ -319,7 +319,8 @@ local plugins = {
     -- Syntax highlight
     {
         "nvim-treesitter/nvim-treesitter",
-        tag = "v0.9.2",
+        -- tag = "v0.9.2",
+        commit = "58c85bf70fd8322d3a6b33b3e2de98aa81926d5c", -- fix vimdoc conceal
         build = ":TSUpdate",
         config = function()
             require("config/nvim-treesitter")
