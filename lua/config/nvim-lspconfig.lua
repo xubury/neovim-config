@@ -53,12 +53,6 @@ lsp_setup("neocmake")
 -- python
 lsp_setup("pyright")
 
--- typescript
-lsp_setup("tsserver")
-
--- vue
-lsp_setup("volar")
-
 lsp_setup("csharp_ls")
 
 -- Sign icons
