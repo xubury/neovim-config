@@ -112,6 +112,9 @@ local plugins = {
             vim.g.VM_silent_exit = 1
             vim.g.VM_quit_after_leaving_insert_mode = 1
             vim.g.VM_show_warnings = 0
+            vim.cmd([[
+            autocmd User visual_multi_mappings nmap <buffer> p "+<Plug>(VM-p-Paste)
+            ]])
         end,
         event = "VeryLazy",
     },
@@ -166,7 +169,7 @@ local plugins = {
     },
     {
         "folke/noice.nvim",
-        -- commit = "b3f08e6",
+        commit = "b3f08e6",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
