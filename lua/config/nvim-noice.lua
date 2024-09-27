@@ -19,14 +19,19 @@ require("noice").setup({
     },
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
-        view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+        view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
         opts = {}, -- global options for the cmdline. See section on views
+
+        format = {
+            search_down = { view = "cmdline_popup", kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+            search_up = { view = "cmdline_popup", kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+        },
     },
     messages = {
         -- NOTE: If you enable messages, then the cmdline is enabled automatically.
         -- This is a current Neovim limitation.
         enabled = true, -- enables the Noice messages UI
-        view = "notify", -- default view for messages
+        view = "mini", -- default view for messages
         view_error = "mini", -- view for errors
         view_warn = "mini", -- view for warnings
         view_history = "messages", -- view for :messages
@@ -42,23 +47,39 @@ require("noice").setup({
     },
     routes = {
         {
+            view = "split",
             filter = {
                 event = "msg_show",
-                find = "%d+L, %d+B",
+                kind = { "echo", "quickfix" },
             },
-            opts = { skip = true },
         },
         {
+            view = "split",
             filter = {
                 event = "msg_show",
-                any = {
-                    { find = "; after #%d+" },
-                    { find = "; before #%d+" },
-                    { find = "fewer" },
-                    { find = "more" },
+                kind = { "" },
+                ["not"] = {
+                    any = {
+                        { find = "%d+L, %d+B" },
+                        { find = "/.+" },
+                        { find = "; after #%d+" },
+                        { find = "; before #%d+" },
+                        { find = "fewer" },
+                        { find = "more" },
+                        { find = "%d+ lines yanked" },
+                    },
                 },
             },
-            view = "mini",
         },
     },
+})
+
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+    group = vim.api.nvim_create_augroup("update_search_redraw", {}),
+    desc = "Update search redraw",
+    callback = function()
+        vim.schedule(function()
+            vim.cmd("redraw")
+        end)
+    end,
 })
