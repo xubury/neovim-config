@@ -169,7 +169,7 @@ local plugins = {
     },
     {
         "folke/noice.nvim",
-        -- commit = "b3f08e6",
+        commit = "b3f08e6",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
