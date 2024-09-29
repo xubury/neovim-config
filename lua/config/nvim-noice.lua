@@ -67,7 +67,7 @@ require("noice").setup({
                         { find = "; before #%d+" },
                         { find = "fewer" },
                         { find = "more" },
-                        { find = "%d+ lines yanked" },
+                        { find = "%d+ lines" },
                     },
                 },
             },
