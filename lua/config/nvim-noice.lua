@@ -58,6 +58,7 @@ require("noice").setup({
             view = "split",
             filter = {
                 event = "msg_show",
+                min_height = 2,
                 kind = { "" },
                 ["not"] = {
                     any = {
