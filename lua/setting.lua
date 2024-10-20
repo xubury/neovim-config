@@ -77,6 +77,7 @@ vim.api.nvim_create_user_command("Wa", "wa", {})
 vim.api.nvim_create_user_command("WA", "wa", {})
 vim.api.nvim_create_user_command("Qa", "qa", {})
 vim.api.nvim_create_user_command("Q", "q", {})
+vim.api.nvim_create_user_command("E", "e", {}) -- prevent treesitter error
 
 -- don't jump while search
 opt.incsearch = false
