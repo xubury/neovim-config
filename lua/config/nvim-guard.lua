@@ -11,7 +11,7 @@ ft("javascript,typescript"):fmt({
 })
 
 -- Call setup() LAST!
-require("guard").setup({
+vim.g.guard_config = {
     -- Choose to format on every write to a buffer
     fmt_on_save = false,
     -- Use lsp if no formatter was defined for this filetype
@@ -19,4 +19,4 @@ require("guard").setup({
     -- By default, Guard writes the buffer on every format
     -- You can disable this by setting:
     -- save_on_fmt = false,
-})
+}

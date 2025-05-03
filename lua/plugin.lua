@@ -189,6 +189,7 @@ local plugins = {
         init = function()
             require("init/gitsigns")
         end,
+        branch = "fix/issue1300",
         event = "VeryLazy",
     },
     -- Run git command in nvim
