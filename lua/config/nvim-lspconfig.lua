@@ -9,6 +9,7 @@ local function lsp_setup(lsp, extra)
     local defaults = {
         on_attach = function(client, bufnr)
             require("keymap").on_attach(client, bufnr)
+            client.server_capabilities.semanticTokensProvider = nil
         end,
         capabilities = capabilities,
     }
