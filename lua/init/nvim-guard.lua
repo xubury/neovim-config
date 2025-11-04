@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<A-F>", function()
+local fn = function()
     local filetype = require("guard.filetype")
     local buf = vim.api.nvim_get_current_buf()
     if not filetype[vim.bo[buf].filetype] then
@@ -7,6 +7,8 @@ vim.keymap.set("n", "<A-F>", function()
         vim.cmd([[%s/\s\+$//e]])
         vim.fn.setpos(".", save_cursor)
     else
-        require("guard.format").do_fmt()
+        require("guard.format").do_fmt(buf)
     end
-end, { noremap = true, silent = true })
+end
+vim.keymap.set("n", "<A-F>", fn, { noremap = true, silent = true })
+vim.keymap.set("v", "<A-F>", fn, { noremap = true, silent = true })
