@@ -1,7 +1,8 @@
 local ft = require("guard.filetype")
 
 ft("python"):fmt({ cmd = "black.cmd", stdin = true, args = { "--quiet", "-" } })
-ft("c,cpp,glsl,json"):fmt({ cmd = "clang-format.cmd", stdin = true })
+ft("c,cpp,glsl"):fmt({ cmd = "clang-format.cmd", stdin = true })
+ft("json"):fmt({ cmd = "jq.cmd", stdin = true })
 ft("lua"):fmt({ cmd = "stylua.cmd", args = { "-" }, stdin = true })
 ft("javascript,typescript"):fmt({
     cmd = "prettier.cmd",

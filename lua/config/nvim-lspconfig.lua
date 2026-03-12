@@ -54,7 +54,11 @@ lsp_setup("neocmake")
 -- python
 lsp_setup("pyright")
 
+-- c#
 lsp_setup("csharp_ls")
+
+-- typescript
+lsp_setup("ts_ls")
 
 -- Sign icons
 vim.diagnostic.config({
