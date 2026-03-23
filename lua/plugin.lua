@@ -254,7 +254,7 @@ local plugins = {
         config = function()
             require("config/nvim-guard")
         end,
-        event = "VeryLazy"
+        lazy = true,
     },
 
     --------------* LSP Related Plugin *--------------
