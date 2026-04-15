@@ -1,8 +1,6 @@
-local palette = require("catppuccin.palettes").get_palette()
-
 require("lualine").setup({
     options = {
-        theme = "catppuccin",
+        theme = "catppuccin-nvim",
         component_separators = "",
         section_separators = "",
     },

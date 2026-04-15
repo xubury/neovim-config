@@ -94,3 +94,5 @@ vim.opt.shortmess = "filnxtToOFIW"
 --         set shellquote= shellxquote=
 -- ]])
 -- end
+
+opt.fillchars:append({ eob = " " })
