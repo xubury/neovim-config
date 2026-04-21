@@ -81,7 +81,14 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "vsnip" },
         { name = "path" },
-        { name = "buffer" },
+        {
+            name = "buffer",
+            option = {
+                get_bufnrs = function()
+                    return vim.api.nvim_list_bufs()
+                end,
+            },
+        },
     },
 })
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
