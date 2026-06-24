@@ -1,26 +1,39 @@
-local nvim_lsp = require("lspconfig")
-local root_pattern = require("lspconfig.util").root_pattern
-
 vim.lsp.set_log_level("OFF")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local function lsp_setup(lsp, extra)
-    local defaults = {
-        on_attach = function(client, bufnr)
-            require("keymap").on_attach(client, bufnr)
-            client.server_capabilities.semanticTokensProvider = nil
-        end,
-        capabilities = capabilities,
-    }
-    nvim_lsp[lsp].setup(vim.tbl_extend("force", defaults, extra or {}))
-end
+-- clangd 需要使用 utf-16 偏移编码
+local clangd_cap = vim.deepcopy(capabilities)
+clangd_cap.offsetEncoding = { "utf-16" }
 
-lsp_setup("vimls") -- Vim
+-- 所有 LSP 共享的默认配置
+vim.lsp.config("*", {
+    capabilities = capabilities,
+})
+
+-- 统一处理 LSP attach 时的逻辑（替代原来每个 server 各自的 on_attach）
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client then
+            return
+        end
+        client.server_capabilities.semanticTokensProvider = nil
+        require("keymap").on_attach(client, args.buf)
+    end,
+})
 
 -- Lua
-lsp_setup("lua_ls", {
-    root_dir = root_pattern(".luarc.json", ".luarc.jsonc", ".luacheckrc", "selene.toml", "selene.yml", ".git"),
+vim.lsp.config("lua_ls", {
+    root_markers = {
+        ".luarc.json",
+        ".luarc.jsonc",
+        ".luacheckrc",
+        "selene.toml",
+        "selene.yml",
+        ".git",
+    },
     settings = {
         Lua = {
             runtime = {
@@ -30,7 +43,7 @@ lsp_setup("lua_ls", {
                 globals = { "vim" },
             },
             workspace = {
-                checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
+                checkThirdParty = false,
             },
             semantic = {
                 enable = false,
@@ -39,33 +52,32 @@ lsp_setup("lua_ls", {
     },
 })
 
--- cpp
-local clangd_cap = vim.deepcopy(capabilities)
-clangd_cap.offsetEncoding = { "utf-16" }
-lsp_setup("clangd", {
+-- C/C++
+vim.lsp.config("clangd", {
     capabilities = clangd_cap,
     cmd = { "clangd", "--header-insertion=never" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
 })
 
--- cmake
-lsp_setup("neocmake")
+-- 启用各 LSP 服务器
+vim.lsp.enable({
+    "vimls",
+    "lua_ls",
+    "clangd",
+    "neocmake",
+    "pyright",
+    "csharp_ls",
+    "ts_ls",
+})
 
--- python
-lsp_setup("pyright")
-
--- c#
-lsp_setup("csharp_ls")
-
--- typescript
-lsp_setup("ts_ls")
-
--- Sign icons
+-- 诊断符号
 vim.diagnostic.config({
-    text = {
-        [vim.diagnostic.severity.ERROR] = "",
-        [vim.diagnostic.severity.WARN] = "",
-        [vim.diagnostic.severity.INFO] = "",
-        [vim.diagnostic.severity.HINT] = "",
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
     },
 })

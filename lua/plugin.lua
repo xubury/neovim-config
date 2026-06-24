@@ -39,9 +39,18 @@ local plugins = {
         lazy = true,
     },
 
+    -- Star search without jumping to next match
     {
-        "jesseleite/vim-noh",
+        "haya14busa/vim-asterisk",
         event = "VeryLazy",
+        config = function()
+            local map = vim.keymap.set
+            local opts = { remap = true, silent = true }
+            map({ "n", "x" }, "*", "<Plug>(asterisk-z*)", opts)
+            map({ "n", "x" }, "#", "<Plug>(asterisk-z#)", opts)
+            map({ "n", "x" }, "g*", "<Plug>(asterisk-gz*)", opts)
+            map({ "n", "x" }, "g#", "<Plug>(asterisk-gz#)", opts)
+        end,
     },
 
     -- Buffer delete
