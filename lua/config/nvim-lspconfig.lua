@@ -81,3 +81,43 @@ vim.diagnostic.config({
         },
     },
 })
+
+-- 方案 D：包装 LSP show_document，跳转前规范化路径，避免产生重复 buffer
+local _orig_show_document = vim.lsp.util.show_document
+vim.lsp.util.show_document = function(location, position_encoding, opts)
+    if type(location) == "table" then
+        local uri = location.uri or location.targetUri
+        if type(uri) == "string" and uri:match("^file://") then
+            local fname = vim.uri_to_fname(uri)
+            local norm = vim.fs.normalize(vim.fn.fnamemodify(fname, ":p"))
+            local existing = vim.fn.bufnr(norm)
+            if existing > 0 and vim.api.nvim_buf_is_loaded(existing) then
+                local new_uri = vim.uri_from_fname(norm)
+                location = vim.deepcopy(location)
+                if location.uri then
+                    location.uri = new_uri
+                end
+                if location.targetUri then
+                    location.targetUri = new_uri
+                end
+            end
+        end
+    end
+    return _orig_show_document(location, position_encoding, opts)
+end
+
+-- 方案 D2：hook vim.uri_to_bufnr，源头拦截 LSP rename / apply_text_document_edit / diagnostic 等
+-- 这些路径不走 show_document，会直接 bufadd(uri_to_fname(uri))。
+-- 我们让它优先返回已存在的同路径 buffer，避免产生重复。
+local _orig_uri_to_bufnr = vim.uri_to_bufnr
+vim.uri_to_bufnr = function(uri)
+    if type(uri) == "string" and uri:match("^file://") then
+        local fname = vim.uri_to_fname(uri)
+        local norm = vim.fs.normalize(vim.fn.fnamemodify(fname, ":p"))
+        local existing = vim.fn.bufnr(norm)
+        if existing > 0 then
+            return existing
+        end
+    end
+    return _orig_uri_to_bufnr(uri)
+end

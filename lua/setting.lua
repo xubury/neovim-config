@@ -96,3 +96,6 @@ vim.opt.shortmess = "filnxtToOFIW"
 -- end
 
 opt.fillchars:append({ eob = " " })
+
+-- 启用 buffer 去重：避免同一文件出现多个 buffer（如 LSP 跳转后）
+require("util").setup_buffer_dedupe()

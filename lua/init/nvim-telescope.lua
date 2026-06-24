@@ -25,6 +25,12 @@ end)
 vim.keymap.set("n", "<leader>fb", function()
     require("telescope.builtin").buffers({ sort_mru = true })
 end)
+vim.keymap.set("n", "<leader>fB", function()
+    require("telescope.builtin").buffers({
+        show_all_buffers = true,
+        sort_mru = true,
+    })
+end, { desc = "Telescope all buffers (incl. unlisted)" })
 vim.keymap.set("n", "<leader>fe", function()
     require("telescope").extensions.file_browser.file_browser()
 end)

@@ -47,6 +47,11 @@ telescope.setup({
             find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
             preview = false,
         },
+        buffers = {
+            show_all_buffers = false,
+            ignore_current_buffer = false,
+            sort_mru = true,
+        },
     },
     defaults = {
         buffer_previewer_maker = new_maker,
