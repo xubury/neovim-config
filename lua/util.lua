@@ -83,10 +83,29 @@ local function try_dedupe(new_buf)
             local name = normalize_path(vim.api.nvim_buf_get_name(b))
             if name == new_name then
                 dedupe_log("merge", new_buf, "->", b, "path=", new_name)
-                -- 把所有指向 new_buf 的窗口切到 b
+                -- 把所有指向 new_buf 的窗口切到 b；同时保留 new_buf 上刚设置的
+                -- 光标位置（例如 spectre / LSP / gf 跳转刚 set_cursor 过），
+                -- 切换 buffer 之后再把光标恢复到目标 buffer 上的同一位置。
                 for _, win in ipairs(vim.api.nvim_list_wins()) do
                     if vim.api.nvim_win_get_buf(win) == new_buf then
-                        pcall(vim.api.nvim_win_set_buf, win, b)
+                        local ok_pos, cursor = pcall(vim.api.nvim_win_get_cursor, win)
+                        local switched = pcall(vim.api.nvim_win_set_buf, win, b)
+                        if switched and ok_pos and cursor then
+                            local line_count = vim.api.nvim_buf_line_count(b)
+                            local lnum = math.min(cursor[1], line_count)
+                            if lnum < 1 then
+                                lnum = 1
+                            end
+                            local col = cursor[2] or 0
+                            local ok_line, line = pcall(vim.api.nvim_buf_get_lines, b, lnum - 1, lnum, false)
+                            if ok_line and line and line[1] then
+                                col = math.min(col, #line[1])
+                            end
+                            if col < 0 then
+                                col = 0
+                            end
+                            pcall(vim.api.nvim_win_set_cursor, win, { lnum, col })
+                        end
                     end
                 end
                 -- 用 wipeout 彻底删除（含 unlisted），避免后续仍出现在 :ls!
