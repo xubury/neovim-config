@@ -1,0 +1,82 @@
+# ===== 图片 =====
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.ico
+*.webp
+*.tiff
+*.svg
+*.psd
+*.ai
+
+# ===== 音视频 =====
+*.mp3
+*.mp4
+*.wav
+*.ogg
+*.flac
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# ===== 归档/压缩 =====
+*.zip
+*.tar
+*.gz
+*.bz2
+*.7z
+*.rar
+*.xz
+
+# ===== 可执行/库 =====
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.o
+*.obj
+*.pdb
+
+# ===== 编译中间产物 =====
+*.class
+*.jar
+*.pyc
+*.pyo
+*.beam
+
+# ===== 文档二进制 =====
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# ===== 字体 =====
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.eot
+
+# ===== Unity / 游戏引擎 =====
+*.meta
+*.asset
+*.unity
+*.prefab
+*.mat
+*.fbx
+*.blend
+
+# ===== 数据/序列化 =====
+*.bin
+*.dat
+*.db
+*.sqlite
+*.sqlite3

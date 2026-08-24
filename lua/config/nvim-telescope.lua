@@ -44,7 +44,14 @@ telescope.setup({
     },
     pickers = {
         find_files = {
-            find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
+            find_command = {
+                "rg", "--files",
+                "--color", "never",
+                "--no-require-git",
+                "--hidden",
+                "--glob", "!**/.git/*",
+                "--ignore-file", vim.fn.stdpath("config") .. "/.ignore",
+            },
             preview = false,
         },
         buffers = {
@@ -67,6 +74,7 @@ telescope.setup({
             "--line-number",
             "--column",
             "--smart-case",
+            "--ignore-file", vim.fn.stdpath("config") .. "/.ignore",
         },
         mappings = {
             i = {

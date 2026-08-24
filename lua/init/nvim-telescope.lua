@@ -17,7 +17,17 @@ vim.keymap.set("n", "<leader>ff", function()
     require("telescope.builtin").find_files()
 end)
 vim.keymap.set("n", "<leader>fF", function()
-    require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
+    require("telescope.builtin").find_files({
+        find_command = {
+            "rg", "--files",
+            "--color", "never",
+            "--no-require-git",
+            "--hidden",
+            "--no-ignore-vcs",
+            "--glob", "!**/.git/*",
+            "--ignore-file", vim.fn.stdpath("config") .. "/.ignore",
+        },
+    })
 end)
 vim.keymap.set("n", "<leader>fp", function()
     require("telescope").extensions.project.project({})
