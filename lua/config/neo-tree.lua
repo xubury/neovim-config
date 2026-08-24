@@ -18,8 +18,8 @@ require("neo-tree").setup({
     },
     window = {
         mappings = {
-            ["<c-b>"] = function()
-                vim.cmd("Neotree toggle")
+            ["<C-b>"] = function()
+                vim.cmd("Neotree close")
             end,
             ["Z"] = { "close_all_nodes" },
             ["z"] = {},

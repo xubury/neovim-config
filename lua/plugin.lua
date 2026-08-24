@@ -201,7 +201,63 @@ local plugins = {
         event = "VeryLazy",
     },
     -- Run git command in nvim
-    { "tpope/vim-fugitive", event = "VeryLazy" },
+    {
+        "tpope/vim-fugitive",
+        event = "VeryLazy",
+        config = function()
+            -- fugitive 在执行 `:Git commit`（cc）时会临时打开 'equalalways'
+            -- 用于弹出 COMMIT_EDITMSG 窗口，这会顺带把已有的 :G 状态窗口大小
+            -- 强制均分，提交完成后原本手动调整的高度就丢失了。
+            -- 这里在状态刷新前后记录/还原 fugitive 窗口的高度与宽度。
+            local group = vim.api.nvim_create_augroup("FugitivePreserveSize", { clear = true })
+
+            -- 每个 fugitive 状态窗口自身持久保存最近一次的尺寸
+            vim.api.nvim_create_autocmd("FileType", {
+                group = group,
+                pattern = { "fugitive", "fugitiveblame", "git" },
+                callback = function(args)
+                    -- 用户手动调整窗口大小时记录下来
+                    vim.api.nvim_create_autocmd("WinResized", {
+                        group = group,
+                        buffer = args.buf,
+                        callback = function()
+                            local win = vim.fn.bufwinid(args.buf)
+                            if win ~= -1 then
+                                vim.b[args.buf]._fugitive_height = vim.api.nvim_win_get_height(win)
+                                vim.b[args.buf]._fugitive_width = vim.api.nvim_win_get_width(win)
+                            end
+                        end,
+                    })
+                end,
+            })
+
+            -- cc 提交（或其他会触发状态刷新的 fugitive 操作）之后还原尺寸
+            vim.api.nvim_create_autocmd("User", {
+                group = group,
+                pattern = { "FugitiveChanged", "FugitiveEditor" },
+                callback = function()
+                    vim.schedule(function()
+                        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+                            local buf = vim.api.nvim_win_get_buf(win)
+                            local ft = vim.bo[buf].filetype
+                            if ft == "fugitive" or ft == "fugitiveblame" or ft == "git" then
+                                local h = vim.b[buf]._fugitive_height
+                                local w = vim.b[buf]._fugitive_width
+                                if h then
+                                    pcall(vim.api.nvim_win_set_height, win, h)
+                                end
+                                if w then
+                                    pcall(vim.api.nvim_win_set_width, win, w)
+                                end
+                            end
+                        end
+                    end)
+                end,
+            })
+        end,
+    },
+
+    { "sindrets/diffview.nvim", event = "VeryLazy" },
 
     --------------* Telescope Related Plugin *--------------
     -- Telescope
