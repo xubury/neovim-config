@@ -99,3 +99,13 @@ opt.fillchars:append({ eob = " " })
 
 -- 启用 buffer 去重：避免同一文件出现多个 buffer（如 LSP 跳转后）
 require("util").setup_buffer_dedupe()
+
+-- Windows: 提供 :Term 命令快速打开 pwsh 终端（内置 :terminal 保持 cmd 默认，避免 Unreal.nvim 冲突）
+if vim.fn.has("win32") == 1 and vim.fn.executable("pwsh") == 1 then
+    vim.api.nvim_create_user_command("Term", function()
+        vim.cmd([[terminal pwsh -NoLogo -NoProfile -Command "]] ..
+            [[[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();]] ..
+            [[$PSDefaultParameterValues['Out-File:Encoding']='utf8';]] ..
+            [[pwsh -NoLogo"]])
+    end, {})
+end
