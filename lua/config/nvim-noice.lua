@@ -23,8 +23,13 @@ require("noice").setup({
         opts = {}, -- global options for the cmdline. See section on views
 
         format = {
-            search_down = { view = "cmdline_popup", kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-            search_up = { view = "cmdline_popup", kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+            search_down = { view = "cmdline_popup", kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+            search_up = { view = "cmdline_popup", kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+            -- 给含 fugitive# 的 cmdline 打上 kind=fugitive_internal 标签，由下方 route 跳过
+            fugitive_internal = {
+                pattern = "fugitive#",
+                view = "cmdline_popup",
+            },
         },
     },
     messages = {
@@ -46,6 +51,22 @@ require("noice").setup({
         lsp_doc_border = true, -- add a border to hover docs and signature help
     },
     routes = {
+        -- 完全跳过 fugitive 内部函数调用的 cmdline 浮窗
+        {
+            filter = {
+                event = "cmdline",
+                kind = "fugitive_internal",
+            },
+            opts = { skip = true },
+        },
+        -- fugitive commit/push/pull summary → 右上角 notify 浮窗
+        {
+            view = "notify",
+            filter = {
+                event = "msg_show",
+                find = "^%[%S+.-%] ",
+            },
+        },
         {
             view = "split",
             filter = {
