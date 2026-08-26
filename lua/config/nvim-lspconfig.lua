@@ -55,7 +55,17 @@ vim.lsp.config("lua_ls", {
 -- C/C++
 vim.lsp.config("clangd", {
     capabilities = clangd_cap,
-    cmd = { "clangd", "--header-insertion=never" },
+    cmd = {
+        "clangd",
+        "--header-insertion=never",
+        "--background-index",
+        "--background-index-priority=background",
+        "--pch-storage=memory",
+        "--limit-results=20",
+        "--limit-references=100",
+        "--log=error",
+        "--completion-style=detailed",
+    },
     filetypes = { "c", "cpp", "objc", "objcpp" },
 })
 
@@ -72,6 +82,8 @@ vim.lsp.enable({
 
 -- 诊断符号
 vim.diagnostic.config({
+    update_in_insert = false,
+    severity_sort = true,
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = "",
