@@ -55,9 +55,6 @@ opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1"
 -- Exclusive inclusive behaviors
 opt.selection = "old"
 
--- Clipboard
-opt.clipboard:append("unnamedplus")
-
 cmd("syntax enable")
 
 -- Auto update file change on disk

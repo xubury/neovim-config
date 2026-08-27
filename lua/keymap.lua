@@ -17,7 +17,23 @@ M.setup = function()
         end
     end
 
-    vim.keymap.set("v", "Y", "y")
+    -- ========== Route y/p through system clipboard (+) ==========
+    -- Yank: always to system clipboard
+    vim.keymap.set({ "n", "x" }, "y", '"+y', { desc = "Yank to system clipboard" })
+    vim.keymap.set("n", "Y", '"+y$', { desc = "Yank to EOL to system clipboard" })
+    vim.keymap.set("n", "yy", '"+yy', { desc = "Yank line to system clipboard" })
+    vim.keymap.set("x", "Y", '"+y', { desc = "Yank selection to clipboard" })
+
+    vim.keymap.set({ "n", "x" }, "d", '"+d', { desc = "Cut to system clipboard" })
+    vim.keymap.set("x", "D", '"+d', { desc = "Cut selection to clipboard" })
+
+    -- Paste: always from system clipboard
+    vim.keymap.set("n", "p", '"+p', { desc = "Paste from system clipboard" })
+    vim.keymap.set("n", "P", '"+P', { desc = "Paste from system clipboard" })
+    -- Paste in visual mode: also from system clipboard, avoid unnamed register pollution
+    vim.keymap.set("x", "p", '"+p', { desc = "Paste from system clipboard (visual)" })
+    vim.keymap.set("x", "P", '"+P', { desc = "Paste from system clipboard (visual)" })
+
     -- CTRL-X Cut
     vim.keymap.set("v", "<C-X>", '"+x')
 
