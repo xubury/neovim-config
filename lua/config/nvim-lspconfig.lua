@@ -60,7 +60,7 @@ vim.lsp.config("clangd", {
         "--header-insertion=never",
         "--background-index",
         "--background-index-priority=background",
-        "--pch-storage=memory",
+        "--pch-storage=disk",
         "--limit-results=20",
         "--limit-references=100",
         "--log=error",
